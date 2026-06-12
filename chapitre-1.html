@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapitre I — Caractéristiques des composantes | Systèmes d'exploitation</title>
+<meta name="description" content="Histoire de l'informatique, architecture du micro-ordinateur, hardware vs software, mémoires (ROM, DRAM, SDRAM, DDR) et périphériques.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232d4a8a'/><text x='50' y='68' font-size='52' font-family='Georgia' fill='white' text-anchor='middle' font-weight='600'>SE</text></svg>">
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner">
+  <a href="index.html" class="brand-logo"><span class="brand-mark">SE</span><span>Systèmes d'exploitation<span class="brand-sub">Ghouili Walid · IMSET</span></span></a>
+  <nav class="nav">
+    <a href="index.html"><span class="fr">Accueil</span><span class="en">Home</span></a>
+    <a href="chapitre-1.html" class="active">Chap. I</a>
+    <a href="chapitre-2.html">Chap. II</a>
+    <a href="chapitre-3.html">Chap. III</a>
+    <a href="chapitre-4.html">Chap. IV</a>
+    <a href="glossaire.html"><span class="fr">Glossaire</span><span class="en">Glossary</span></a>
+    <a href="ressources.html"><span class="fr">Ressources</span><span class="en">Resources</span></a>
+  </nav>
+  <div class="lang-toggle"><button data-lang-btn="fr">FR</button><button data-lang-btn="en">EN</button></div>
+  <button class="toolbtn" data-theme-toggle>☾</button>
+  <button class="toolbtn menu-btn" data-menu>☰</button>
+</div></header>
+
+<div class="lesson-head"><div class="wrap">
+  <span class="eyebrow"><span class="fr">Chapitre I</span><span class="en">Chapter I</span></span>
+  <h1><span class="fr">Caractéristiques des composantes</span><span class="en">Characteristics of components</span></h1>
+  <p class="lead" style="max-width:60ch"><span class="fr">De Babbage au micro-ordinateur moderne : histoire, architecture, hardware &amp; software, mémoires et périphériques.</span><span class="en">From Babbage to the modern microcomputer: history, architecture, hardware &amp; software, memory and peripherals.</span></p>
+  <div class="hero-meta">
+    <span class="chip">⏱ 3–4 h</span><span class="chip">📊 36 <span class="fr">diapos</span><span class="en">slides</span></span><span class="chip">🧪 <span class="fr">Atelier</span><span class="en">Lab</span></span>
+  </div>
+</div></div>
+
+<div class="wrap"><div class="lesson-layout">
+  <aside class="toc">
+    <h4><span class="fr">Sur cette page</span><span class="en">On this page</span></h4>
+    <a href="#intro"><span class="fr">Introduction</span><span class="en">Introduction</span></a>
+    <a href="#objectifs"><span class="fr">Objectifs</span><span class="en">Objectives</span></a>
+    <a href="#histoire"><span class="fr">1 · Histoire</span><span class="en">1 · History</span></a>
+    <a href="#generations"><span class="fr">2 · Générations</span><span class="en">2 · Generations</span></a>
+    <a href="#archi"><span class="fr">3 · Architecture</span><span class="en">3 · Architecture</span></a>
+    <a href="#hardware"><span class="fr">4 · Hardware</span><span class="en">4 · Hardware</span></a>
+    <a href="#memoires"><span class="fr">5 · Mémoires</span><span class="en">5 · Memory</span></a>
+    <a href="#peripheriques"><span class="fr">6 · Périphériques</span><span class="en">6 · Peripherals</span></a>
+    <a href="#atelier"><span class="fr">Atelier</span><span class="en">Lab</span></a>
+    <a href="#quiz">Quiz</a>
+    <a href="#exercices"><span class="fr">Exercices</span><span class="en">Exercises</span></a>
+  </aside>
+
+  <article class="lesson-body">
+
+    <div class="dl-card">
+      <div class="dl-ic">📥</div>
+      <div class="grow"><h4><span class="fr">Diaporama du chapitre I</span><span class="en">Chapter I slide deck</span></h4><p><span class="fr">Présentation complète (.pptx) — 36 diapositives.</span><span class="en">Full presentation (.pptx) — 36 slides.</span></p></div>
+      <a class="btn btn-primary" href="slides/ICML_Chapitre_1_Caracteristiques_Composantes.pptx" download><span class="fr">Télécharger</span><span class="en">Download</span></a>
+    </div>
+
+    <h2 id="intro"><span class="fr">Introduction au module</span><span class="en">Introduction to the module</span></h2>
+    <p><span class="fr">Tout technicien informatique — développeur, administrateur, support ou usager averti — doit savoir <strong>identifier</strong> les composants d'un ordinateur, <strong>installer</strong> et configurer un système d'exploitation, <strong>raccorder</strong> des périphériques, <strong>installer</strong> des logiciels en respectant la documentation, et <strong>diagnostiquer</strong> les pannes courantes.</span>
+    <span class="en">Every IT technician — developer, administrator, support engineer or power user — must be able to <strong>identify</strong> a computer's components, <strong>install</strong> and configure an operating system, <strong>connect</strong> peripherals, <strong>install</strong> software in line with its documentation, and <strong>diagnose</strong> common faults.</span></p>
+    <div class="callout callout-key"><span class="fr"><b>Ce module est pratique par essence.</b> Vous apprendrez à lire une documentation technique, vérifier la configuration minimale et prévoir les étapes d'installation avant d'agir — à travers 4 ateliers répartis sur les 4 chapitres.</span><span class="en"><b>This module is practical by design.</b> You will learn to read technical documentation, verify minimum requirements and plan installation steps before acting — across 4 labs spread over the 4 chapters.</span></div>
+
+    <h2 id="objectifs"><span class="fr">Objectifs pédagogiques</span><span class="en">Learning objectives</span></h2>
+    <p><span class="fr">À la fin de ce chapitre, vous serez capable de :</span><span class="en">By the end of this chapter, you will be able to:</span></p>
+    <div class="feat-grid grid-2" style="grid-template-columns:1fr 1fr">
+      <div class="feat"><h4><span class="fr">Retracer l'histoire</span><span class="en">Retrace history</span></h4><p><span class="fr">de l'informatique en 5 générations.</span><span class="en">of computing across 5 generations.</span></p></div>
+      <div class="feat"><h4><span class="fr">Distinguer hardware / software</span><span class="en">Distinguish hardware / software</span></h4><p><span class="fr">matériel et logiciel.</span><span class="en">the physical and the coded.</span></p></div>
+      <div class="feat"><h4><span class="fr">Décrire l'architecture</span><span class="en">Describe the architecture</span></h4><p><span class="fr">d'un micro-ordinateur moderne.</span><span class="en">of a modern microcomputer.</span></p></div>
+      <div class="feat"><h4><span class="fr">Identifier les composants</span><span class="en">Identify components</span></h4><p><span class="fr">CPU, RAM, ROM, carte mère, disques.</span><span class="en">CPU, RAM, ROM, motherboard, drives.</span></p></div>
+      <div class="feat"><h4><span class="fr">Comparer les mémoires</span><span class="en">Compare memory</span></h4><p><span class="fr">DRAM, SDRAM, DDR — débits et générations.</span><span class="en">DRAM, SDRAM, DDR — throughput and generations.</span></p></div>
+      <div class="feat"><h4><span class="fr">Classifier les périphériques</span><span class="en">Classify peripherals</span></h4><p><span class="fr">internes / externes / E/S.</span><span class="en">internal / external / I/O.</span></p></div>
+    </div>
+
+    <h2 id="histoire"><span class="fr">1 · Histoire de l'informatique</span><span class="en">1 · History of computing</span></h2>
+    <p><span class="fr">Avant l'électronique, des machines mécaniques ont ouvert la voie — de la Pascaline à la machine analytique de Babbage.</span><span class="en">Before electronics, mechanical machines paved the way — from the Pascaline to Babbage's analytical engine.</span></p>
+    <div class="timeline">
+      <div class="tl-item"><span class="yr">1642</span><h4><span class="fr">La Pascaline</span><span class="en">The Pascaline</span></h4><p><span class="fr">Blaise Pascal (19 ans) invente la première machine à calculer mécanique : additions et soustractions par roues dentées.</span><span class="en">Blaise Pascal (aged 19) builds the first mechanical calculator: addition and subtraction via toothed wheels.</span></p></div>
+      <div class="tl-item"><span class="yr">1673</span><h4><span class="fr">Machine de Leibniz</span><span class="en">Leibniz's machine</span></h4><p><span class="fr">Ajoute multiplication et division, et théorise le système binaire.</span><span class="en">Adds multiplication and division, and theorises the binary system.</span></p></div>
+      <div class="tl-item"><span class="yr">1801</span><h4><span class="fr">Métier Jacquard</span><span class="en">Jacquard loom</span></h4><p><span class="fr">Des cartes perforées programment le tissage : première forme de programmation.</span><span class="en">Punched cards program weaving: the first form of programming.</span></p></div>
+      <div class="tl-item"><span class="yr">1837</span><h4><span class="fr">Machine analytique de Babbage</span><span class="en">Babbage's analytical engine</span></h4><p><span class="fr">Première machine programmable universelle, conceptuellement révolutionnaire.</span><span class="en">The first universal programmable machine — conceptually revolutionary.</span></p></div>
+      <div class="tl-item"><span class="yr">1843</span><h4><span class="fr">Ada Lovelace</span><span class="en">Ada Lovelace</span></h4><p><span class="fr">Première programmeuse : algorithme des nombres de Bernoulli.</span><span class="en">The first programmer: an algorithm for the Bernoulli numbers.</span></p></div>
+      <div class="tl-item"><span class="yr">1890</span><h4><span class="fr">Tabulatrice Hollerith</span><span class="en">Hollerith tabulator</span></h4><p><span class="fr">Mécanise le recensement américain ; fonde IBM en 1924.</span><span class="en">Mechanises the US census; founds IBM in 1924.</span></p></div>
+    </div>
+
+    <h2 id="generations"><span class="fr">2 · Les 5 générations d'ordinateurs</span><span class="en">2 · The 5 generations of computers</span></h2>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th><span class="fr">Gén.</span><span class="en">Gen.</span></th><th><span class="fr">Période</span><span class="en">Period</span></th><th><span class="fr">Technologie</span><span class="en">Technology</span></th><th><span class="fr">Exemples &amp; traits</span><span class="en">Examples &amp; traits</span></th></tr></thead>
+      <tbody>
+        <tr><td>1<sup>re</sup></td><td>1940–1956</td><td><span class="fr">Tubes à vide</span><span class="en">Vacuum tubes</span></td><td>ENIAC (1945), UNIVAC. <span class="fr">Énormes (30 t), peu fiables, programmation par câblage.</span><span class="en">Huge (30 t), unreliable, programmed by wiring.</span></td></tr>
+        <tr><td>2<sup>e</sup></td><td>1956–1963</td><td>Transistors</td><td>IBM 1401. <span class="fr">Plus petits, fiables ; langages FORTRAN, COBOL.</span><span class="en">Smaller, reliable; FORTRAN, COBOL languages.</span></td></tr>
+        <tr><td>3<sup>e</sup></td><td>1964–1971</td><td><span class="fr">Circuits intégrés</span><span class="en">Integrated circuits</span></td><td>IBM System/360. <span class="fr">SE multi-tâches, time-sharing.</span><span class="en">Multitasking OS, time-sharing.</span></td></tr>
+        <tr><td>4<sup>e</sup></td><td>1971–<span class="fr">auj.</span><span class="en">now</span></td><td><span class="fr">Microprocesseurs (VLSI)</span><span class="en">Microprocessors (VLSI)</span></td><td>Intel 4004 (1971), Apple II, IBM PC, <span class="fr">smartphones.</span><span class="en">smartphones.</span></td></tr>
+        <tr><td>5<sup>e</sup></td><td><span class="fr">auj.–futur</span><span class="en">now–future</span></td><td>IA, <span class="fr">quantique, neuromorphique</span><span class="en">quantum, neuromorphic</span></td><td><span class="fr">Apprentissage profond, IBM Q, Google, TrueNorth.</span><span class="en">Deep learning, IBM Q, Google, TrueNorth.</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="archi"><span class="fr">3 · Hardware vs Software</span><span class="en">3 · Hardware vs Software</span></h2>
+    <p><span class="fr">Un ordinateur repose sur deux piliers indissociables.</span><span class="en">A computer rests on two inseparable pillars.</span></p>
+    <div class="feat-grid grid-2" style="grid-template-columns:1fr 1fr">
+      <div class="feat"><h4>🔩 Hardware — <span class="fr">le matériel</span><span class="en">the physical</span></h4><p><span class="fr">Tout ce qu'on peut toucher : carte mère, CPU, RAM, ROM, disques (SSD/HDD), GPU, cartes réseau/son, alimentation, boîtier, périphériques. Sans hardware → pas d'ordinateur.</span><span class="en">Everything you can touch: motherboard, CPU, RAM, ROM, drives (SSD/HDD), GPU, network/sound cards, PSU, case, peripherals. No hardware → no computer.</span></p></div>
+      <div class="feat"><h4>💾 Software — <span class="fr">le logiciel</span><span class="en">the coded</span></h4><p><span class="fr">Tout ce qu'on ne peut pas toucher — code et données : système d'exploitation (Windows, Linux, macOS), pilotes (drivers), applications. Sans software → un tas de circuits inertes.</span><span class="en">Everything you cannot touch — code and data: operating system (Windows, Linux, macOS), drivers, applications. No software → a pile of inert circuits.</span></p></div>
+    </div>
+
+    <h2 id="hardware"><span class="fr">4 · La partie Hardware en détail</span><span class="en">4 · Hardware in detail</span></h2>
+    <h3><span class="fr">La carte mère — colonne vertébrale</span><span class="en">The motherboard — the backbone</span></h3>
+    <p><span class="fr">La carte mère <strong>interconnecte</strong> tous les composants, distribue le courant et coordonne la communication via le chipset. Elle ne calcule pas — elle relie.</span><span class="en">The motherboard <strong>interconnects</strong> every component, distributes power and coordinates communication through the chipset. It does not compute — it links.</span></p>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th>Format</th><th><span class="fr">Taille (mm)</span><span class="en">Size (mm)</span></th><th><span class="fr">Usage</span><span class="en">Use</span></th></tr></thead>
+      <tbody>
+        <tr><td>E-ATX</td><td>305×330</td><td><span class="fr">Stations HEDT</span><span class="en">HEDT workstations</span></td></tr>
+        <tr><td>ATX</td><td>305×244</td><td><span class="fr">PC standard</span><span class="en">Standard PC</span></td></tr>
+        <tr><td>Micro-ATX</td><td>244×244</td><td><span class="fr">PC compact</span><span class="en">Compact PC</span></td></tr>
+        <tr><td>Mini-ITX</td><td>170×170</td><td>Mini-PC</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="fr"><strong>Éléments visibles :</strong> socket CPU (LGA 1700, AM5), slots DIMM (RAM), chipset, slots PCIe (GPU), ports SATA, slots M.2 (SSD NVMe), ports E/S, pile CMOS (CR2032), pin headers.</span><span class="en"><strong>Visible elements:</strong> CPU socket (LGA 1700, AM5), DIMM slots (RAM), chipset, PCIe slots (GPU), SATA ports, M.2 slots (NVMe SSD), I/O ports, CMOS battery (CR2032), pin headers.</span></p>
+
+    <h3><span class="fr">Le processeur (CPU) — le cerveau</span><span class="en">The processor (CPU) — the brain</span></h3>
+    <p><span class="fr">Un CPU contient l'<strong>UC</strong> (unité de contrôle), l'<strong>UAL/ALU</strong> (calculs), des <strong>registres</strong> et des <strong>caches L1/L2/L3</strong>. Il répète le cycle <strong>Fetch → Decode → Execute</strong> des milliards de fois par seconde.</span><span class="en">A CPU contains the <strong>control unit</strong>, the <strong>ALU</strong> (arithmetic/logic), <strong>registers</strong> and <strong>L1/L2/L3 caches</strong>. It repeats the <strong>Fetch → Decode → Execute</strong> cycle billions of times per second.</span></p>
+    <div class="callout callout-note"><span class="fr"><b>Caractéristiques clés :</b> fréquence (GHz), nombre de cœurs, taille du cache. Constructeurs : Intel, AMD (PC) ; ARM, Apple (mobile, Mac).</span><span class="en"><b>Key specs:</b> clock speed (GHz), core count, cache size. Makers: Intel, AMD (PC); ARM, Apple (mobile, Mac).</span></div>
+
+    <h2 id="memoires"><span class="fr">5 · Les mémoires : morte &amp; vive</span><span class="en">5 · Memory: ROM &amp; RAM</span></h2>
+    <div class="feat-grid grid-2" style="grid-template-columns:1fr 1fr">
+      <div class="feat"><h4>ROM — Read Only Memory</h4><p><span class="fr"><strong>Mémoire morte / firmware.</strong> Non volatile, en lecture seule, très petite. Types : ROM, PROM, EPROM, EEPROM, Flash. Usage : BIOS/UEFI, firmware des périphériques.</span><span class="en"><strong>Read-only memory / firmware.</strong> Non-volatile, read-only, very small. Types: ROM, PROM, EPROM, EEPROM, Flash. Use: BIOS/UEFI, peripheral firmware.</span></p></div>
+      <div class="feat"><h4>RAM — Random Access Memory</h4><p><span class="fr"><strong>Mémoire vive / mémoire de travail.</strong> Volatile (disparaît à l'extinction !), lecture/écriture, grande (4–128 Go), rapide. Contient le noyau, les programmes ouverts et les données.</span><span class="en"><strong>Working memory.</strong> Volatile (lost at power-off!), read/write, large (4–128 GB), fast. Holds the kernel, open programs and live data.</span></p></div>
+    </div>
+    <div class="callout callout-warn"><span class="fr"><b>RAM ≠ Stockage.</b> La RAM disparaît à l'extinction ; le disque conserve. C'est pourquoi on <b>sauvegarde</b> sur disque.</span><span class="en"><b>RAM ≠ Storage.</b> RAM is lost at shutdown; the disk persists. That is why we <b>save</b> to disk.</span></div>
+
+    <h3><span class="fr">Les générations DDR</span><span class="en">DDR generations</span></h3>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th>Gén.</th><th><span class="fr">Année</span><span class="en">Year</span></th><th><span class="fr">Fréq. eff.</span><span class="en">Eff. freq.</span></th><th><span class="fr">Débit max</span><span class="en">Max rate</span></th><th>V</th></tr></thead>
+      <tbody>
+        <tr><td>DDR</td><td>2000</td><td>200–400 MT/s</td><td>3.2 <span class="fr">Go/s</span><span class="en">GB/s</span></td><td>2.5</td></tr>
+        <tr><td>DDR2</td><td>2003</td><td>400–1066 MT/s</td><td>8.5 <span class="fr">Go/s</span><span class="en">GB/s</span></td><td>1.8</td></tr>
+        <tr><td>DDR3</td><td>2007</td><td>800–2133 MT/s</td><td>17 <span class="fr">Go/s</span><span class="en">GB/s</span></td><td>1.5</td></tr>
+        <tr><td>DDR4</td><td>2014</td><td>2133–3200 MT/s</td><td>25.6 <span class="fr">Go/s</span><span class="en">GB/s</span></td><td>1.2</td></tr>
+        <tr><td>DDR5</td><td>2020</td><td>4800–8400 MT/s</td><td>67.2 <span class="fr">Go/s</span><span class="en">GB/s</span></td><td>1.1</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout-warn"><span class="fr"><b>⚠ Compatibilité absolue.</b> Les générations DDR ne sont pas compatibles : encoches, tensions et contrôleurs diffèrent. Une barrette DDR4 n'entre pas dans un slot DDR5. Vérifier la carte mère <b>et</b> le CPU avant achat.</span><span class="en"><b>⚠ Strict compatibility.</b> DDR generations are not interchangeable: notch, voltage and controllers differ. A DDR4 stick will not fit a DDR5 slot. Check both the motherboard <b>and</b> the CPU before buying.</span></div>
+
+    <h2 id="peripheriques"><span class="fr">6 · Classification des périphériques</span><span class="en">6 · Classifying peripherals</span></h2>
+    <p><span class="fr">Un périphérique est tout matériel raccordé à l'ordinateur. Trois classifications principales :</span><span class="en">A peripheral is any hardware connected to the computer. Three main classifications:</span></p>
+    <div class="feat-grid grid-3" style="grid-template-columns:repeat(3,1fr)">
+      <div class="feat"><h4><span class="fr">Par direction</span><span class="en">By direction</span></h4><p><span class="fr"><b>Entrée :</b> clavier, souris, scanner, webcam. <b>Sortie :</b> écran, imprimante, haut-parleurs. <b>E/S :</b> écran tactile, disque, clé USB.</span><span class="en"><b>Input:</b> keyboard, mouse, scanner, webcam. <b>Output:</b> screen, printer, speakers. <b>I/O:</b> touchscreen, disk, USB stick.</span></p></div>
+      <div class="feat"><h4><span class="fr">Par localisation</span><span class="en">By location</span></h4><p><span class="fr"><b>Internes :</b> RAM, SSD, GPU. <b>Externes :</b> clavier USB, imprimante. <b>Embarqués :</b> écran/webcam de laptop.</span><span class="en"><b>Internal:</b> RAM, SSD, GPU. <b>External:</b> USB keyboard, printer. <b>Built-in:</b> laptop screen/webcam.</span></p></div>
+      <div class="feat"><h4><span class="fr">Par interface</span><span class="en">By interface</span></h4><p><span class="fr"><b>Filaire :</b> USB, HDMI, Ethernet, SATA. <b>Sans fil :</b> Wi-Fi, Bluetooth.</span><span class="en"><b>Wired:</b> USB, HDMI, Ethernet, SATA. <b>Wireless:</b> Wi-Fi, Bluetooth.</span></p></div>
+    </div>
+
+    <h2 id="atelier"><span class="fr">Atelier introductif</span><span class="en">Introductory lab</span></h2>
+    <div class="callout callout-key"><span class="fr"><b>Identification visuelle des composants.</b> Avant tout démontage : sécurité absolue — déconnexion de l'alimentation et protection antistatique (bracelet). Puis identifier visuellement carte mère, CPU, barrettes RAM, disques et cartes d'extension.</span><span class="en"><b>Visual identification of components.</b> Before any disassembly: absolute safety — disconnect power and use anti-static protection (wrist strap). Then visually identify the motherboard, CPU, RAM sticks, drives and expansion cards.</span></div>
+
+    <h2 id="quiz"><span class="fr">Quiz d'évaluation</span><span class="en">Assessment quiz</span></h2>
+    <p><span class="fr">Cliquez sur une question pour révéler la réponse.</span><span class="en">Click a question to reveal the answer.</span></p>
+    <details class="quiz"><summary><span class="fr">Qui a conçu la première machine programmable (1837) ?</span><span class="en">Who designed the first programmable machine (1837)?</span></summary><div class="ans"><p class="opts">a) Pascal &nbsp; b) Babbage &nbsp; c) Turing</p><p class="correct">✓ b — Charles Babbage.</p></div></details>
+    <details class="quiz"><summary><span class="fr">La 4ᵉ génération d'ordinateurs utilise :</span><span class="en">The 4th computer generation uses:</span></summary><div class="ans"><p class="opts">a) <span class="fr">Tubes à vide</span><span class="en">Vacuum tubes</span> &nbsp; b) <span class="fr">Circuits intégrés</span><span class="en">Integrated circuits</span> &nbsp; c) <span class="fr">Microprocesseurs VLSI</span><span class="en">VLSI microprocessors</span></p><p class="correct">✓ c — <span class="fr">depuis l'Intel 4004 en 1971.</span><span class="en">since the Intel 4004 in 1971.</span></p></div></details>
+    <details class="quiz"><summary><span class="fr">La mémoire ROM est :</span><span class="en">ROM memory is:</span></summary><div class="ans"><p class="opts">a) <span class="fr">Volatile</span><span class="en">Volatile</span> &nbsp; b) <span class="fr">Non volatile</span><span class="en">Non-volatile</span> &nbsp; c) <span class="fr">Très lente</span><span class="en">Very slow</span></p><p class="correct">✓ b — <span class="fr">conserve son contenu hors tension.</span><span class="en">keeps its content without power.</span></p></div></details>
+    <details class="quiz"><summary>DDR <span class="fr">signifie</span><span class="en">stands for</span> :</summary><div class="ans"><p class="opts">a) Direct Data Rate &nbsp; b) Double Data Rate &nbsp; c) Dynamic Data RAM</p><p class="correct">✓ b — Double Data Rate (2 <span class="fr">transferts par cycle</span><span class="en">transfers per cycle</span>).</p></div></details>
+    <details class="quiz"><summary><span class="fr">Avant d'ouvrir un PC, on doit :</span><span class="en">Before opening a PC, you must:</span></summary><div class="ans"><p class="opts">a) <span class="fr">Allumer le PC</span><span class="en">Power it on</span> &nbsp; b) <span class="fr">Débrancher l'alimentation</span><span class="en">Unplug the power</span> &nbsp; c) <span class="fr">Ne rien faire</span><span class="en">Nothing</span></p><p class="correct">✓ b — <span class="fr">sécurité absolue.</span><span class="en">absolute safety.</span></p></div></details>
+
+    <h2 id="exercices"><span class="fr">Exercices d'application</span><span class="en">Practical exercises</span></h2>
+    <ol>
+      <li><span class="fr"><strong>Frise chronologique.</strong> Reproduire la frise des 5 générations ; pour chacune, citer une machine emblématique et la technologie de base.</span><span class="en"><strong>Timeline.</strong> Reproduce the timeline of the 5 generations; for each, name an iconic machine and the core technology.</span></li>
+      <li><span class="fr"><strong>Inventaire de votre PC.</strong> Identifier (sans démonter) : modèle CPU, fréquence, cœurs, quantité et type de RAM, taille du disque, GPU. Outils : Paramètres → Système, ou <code>wmic</code>.</span><span class="en"><strong>Audit your PC.</strong> Identify (without disassembly): CPU model, clock, cores, RAM amount/type, disk size, GPU. Tools: Settings → System, or <code>wmic</code>.</span></li>
+      <li><span class="fr"><strong>Comparaison périphériques.</strong> Tableau : clavier filaire USB vs Bluetooth (avantages, latence, consommation, prix).</span><span class="en"><strong>Peripheral comparison.</strong> Table: wired USB vs Bluetooth keyboard (pros, latency, power, price).</span></li>
+      <li><span class="fr"><strong>Choix d'achat.</strong> Configurer un PC bureautique à 600 € : CPU, RAM, SSD, carte mère, écran, clavier-souris. Justifier chaque choix.</span><span class="en"><strong>Purchase decision.</strong> Spec an office PC for €600: CPU, RAM, SSD, motherboard, screen, keyboard-mouse. Justify each choice.</span></li>
+    </ol>
+
+    <div class="pager">
+      <a href="index.html"><span><span class="fr">Retour</span><span class="en">Back</span></span><b><span class="fr">Accueil</span><span class="en">Home</span></b></a>
+      <a class="next" href="chapitre-2.html"><span><span class="fr">Chapitre suivant</span><span class="en">Next chapter</span></span><b><span class="fr">II · Configuration du SE</span><span class="en">II · OS configuration</span></b></a>
+    </div>
+  </article>
+</div></div>
+
+<footer><div class="wrap"><div class="foot-bottom" style="border:0">
+  <span>© 2025–2026 Ghouili Walid · IMSET</span>
+  <span><a href="ressources.html"><span class="fr">Références du chapitre</span><span class="en">Chapter references</span></a></span>
+</div></div></footer>
+<script src="assets/script.js"></script>
+</body>
+</html>

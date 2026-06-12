@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Systèmes d'exploitation — Installer des composants matériels et logiciels | Ghouili Walid</title>
+<meta name="description" content="Cours complet de Systèmes d'exploitation par Ghouili Walid (IMSET) : architecture, mise en marche, périphériques et logiciels. Slides, ateliers, glossaire et quiz.">
+<meta name="author" content="Ghouili Walid">
+<meta property="og:title" content="Module Systèmes d'exploitation — Ghouili Walid">
+<meta property="og:description" content="Cours interactif : matériel, configuration du SE, périphériques et logiciels. 4 chapitres, ateliers pratiques, quiz et ressources.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232d4a8a'/><text x='50' y='68' font-size='52' font-family='Georgia' fill='white' text-anchor='middle' font-weight='600'>SE</text></svg>">
+</head>
+<body>
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a href="index.html" class="brand-logo">
+      <span class="brand-mark">SE</span>
+      <span>Systèmes d'exploitation<span class="brand-sub">Ghouili Walid · IMSET</span></span>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="active"><span class="fr">Accueil</span><span class="en">Home</span></a>
+      <a href="chapitre-1.html"><span class="fr">Chap. I</span><span class="en">Ch. I</span></a>
+      <a href="chapitre-2.html"><span class="fr">Chap. II</span><span class="en">Ch. II</span></a>
+      <a href="chapitre-3.html"><span class="fr">Chap. III</span><span class="en">Ch. III</span></a>
+      <a href="chapitre-4.html"><span class="fr">Chap. IV</span><span class="en">Ch. IV</span></a>
+      <a href="glossaire.html"><span class="fr">Glossaire</span><span class="en">Glossary</span></a>
+      <a href="ressources.html"><span class="fr">Ressources</span><span class="en">Resources</span></a>
+    </nav>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button data-lang-btn="fr">FR</button>
+      <button data-lang-btn="en">EN</button>
+    </div>
+    <button class="toolbtn" data-theme-toggle aria-label="Theme">☾</button>
+    <button class="toolbtn menu-btn" data-menu aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="wrap">
+    <span class="eyebrow"><span class="fr">Module · Licence · 2025–2026</span><span class="en">Module · Bachelor · 2025–2026</span></span>
+    <h1>
+      <span class="fr">Installer des composants matériels et logiciels</span>
+      <span class="en">Installing hardware &amp; software components</span>
+    </h1>
+    <p class="lead">
+      <span class="fr">Un parcours complet et pratique en quatre chapitres : du composant physique au logiciel installé, en passant par la configuration du système d'exploitation et des périphériques. Conçu pour comprendre, manipuler et dépanner avec méthode.</span>
+      <span class="en">A complete, hands-on journey in four chapters: from the physical component to the installed application, through operating-system and peripheral configuration. Built to understand, operate and troubleshoot methodically.</span>
+    </p>
+    <div class="hero-meta">
+      <span class="chip"><b>4</b> <span class="fr">chapitres</span><span class="en">chapters</span></span>
+      <span class="chip"><b>4</b> <span class="fr">ateliers pratiques</span><span class="en">hands-on labs</span></span>
+      <span class="chip"><b>40+</b> <span class="fr">questions de quiz</span><span class="en">quiz questions</span></span>
+      <span class="chip"><span class="fr">Durée</span><span class="en">Duration</span> <b>12–16 h</b></span>
+    </div>
+    <div class="cta-row">
+      <a href="chapitre-1.html" class="btn btn-primary"><span class="fr">Commencer le cours</span><span class="en">Start the course</span> →</a>
+      <a href="#syllabus" class="btn btn-ghost"><span class="fr">Voir le programme</span><span class="en">View the syllabus</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ===== OBJECTIVES ===== -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="fr">À propos du module</span><span class="en">About the module</span></span>
+      <h2><span class="fr">Comprendre, c'est déjà savoir installer</span><span class="en">To understand is already to know how to install</span></h2>
+      <p>
+        <span class="fr">Tout technicien — développeur, administrateur, support ou usager averti — doit savoir identifier les composants, installer et configurer un système, raccorder des périphériques, installer des logiciels et diagnostiquer les pannes. Ce module est pratique par essence.</span>
+        <span class="en">Every technician — developer, administrator, support engineer or power user — must be able to identify components, install and configure a system, connect peripherals, install software and diagnose faults. This module is practical by design.</span>
+      </p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card hover reveal"><div class="ic" style="font-size:1.6rem">🧩</div><h3><span class="fr">Identifier</span><span class="en">Identify</span></h3><p><span class="fr">Reconnaître CPU, RAM, ROM, carte mère, disques et périphériques, et comprendre leur rôle.</span><span class="en">Recognise CPU, RAM, ROM, motherboard, drives and peripherals, and understand their roles.</span></p></div>
+      <div class="card hover reveal"><div class="ic" style="font-size:1.6rem">⚙️</div><h3><span class="fr">Configurer</span><span class="en">Configure</span></h3><p><span class="fr">Installer un SE, le paramétrer et le personnaliser pour un usage spécifique, en CLI comme en GUI.</span><span class="en">Install an OS, set it up and tailor it for a specific use, in both CLI and GUI.</span></p></div>
+      <div class="card hover reveal"><div class="ic" style="font-size:1.6rem">🔌</div><h3><span class="fr">Installer</span><span class="en">Install</span></h3><p><span class="fr">Raccorder un périphérique et installer un logiciel en suivant une méthode rigoureuse et documentée.</span><span class="en">Connect a peripheral and install software following a rigorous, documented method.</span></p></div>
+      <div class="card hover reveal"><div class="ic" style="font-size:1.6rem">📄</div><h3><span class="fr">Lire la doc</span><span class="en">Read the docs</span></h3><p><span class="fr">Interpréter une documentation technique et vérifier la configuration minimale requise avant d'agir.</span><span class="en">Interpret technical documentation and check minimum requirements before acting.</span></p></div>
+      <div class="card hover reveal"><div class="ic" style="font-size:1.6rem">🛠️</div><h3><span class="fr">Diagnostiquer</span><span class="en">Diagnose</span></h3><p><span class="fr">Localiser et résoudre les pannes matérielles et logicielles courantes avec les bons outils.</span><span class="en">Locate and fix common hardware and software faults with the right tools.</span></p></div>
+      <div class="card hover reveal"><div class="ic" style="font-size:1.6rem">🎓</div><h3><span class="fr">Se professionnaliser</span><span class="en">Go professional</span></h3><p><span class="fr">Acquérir les bases du métier de technicien support et d'administrateur système junior.</span><span class="en">Build the foundations of the support-technician and junior sysadmin roles.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHAPTERS ===== -->
+<section style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="fr">Le programme</span><span class="en">The curriculum</span></span>
+      <h2><span class="fr">Quatre chapitres, une progression logique</span><span class="en">Four chapters, one logical progression</span></h2>
+    </div>
+    <div class="grid grid-2">
+      <a href="chapitre-1.html" class="card chap-card hover reveal">
+        <span class="arrow">↗</span>
+        <span class="num">I</span>
+        <span class="tag"><span class="fr">Matériel &amp; logiciel</span><span class="en">Hardware &amp; software</span></span>
+        <h3><span class="fr">Caractéristiques des composantes</span><span class="en">Characteristics of components</span></h3>
+        <p><span class="fr">Histoire de l'informatique, architecture du micro-ordinateur, hardware/software, mémoires (ROM, DRAM, DDR) et périphériques.</span><span class="en">History of computing, microcomputer architecture, hardware/software, memory (ROM, DRAM, DDR) and peripherals.</span></p>
+        <span class="meta"><span>📊 36 <span class="fr">diapos</span><span class="en">slides</span></span><span>🧪 <span class="fr">Atelier</span><span class="en">Lab</span></span><span>✅ 10 <span class="fr">quiz</span><span class="en">quiz</span></span></span>
+      </a>
+      <a href="chapitre-2.html" class="card chap-card hover reveal">
+        <span class="arrow">↗</span>
+        <span class="num">II</span>
+        <span class="tag"><span class="fr">Système d'exploitation</span><span class="en">Operating system</span></span>
+        <h3><span class="fr">Mise en marche &amp; configuration du SE</span><span class="en">Boot-up &amp; OS configuration</span></h3>
+        <p><span class="fr">Démarrage (POST, BIOS/UEFI), commandes DOS/UNIX, supports de stockage, modes CLI/GUI et personnalisation.</span><span class="en">Boot sequence (POST, BIOS/UEFI), DOS/UNIX commands, storage media, CLI/GUI modes and customisation.</span></p>
+        <span class="meta"><span>📊 36 <span class="fr">diapos</span><span class="en">slides</span></span><span>🧪 <span class="fr">Atelier</span><span class="en">Lab</span></span><span>✅ 10 <span class="fr">quiz</span><span class="en">quiz</span></span></span>
+      </a>
+      <a href="chapitre-3.html" class="card chap-card hover reveal">
+        <span class="arrow">↗</span>
+        <span class="num">III</span>
+        <span class="tag"><span class="fr">Périphériques</span><span class="en">Peripherals</span></span>
+        <h3><span class="fr">Configuration d'un périphérique</span><span class="en">Configuring a peripheral</span></h3>
+        <p><span class="fr">Pilotes, documentation technique, vérification de compatibilité, méthode en 7 étapes et diagnostic des pannes.</span><span class="en">Drivers, technical documentation, compatibility checks, the 7-step method and fault diagnosis.</span></p>
+        <span class="meta"><span>📊 32 <span class="fr">diapos</span><span class="en">slides</span></span><span>🧪 <span class="fr">Atelier</span><span class="en">Lab</span></span><span>✅ 10 <span class="fr">quiz</span><span class="en">quiz</span></span></span>
+      </a>
+      <a href="chapitre-4.html" class="card chap-card hover reveal">
+        <span class="arrow">↗</span>
+        <span class="num">IV</span>
+        <span class="tag"><span class="fr">Logiciels</span><span class="en">Software</span></span>
+        <h3><span class="fr">Interprétation &amp; installation des logiciels</span><span class="en">Interpreting &amp; installing software</span></h3>
+        <p><span class="fr">Types et licences, versionnage SemVer, configuration minimale, méthode 8 étapes, installation par OS et désinstallation propre.</span><span class="en">Types and licences, SemVer versioning, minimum requirements, the 8-step method, per-OS installation and clean removal.</span></p>
+        <span class="meta"><span>📊 32 <span class="fr">diapos</span><span class="en">slides</span></span><span>🧪 <span class="fr">Atelier</span><span class="en">Lab</span></span><span>✅ 10 <span class="fr">quiz</span><span class="en">quiz</span></span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSTRUCTOR ===== -->
+<section>
+  <div class="wrap">
+    <div class="card reveal" style="padding:38px">
+      <div class="instructor">
+        <div class="avatar">GW</div>
+        <div>
+          <span class="eyebrow"><span class="fr">L'enseignant</span><span class="en">The instructor</span></span>
+          <h3 style="margin-top:12px">Walid Ghouili</h3>
+          <p class="role"><span class="fr">CTO &amp; Fondateur, InnoviaBurst · Mentor technique &amp; enseignant, IMSET</span><span class="en">CTO &amp; Founder, InnoviaBurst · Technical mentor &amp; lecturer, IMSET</span></p>
+          <p style="margin-top:12px">
+            <span class="fr">Stratège produit et architecte technique avec plus de 5 ans d'expérience à concevoir des applications pilotées par l'IA, des plateformes scalables et des outils de business intelligence. Au-delà de la création de produits, Walid transmet une expérience éprouvée sur le terrain : à travers le mentorat et la formation appliquée, il aide les apprenants à renforcer leurs fondations techniques et à se préparer aux exigences réelles du métier.</span>
+            <span class="en">Product strategist and technical architect with 5+ years building AI-driven applications, scalable platforms and business-intelligence tools. Beyond shipping products, Walid passes on field-tested experience: through mentorship and applied training, he helps learners strengthen their technical foundations and prepare for the real expectations of the profession.</span>
+          </p>
+          <div class="hero-meta" style="margin-top:18px">
+            <span class="chip">🏛 IMSET</span>
+            <span class="chip">🚀 InnoviaBurst</span>
+            <span class="chip">🤖 AI · MERN · Docker</span>
+            <span class="chip">📅 2025–2026</span>
+          </div>
+          <div class="cta-row" style="margin-top:18px">
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/walid-ghouili-b485b01b5" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a class="btn btn-ghost" href="https://walid.innoviaburst.com/" target="_blank" rel="noopener"><span class="fr">Portfolio</span><span class="en">Portfolio</span> ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SYLLABUS ===== -->
+<section id="syllabus" style="background:var(--bg-soft)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Syllabus</span>
+      <h2><span class="fr">Séquences, thèmes théoriques &amp; pratiques</span><span class="en">Sequences, theory &amp; practice themes</span></h2>
+      <p><span class="fr">Le programme officiel du module, structuré par séquence pédagogique.</span><span class="en">The module's official programme, structured by teaching sequence.</span></p>
+    </div>
+    <div class="syllabus">
+      <div class="syl-row reveal">
+        <div class="syl-seq"><span class="fr">Présentation des caractéristiques des composantes</span><span class="en">Overview of component characteristics</span></div>
+        <div class="syl-col"><h5><span class="fr">Thèmes théoriques</span><span class="en">Theory</span></h5><ul>
+          <li><span class="fr">Introduction au module · histoire de l'informatique</span><span class="en">Module intro · history of computing</span></li>
+          <li><span class="fr">Évolution des technologies · générations high-tech</span><span class="en">Technology evolution · high-tech generations</span></li>
+          <li><span class="fr">Architecture du micro-ordinateur : hardware / software</span><span class="en">Microcomputer architecture: hardware / software</span></li>
+        </ul></div>
+        <div class="syl-col"><h5><span class="fr">Thèmes pratiques</span><span class="en">Practice</span></h5><ul>
+          <li><span class="fr">Atelier introductif · micro-ordinateur</span><span class="en">Introductory lab · microcomputer</span></li>
+          <li><span class="fr">Mémoires (morte, vive : DRAM, SDRAM, DDR)</span><span class="en">Memory (ROM, RAM: DRAM, SDRAM, DDR)</span></li>
+          <li><span class="fr">Périphériques (internes, externes, E/S) · SE</span><span class="en">Peripherals (internal, external, I/O) · OS</span></li>
+        </ul></div>
+      </div>
+      <div class="syl-row reveal">
+        <div class="syl-seq"><span class="fr">Mise en marche, manipulation &amp; configuration</span><span class="en">Boot-up, operation &amp; configuration</span></div>
+        <div class="syl-col"><h5><span class="fr">Thèmes théoriques</span><span class="en">Theory</span></h5><ul>
+          <li><span class="fr">Composantes &amp; commandes d'un SE (UNIX/DOS)</span><span class="en">OS components &amp; commands (UNIX/DOS)</span></li>
+          <li><span class="fr">Supports de stockage et caractéristiques</span><span class="en">Storage media and characteristics</span></li>
+          <li><span class="fr">Du mode textuel (DOS) au mode graphique (Windows)</span><span class="en">From text mode (DOS) to graphical mode (Windows)</span></li>
+        </ul></div>
+        <div class="syl-col"><h5><span class="fr">Thèmes pratiques</span><span class="en">Practice</span></h5><ul>
+          <li><span class="fr">Atelier : installation &amp; configuration d'un SE</span><span class="en">Lab: OS installation &amp; configuration</span></li>
+          <li><span class="fr">Gestion de fichiers en mode DOS et Windows</span><span class="en">File management in DOS and Windows</span></li>
+          <li><span class="fr">Personnalisation pour un usage spécifique</span><span class="en">Customisation for a specific use</span></li>
+        </ul></div>
+      </div>
+      <div class="syl-row reveal">
+        <div class="syl-seq"><span class="fr">Configuration &amp; exploitation d'un périphérique</span><span class="en">Configuring &amp; operating a peripheral</span></div>
+        <div class="syl-col"><h5><span class="fr">Thèmes théoriques</span><span class="en">Theory</span></h5><ul>
+          <li><span class="fr">Différents types de périphériques · pilotes</span><span class="en">Peripheral types · drivers</span></li>
+          <li><span class="fr">Structure &amp; interprétation du document technique</span><span class="en">Structure &amp; reading of technical docs</span></li>
+          <li><span class="fr">Prévision des étapes d'installation efficace</span><span class="en">Planning effective installation steps</span></li>
+        </ul></div>
+        <div class="syl-col"><h5><span class="fr">Thèmes pratiques</span><span class="en">Practice</span></h5><ul>
+          <li><span class="fr">Atelier : installation d'une imprimante réseau</span><span class="en">Lab: network printer installation</span></li>
+          <li><span class="fr">Décodage d'un document technique</span><span class="en">Decoding a technical document</span></li>
+          <li><span class="fr">Vérification de la configuration minimale</span><span class="en">Checking minimum requirements</span></li>
+        </ul></div>
+      </div>
+      <div class="syl-row reveal">
+        <div class="syl-seq"><span class="fr">Interprétation &amp; exploitation des logiciels</span><span class="en">Interpreting &amp; using software</span></div>
+        <div class="syl-col"><h5><span class="fr">Thèmes théoriques</span><span class="en">Theory</span></h5><ul>
+          <li><span class="fr">Différents types de logiciels · licences</span><span class="en">Software types · licences</span></li>
+          <li><span class="fr">Structure &amp; interprétation du document technique</span><span class="en">Structure &amp; reading of the technical doc</span></li>
+          <li><span class="fr">Prévision des étapes d'installation efficace</span><span class="en">Planning effective installation steps</span></li>
+        </ul></div>
+        <div class="syl-col"><h5><span class="fr">Thèmes pratiques</span><span class="en">Practice</span></h5><ul>
+          <li><span class="fr">Atelier : installation &amp; exploitation d'un logiciel</span><span class="en">Lab: software installation &amp; use</span></li>
+          <li><span class="fr">Exemple de document technique d'un logiciel</span><span class="en">Example of a software technical document</span></li>
+          <li><span class="fr">Vérification de la configuration minimale</span><span class="en">Checking minimum requirements</span></li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="brand-logo" style="margin-bottom:12px"><span class="brand-mark">SE</span><span>Systèmes d'exploitation</span></a>
+        <p style="font-size:.9rem;max-width:38ch">
+          <span class="fr">Module « Installer des composants matériels et logiciels » — support de cours interactif et public.</span>
+          <span class="en">Module "Installing hardware &amp; software components" — an interactive, public course companion.</span>
+        </p>
+      </div>
+      <div>
+        <h5><span class="fr">Chapitres</span><span class="en">Chapters</span></h5>
+        <a href="chapitre-1.html">I · <span class="fr">Composantes</span><span class="en">Components</span></a>
+        <a href="chapitre-2.html">II · <span class="fr">Configuration SE</span><span class="en">OS config</span></a>
+        <a href="chapitre-3.html">III · <span class="fr">Périphériques</span><span class="en">Peripherals</span></a>
+        <a href="chapitre-4.html">IV · <span class="fr">Logiciels</span><span class="en">Software</span></a>
+      </div>
+      <div>
+        <h5><span class="fr">Ressources</span><span class="en">Resources</span></h5>
+        <a href="glossaire.html"><span class="fr">Glossaire</span><span class="en">Glossary</span></a>
+        <a href="ressources.html"><span class="fr">Bibliographie</span><span class="en">Bibliography</span></a>
+        <a href="slides/ICML_Chapitre_1_Caracteristiques_Composantes.pptx"><span class="fr">Télécharger les slides</span><span class="en">Download slides</span></a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025–2026 Ghouili Walid · IMSET</span>
+      <span><span class="fr">Conçu pour l'apprentissage. Partagé librement.</span><span class="en">Built for learning. Shared freely.</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

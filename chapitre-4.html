@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapitre IV — Interprétation &amp; installation des logiciels | Systèmes d'exploitation</title>
+<meta name="description" content="Types et licences de logiciels, versionnage SemVer, configuration minimale, méthode 8 étapes, installation par OS et désinstallation propre.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232d4a8a'/><text x='50' y='68' font-size='52' font-family='Georgia' fill='white' text-anchor='middle' font-weight='600'>SE</text></svg>">
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner">
+  <a href="index.html" class="brand-logo"><span class="brand-mark">SE</span><span>Systèmes d'exploitation<span class="brand-sub">Ghouili Walid · IMSET</span></span></a>
+  <nav class="nav">
+    <a href="index.html"><span class="fr">Accueil</span><span class="en">Home</span></a>
+    <a href="chapitre-1.html">Chap. I</a><a href="chapitre-2.html">Chap. II</a><a href="chapitre-3.html">Chap. III</a><a href="chapitre-4.html" class="active">Chap. IV</a>
+    <a href="glossaire.html"><span class="fr">Glossaire</span><span class="en">Glossary</span></a><a href="ressources.html"><span class="fr">Ressources</span><span class="en">Resources</span></a>
+  </nav>
+  <div class="lang-toggle"><button data-lang-btn="fr">FR</button><button data-lang-btn="en">EN</button></div>
+  <button class="toolbtn" data-theme-toggle>☾</button><button class="toolbtn menu-btn" data-menu>☰</button>
+</div></header>
+
+<div class="lesson-head"><div class="wrap">
+  <span class="eyebrow"><span class="fr">Chapitre IV</span><span class="en">Chapter IV</span></span>
+  <h1><span class="fr">Interprétation &amp; installation des logiciels</span><span class="en">Interpreting &amp; installing software</span></h1>
+  <p class="lead" style="max-width:60ch"><span class="fr">Plus qu'un double-clic : types, licences, versionnage, prérequis, méthode 8 étapes et désinstallation propre.</span><span class="en">More than a double-click: types, licences, versioning, requirements, the 8-step method and clean removal.</span></p>
+  <div class="hero-meta"><span class="chip">⏱ 3–4 h</span><span class="chip">📊 32 <span class="fr">diapos</span><span class="en">slides</span></span><span class="chip">🧪 <span class="fr">Atelier VS Code</span><span class="en">VS Code lab</span></span></div>
+</div></div>
+
+<div class="wrap"><div class="lesson-layout">
+  <aside class="toc">
+    <h4><span class="fr">Sur cette page</span><span class="en">On this page</span></h4>
+    <a href="#intro">Introduction</a>
+    <a href="#types"><span class="fr">1 · Types</span><span class="en">1 · Types</span></a>
+    <a href="#licences"><span class="fr">2 · Licences</span><span class="en">2 · Licences</span></a>
+    <a href="#docs"><span class="fr">3 · Documents</span><span class="en">3 · Documents</span></a>
+    <a href="#semver"><span class="fr">4 · Versionnage</span><span class="en">4 · Versioning</span></a>
+    <a href="#prerequis"><span class="fr">5 · Prérequis</span><span class="en">5 · Requirements</span></a>
+    <a href="#methode"><span class="fr">6 · Méthode 8 étapes</span><span class="en">6 · 8-step method</span></a>
+    <a href="#methodes"><span class="fr">7 · Méthodes par OS</span><span class="en">7 · Per-OS methods</span></a>
+    <a href="#desinstaller"><span class="fr">8 · Désinstaller</span><span class="en">8 · Uninstall</span></a>
+    <a href="#atelier"><span class="fr">Atelier</span><span class="en">Lab</span></a>
+    <a href="#quiz">Quiz</a>
+    <a href="#conclusion"><span class="fr">Conclusion</span><span class="en">Conclusion</span></a>
+  </aside>
+
+  <article class="lesson-body">
+    <div class="dl-card"><div class="dl-ic">📥</div><div class="grow"><h4><span class="fr">Diaporama du chapitre IV</span><span class="en">Chapter IV slide deck</span></h4><p><span class="fr">Présentation complète (.pptx) — 32 diapositives.</span><span class="en">Full presentation (.pptx) — 32 slides.</span></p></div><a class="btn btn-primary" href="slides/ICML_Chapitre_4_Installation_Logiciels.pptx" download><span class="fr">Télécharger</span><span class="en">Download</span></a></div>
+
+    <h2 id="intro">Introduction</h2>
+    <p><span class="fr">Cliquer sur « Installer » ne suffit pas toujours. Pour les logiciels professionnels, il faut comprendre le <strong>type</strong>, connaître la <strong>licence</strong>, lire la <strong>documentation</strong>, vérifier les <strong>prérequis</strong>, prévoir l'<strong>impact</strong>, installer par la bonne méthode, <strong>tester</strong> et savoir <strong>désinstaller</strong> proprement.</span><span class="en">Clicking "Install" is not always enough. For professional software you must understand the <strong>type</strong>, know the <strong>licence</strong>, read the <strong>documentation</strong>, verify the <strong>requirements</strong>, anticipate the <strong>impact</strong>, install with the right method, <strong>test</strong>, and know how to <strong>uninstall</strong> cleanly.</span></p>
+
+    <h2 id="types"><span class="fr">1 · Trois catégories de logiciels</span><span class="en">1 · Three categories of software</span></h2>
+    <div class="feat-grid grid-3" style="grid-template-columns:repeat(3,1fr)">
+      <div class="feat"><h4><span class="fr">Système</span><span class="en">System</span></h4><p><span class="fr">SE, pilotes, BIOS/UEFI, bibliothèques (glibc, .NET), hyperviseurs.</span><span class="en">OS, drivers, BIOS/UEFI, libraries (glibc, .NET), hypervisors.</span></p></div>
+      <div class="feat"><h4>Application</h4><p><span class="fr">Bureautique, navigateurs, multimédia, communication, jeux, IDE.</span><span class="en">Office, browsers, multimedia, communication, games, IDEs.</span></p></div>
+      <div class="feat"><h4><span class="fr">Utilitaires</span><span class="en">Utilities</span></h4><p><span class="fr">Antivirus, compression, nettoyage, backup, diagnostic.</span><span class="en">Antivirus, compression, cleanup, backup, diagnostics.</span></p></div>
+    </div>
+
+    <h2 id="licences"><span class="fr">2 · Classification par licence</span><span class="en">2 · Classification by licence</span></h2>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th>Type</th><th><span class="fr">Caractéristiques</span><span class="en">Characteristics</span></th><th><span class="fr">Exemples</span><span class="en">Examples</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="fr">Libre</span><span class="en">Free / libre</span></td><td><span class="fr">Code source + 4 libertés ; modification &amp; redistribution.</span><span class="en">Source + 4 freedoms; modify &amp; redistribute.</span></td><td>Linux, Firefox, VLC (GPL)</td></tr>
+        <tr><td>Open Source</td><td><span class="fr">Source ouvert, licences plus permissives.</span><span class="en">Open source, more permissive licences.</span></td><td>Node.js, React (MIT/Apache)</td></tr>
+        <tr><td><span class="fr">Propriétaire</span><span class="en">Proprietary</span></td><td><span class="fr">Code fermé, achat/abonnement, EULA stricte.</span><span class="en">Closed source, purchase/subscription, strict EULA.</span></td><td>MS Office, Photoshop</td></tr>
+        <tr><td>Freeware</td><td><span class="fr">Gratuit, code fermé, restrictions.</span><span class="en">Free, closed source, restrictions.</span></td><td>Acrobat Reader, AnyDesk</td></tr>
+        <tr><td>Shareware</td><td><span class="fr">Essai gratuit, paiement pour la version complète.</span><span class="en">Free trial, pay for the full version.</span></td><td>WinRAR, IDM</td></tr>
+        <tr><td>SaaS</td><td><span class="fr">Abonnement, mises à jour incluses.</span><span class="en">Subscription, updates included.</span></td><td>Microsoft 365, Adobe CC</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="docs"><span class="fr">3 · Documents à consulter</span><span class="en">3 · Documents to consult</span></h2>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th><span class="fr">Fichier</span><span class="en">File</span></th><th><span class="fr">Rôle</span><span class="en">Role</span></th></tr></thead>
+      <tbody>
+        <tr><td><code>README</code></td><td><span class="fr">Description générale — à lire en premier.</span><span class="en">General description — read first.</span></td></tr>
+        <tr><td><code>INSTALL</code></td><td><span class="fr">Guide d'installation détaillé, dépendances.</span><span class="en">Detailed install guide, dependencies.</span></td></tr>
+        <tr><td><code>CHANGELOG</code></td><td><span class="fr">Historique des versions et changements.</span><span class="en">Version history and changes.</span></td></tr>
+        <tr><td><code>LICENSE</code></td><td><span class="fr">Texte légal de la licence (GPL, MIT…).</span><span class="en">Legal licence text (GPL, MIT…).</span></td></tr>
+        <tr><td>EULA</td><td><span class="fr">Contrat utilisateur final (propriétaire).</span><span class="en">End-user agreement (proprietary).</span></td></tr>
+        <tr><td><code>SECURITY</code></td><td><span class="fr">Comment signaler une faille.</span><span class="en">How to report a vulnerability.</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="semver"><span class="fr">4 · Versionnage SemVer</span><span class="en">4 · SemVer versioning</span></h2>
+    <p><span class="fr">Format <strong>MAJOR.MINOR.PATCH</strong> — exemple <code>3.11.4-beta.2+build.567</code> :</span><span class="en">Format <strong>MAJOR.MINOR.PATCH</strong> — e.g. <code>3.11.4-beta.2+build.567</code>:</span></p>
+    <ul>
+      <li><strong>MAJOR (3)</strong> — <span class="fr">changements incompatibles (casse possible).</span><span class="en">incompatible changes (may break).</span></li>
+      <li><strong>MINOR (11)</strong> — <span class="fr">nouvelles fonctionnalités rétrocompatibles.</span><span class="en">backward-compatible new features.</span></li>
+      <li><strong>PATCH (4)</strong> — <span class="fr">corrections de bugs uniquement.</span><span class="en">bug fixes only.</span></li>
+      <li><strong>-beta.2</strong> — <span class="fr">pré-release (alpha, beta, rc).</span><span class="en">pre-release (alpha, beta, rc).</span></li>
+      <li><strong>+build.567</strong> — <span class="fr">métadonnées (hash git, build).</span><span class="en">metadata (git hash, build).</span></li>
+    </ul>
+    <div class="callout callout-note"><span class="fr"><b>Types :</b> Alpha (interne) · Beta (testeurs) · RC (quasi finale) · Stable/GA (production) · LTS (support long terme).</span><span class="en"><b>Channels:</b> Alpha (internal) · Beta (testers) · RC (near-final) · Stable/GA (production) · LTS (long-term support).</span></div>
+
+    <h2 id="prerequis"><span class="fr">5 · Lire les prérequis</span><span class="en">5 · Reading requirements</span></h2>
+    <p><span class="fr">Exemple — Adobe Photoshop 2024 :</span><span class="en">Example — Adobe Photoshop 2024:</span></p>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th><span class="fr">Critère</span><span class="en">Criterion</span></th><th>Min.</th><th><span class="fr">Recommandé</span><span class="en">Recommended</span></th></tr></thead>
+      <tbody>
+        <tr><td>CPU</td><td><span class="fr">64 bits, 2 GHz</span><span class="en">64-bit, 2 GHz</span></td><td><span class="fr">Multi-cœurs 3 GHz+</span><span class="en">Multi-core 3 GHz+</span></td></tr>
+        <tr><td>RAM</td><td>8 Go</td><td>16 Go (32 / 4K)</td></tr>
+        <tr><td>GPU</td><td>DirectX 12, 1,5 Go</td><td>4 Go VRAM</td></tr>
+        <tr><td><span class="fr">Disque</span><span class="en">Disk</span></td><td>20 Go</td><td>100 Go SSD</td></tr>
+        <tr><td><span class="fr">Système</span><span class="en">System</span></td><td>Windows 10 22H2 / 11</td><td>Windows 11</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout-note"><span class="fr"><b>Vérifier vos specs :</b> Windows <code>msinfo32</code> · Linux <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code>, <code>glxinfo</code> · macOS «  À propos de ce Mac ».</span><span class="en"><b>Check your specs:</b> Windows <code>msinfo32</code> · Linux <code>lscpu</code>, <code>free -h</code>, <code>lsblk</code>, <code>glxinfo</code> · macOS "About This Mac".</span></div>
+
+    <h2 id="methode"><span class="fr">6 · La méthode en 8 étapes</span><span class="en">6 · The 8-step method</span></h2>
+    <div class="timeline">
+      <div class="tl-item"><span class="yr">1</span><h4><span class="fr">Lire la doc</span><span class="en">Read the docs</span></h4><p>README, INSTALL, <span class="fr">prérequis.</span><span class="en">requirements.</span></p></div>
+      <div class="tl-item"><span class="yr">2</span><h4><span class="fr">Vérifier la config</span><span class="en">Check the config</span></h4><p><span class="fr">Specs requises vs réelles.</span><span class="en">Required vs actual specs.</span></p></div>
+      <div class="tl-item"><span class="yr">3</span><h4><span class="fr">Source officielle</span><span class="en">Official source</span></h4><p><span class="fr">Jamais un site tiers (malware !).</span><span class="en">Never a third-party site (malware!).</span></p></div>
+      <div class="tl-item"><span class="yr">4</span><h4><span class="fr">Vérifier l'intégrité</span><span class="en">Verify integrity</span></h4><p>Hash SHA-256.</p></div>
+      <div class="tl-item"><span class="yr">5</span><h4><span class="fr">Sauvegarde</span><span class="en">Backup</span></h4><p><span class="fr">Point de restauration / snapshot.</span><span class="en">Restore point / snapshot.</span></p></div>
+      <div class="tl-item"><span class="yr">6</span><h4><span class="fr">Installer (admin)</span><span class="en">Install (admin)</span></h4><p><span class="fr">Lire les options personnalisables.</span><span class="en">Read the custom options.</span></p></div>
+      <div class="tl-item"><span class="yr">7</span><h4><span class="fr">Configurer</span><span class="en">Configure</span></h4><p><span class="fr">Préférences, licence, compte.</span><span class="en">Preferences, licence, account.</span></p></div>
+      <div class="tl-item"><span class="yr">8</span><h4><span class="fr">Tester &amp; documenter</span><span class="en">Test &amp; document</span></h4><p><span class="fr">Version, date, options.</span><span class="en">Version, date, options.</span></p></div>
+    </div>
+    <div class="callout callout-warn"><span class="fr"><b>Toujours télécharger depuis la source officielle.</b> Vérifier le hash : <code>certutil -hashfile fichier SHA256</code> (Windows) ou <code>sha256sum fichier</code> (Linux).</span><span class="en"><b>Always download from the official source.</b> Verify the hash: <code>certutil -hashfile file SHA256</code> (Windows) or <code>sha256sum file</code> (Linux).</span></div>
+
+    <h2 id="methodes"><span class="fr">7 · Méthodes d'installation par OS</span><span class="en">7 · Installation methods per OS</span></h2>
+    <div class="feat-grid grid-2" style="grid-template-columns:1fr 1fr">
+      <div class="feat"><h4>Windows</h4><p><span class="fr"><code>.exe</code>/<code>.msi</code>, Microsoft Store, <code>winget</code>, Chocolatey, ou portable (sans installation).</span><span class="en"><code>.exe</code>/<code>.msi</code>, Microsoft Store, <code>winget</code>, Chocolatey, or portable (no install).</span></p></div>
+      <div class="feat"><h4>Linux (Ubuntu)</h4><p><code>apt</code>, <code>dpkg -i</code>, <code>snap</code>, <code>flatpak</code>, AppImage, <span class="fr">ou compilation source.</span><span class="en">or building from source.</span></p></div>
+    </div>
+    <pre><code><span class="cmt"># Windows</span>
+winget install --id Mozilla.Firefox
+choco install vlc git nodejs
+
+<span class="cmt"># Linux</span>
+sudo apt install firefox
+sudo dpkg -i package.deb
+sudo snap install code --classic
+flatpak install flathub org.gimp.GIMP</code></pre>
+
+    <h2 id="desinstaller"><span class="fr">8 · Désinstaller proprement</span><span class="en">8 · Uninstall cleanly</span></h2>
+    <div class="feat-grid grid-2" style="grid-template-columns:1fr 1fr">
+      <div class="feat"><h4>Windows</h4><p><span class="fr">Paramètres → Apps, ou <code>appwiz.cpl</code>, ou <code>winget uninstall</code>. Redémarrer. Outils : <code>cleanmgr</code>, <code>msconfig</code>.</span><span class="en">Settings → Apps, or <code>appwiz.cpl</code>, or <code>winget uninstall</code>. Reboot. Tools: <code>cleanmgr</code>, <code>msconfig</code>.</span></p></div>
+      <div class="feat"><h4>Linux</h4><p><code>apt remove</code> (<span class="fr">garde config</span><span class="en">keeps config</span>), <code>apt purge</code> (<span class="fr">+ config</span><span class="en">+ config</span>), <code>apt autoremove</code>. <code>dpkg -L</code> <span class="fr">liste les fichiers.</span><span class="en">lists files.</span></p></div>
+    </div>
+
+    <h2 id="atelier"><span class="fr">Atelier — installer Visual Studio Code</span><span class="en">Lab — installing Visual Studio Code</span></h2>
+    <p><span class="fr"><strong>Durée :</strong> 1 h 30 · <strong>Mode :</strong> binôme. Suivre la méthode 8 étapes (Windows + Linux).</span><span class="en"><strong>Duration:</strong> 1 h 30 · <strong>Mode:</strong> pairs. Follow the 8-step method (Windows + Linux).</span></p>
+    <pre><code><span class="cmt"># <span class="fr">Source officielle</span><span class="en">Official source</span> : code.visualstudio.com/download</span>
+<span class="cmt"># <span class="fr">Intégrité</span><span class="en">Integrity</span></span>
+certutil -hashfile VSCodeSetup.exe SHA256   <span class="cmt"># Windows</span>
+sha256sum code_amd64.deb                      <span class="cmt"># Linux</span>
+<span class="cmt"># <span class="fr">Installer</span><span class="en">Install</span></span>
+sudo dpkg -i code_amd64.deb   <span class="cmt"># <span class="fr">ou</span><span class="en">or</span> sudo snap install code --classic</span>
+<span class="cmt"># <span class="fr">Configurer : extensions Python, GitLens, Prettier ; thème ; tester test.py</span><span class="en">Configure: Python, GitLens, Prettier extensions; theme; test test.py</span></span></code></pre>
+
+    <h2 id="quiz">Quiz</h2>
+    <details class="quiz"><summary>GPL <span class="fr">est une licence</span><span class="en">is a licence</span> :</summary><div class="ans"><p class="opts">a) <span class="fr">Propriétaire</span><span class="en">Proprietary</span> &nbsp; b) <span class="fr">Libre (copyleft)</span><span class="en">Free (copyleft)</span> &nbsp; c) Freeware</p><p class="correct">✓ b — <span class="fr">licence libre avec copyleft.</span><span class="en">free licence with copyleft.</span></p></div></details>
+    <details class="quiz"><summary><span class="fr">Dans la version 3.11.4, le 11 est :</span><span class="en">In version 3.11.4, the 11 is:</span></summary><div class="ans"><p class="opts">a) MAJOR &nbsp; b) MINOR &nbsp; c) PATCH</p><p class="correct">✓ b — MINOR (<span class="fr">nouvelles fonctionnalités</span><span class="en">new features</span>).</p></div></details>
+    <details class="quiz"><summary><span class="fr">Le hash SHA-256 sert à :</span><span class="en">The SHA-256 hash is used to:</span></summary><div class="ans"><p class="opts">a) <span class="fr">Chiffrer</span><span class="en">Encrypt</span> &nbsp; b) <span class="fr">Vérifier l'intégrité</span><span class="en">Verify integrity</span> &nbsp; c) <span class="fr">Compresser</span><span class="en">Compress</span></p><p class="correct">✓ b — <span class="fr">détecter une altération.</span><span class="en">detect tampering.</span></p></div></details>
+    <details class="quiz"><summary>winget <span class="fr">est</span><span class="en">is</span> :</summary><div class="ans"><p class="opts">a) <span class="fr">Un antivirus</span><span class="en">An antivirus</span> &nbsp; b) <span class="fr">Un gestionnaire de paquets Windows</span><span class="en">A Windows package manager</span> &nbsp; c) <span class="fr">Un pare-feu</span><span class="en">A firewall</span></p><p class="correct">✓ b — <span class="fr">équivalent apt pour Windows.</span><span class="en">apt-equivalent for Windows.</span></p></div></details>
+    <details class="quiz"><summary><span class="fr">Désinstaller + supprimer la config sous Linux :</span><span class="en">Uninstall + remove config on Linux:</span></summary><div class="ans"><p class="opts">a) <code>apt remove</code> &nbsp; b) <code>apt purge</code> &nbsp; c) <code>rm -rf</code></p><p class="correct">✓ b — <code>apt purge</code>.</p></div></details>
+
+    <h2 id="conclusion"><span class="fr">Conclusion du module</span><span class="en">Module conclusion</span></h2>
+    <div class="callout callout-key"><span class="fr"><b>Félicitations !</b> En 4 chapitres, vous savez démonter/remonter un PC, installer Windows ou Linux, lire une documentation technique, vérifier la compatibilité, suivre une méthode rigoureuse et diagnostiquer les pannes. Prochaine étape : certifications (CompTIA A+, ITIL) et spécialisation (réseau, sécurité, cloud).</span><span class="en"><b>Congratulations!</b> Across 4 chapters you can disassemble/reassemble a PC, install Windows or Linux, read technical documentation, check compatibility, follow a rigorous method and diagnose faults. Next: certifications (CompTIA A+, ITIL) and specialisation (network, security, cloud).</span></div>
+    <p style="font-style:italic;color:var(--ink-faint)"><span class="fr">« Un bon installeur n'improvise pas : il lit, il planifie, il exécute, il documente. »</span><span class="en">"A good installer never improvises: they read, plan, execute and document."</span></p>
+
+    <div class="pager">
+      <a href="chapitre-3.html"><span><span class="fr">Chapitre précédent</span><span class="en">Previous</span></span><b><span class="fr">III · Périphériques</span><span class="en">III · Peripherals</span></b></a>
+      <a class="next" href="glossaire.html"><span><span class="fr">Pour aller plus loin</span><span class="en">Go further</span></span><b><span class="fr">Glossaire</span><span class="en">Glossary</span></b></a>
+    </div>
+  </article>
+</div></div>
+
+<footer><div class="wrap"><div class="foot-bottom" style="border:0">
+  <span>© 2025–2026 Ghouili Walid · IMSET</span>
+  <span><a href="ressources.html"><span class="fr">Références du chapitre</span><span class="en">Chapter references</span></a></span>
+</div></div></footer>
+<script src="assets/script.js"></script>
+</body>
+</html>

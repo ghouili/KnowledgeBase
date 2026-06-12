@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapitre III — Configuration d'un périphérique | Systèmes d'exploitation</title>
+<meta name="description" content="Types de périphériques, pilotes, documentation technique, vérification de compatibilité, méthode en 7 étapes et diagnostic des pannes.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232d4a8a'/><text x='50' y='68' font-size='52' font-family='Georgia' fill='white' text-anchor='middle' font-weight='600'>SE</text></svg>">
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner">
+  <a href="index.html" class="brand-logo"><span class="brand-mark">SE</span><span>Systèmes d'exploitation<span class="brand-sub">Ghouili Walid · IMSET</span></span></a>
+  <nav class="nav">
+    <a href="index.html"><span class="fr">Accueil</span><span class="en">Home</span></a>
+    <a href="chapitre-1.html">Chap. I</a><a href="chapitre-2.html">Chap. II</a><a href="chapitre-3.html" class="active">Chap. III</a><a href="chapitre-4.html">Chap. IV</a>
+    <a href="glossaire.html"><span class="fr">Glossaire</span><span class="en">Glossary</span></a><a href="ressources.html"><span class="fr">Ressources</span><span class="en">Resources</span></a>
+  </nav>
+  <div class="lang-toggle"><button data-lang-btn="fr">FR</button><button data-lang-btn="en">EN</button></div>
+  <button class="toolbtn" data-theme-toggle>☾</button><button class="toolbtn menu-btn" data-menu>☰</button>
+</div></header>
+
+<div class="lesson-head"><div class="wrap">
+  <span class="eyebrow"><span class="fr">Chapitre III</span><span class="en">Chapter III</span></span>
+  <h1><span class="fr">Configuration &amp; exploitation d'un périphérique</span><span class="en">Configuring &amp; operating a peripheral</span></h1>
+  <p class="lead" style="max-width:60ch"><span class="fr">Plus qu'un branchement : pilotes, documentation, compatibilité, méthode en 7 étapes et dépannage.</span><span class="en">More than plugging in: drivers, documentation, compatibility, the 7-step method and troubleshooting.</span></p>
+  <div class="hero-meta"><span class="chip">⏱ 3–4 h</span><span class="chip">📊 32 <span class="fr">diapos</span><span class="en">slides</span></span><span class="chip">🧪 <span class="fr">Atelier imprimante</span><span class="en">Printer lab</span></span></div>
+</div></div>
+
+<div class="wrap"><div class="lesson-layout">
+  <aside class="toc">
+    <h4><span class="fr">Sur cette page</span><span class="en">On this page</span></h4>
+    <a href="#intro">Introduction</a>
+    <a href="#types"><span class="fr">1 · Types</span><span class="en">1 · Types</span></a>
+    <a href="#pilote"><span class="fr">2 · Pilote</span><span class="en">2 · Driver</span></a>
+    <a href="#doc"><span class="fr">3 · Documentation</span><span class="en">3 · Documentation</span></a>
+    <a href="#specs"><span class="fr">4 · Spécifications</span><span class="en">4 · Specifications</span></a>
+    <a href="#compat"><span class="fr">5 · Compatibilité</span><span class="en">5 · Compatibility</span></a>
+    <a href="#methode"><span class="fr">6 · Méthode 7 étapes</span><span class="en">6 · 7-step method</span></a>
+    <a href="#installer"><span class="fr">7 · Installer le pilote</span><span class="en">7 · Install the driver</span></a>
+    <a href="#diagnostic"><span class="fr">8 · Diagnostic</span><span class="en">8 · Diagnosis</span></a>
+    <a href="#atelier"><span class="fr">Atelier</span><span class="en">Lab</span></a>
+    <a href="#quiz">Quiz</a>
+  </aside>
+
+  <article class="lesson-body">
+    <div class="dl-card"><div class="dl-ic">📥</div><div class="grow"><h4><span class="fr">Diaporama du chapitre III</span><span class="en">Chapter III slide deck</span></h4><p><span class="fr">Présentation complète (.pptx) — 32 diapositives.</span><span class="en">Full presentation (.pptx) — 32 slides.</span></p></div><a class="btn btn-primary" href="slides/ICML_Chapitre_3_Configuration_Peripherique.pptx" download><span class="fr">Télécharger</span><span class="en">Download</span></a></div>
+
+    <h2 id="intro">Introduction</h2>
+    <p><span class="fr">Brancher un câble USB ne suffit pas toujours. De nombreux périphériques requièrent un <strong>pilote</strong> spécifique, une <strong>vérification de compatibilité</strong>, la <strong>lecture</strong> de la documentation, une <strong>configuration</strong> et un <strong>test final</strong>. Ce chapitre donne une méthodologie pour installer n'importe quel périphérique avec confiance.</span><span class="en">Plugging in a USB cable is not always enough. Many peripherals require a specific <strong>driver</strong>, a <strong>compatibility check</strong>, <strong>reading</strong> the documentation, a <strong>configuration</strong> step and a <strong>final test</strong>. This chapter gives a methodology to install any peripheral with confidence.</span></p>
+
+    <h2 id="types"><span class="fr">1 · Catalogue des périphériques</span><span class="en">1 · Peripheral catalogue</span></h2>
+    <div class="feat-grid grid-2" style="grid-template-columns:1fr 1fr">
+      <div class="feat"><h4>⌨️ <span class="fr">Entrée</span><span class="en">Input</span></h4><p><span class="fr">Clavier, souris, scanner, douchette code-barre, micro, webcam, caméra IP, écran tactile.</span><span class="en">Keyboard, mouse, scanner, barcode reader, microphone, webcam, IP camera, touchscreen.</span></p></div>
+      <div class="feat"><h4>🖨️ <span class="fr">Sortie</span><span class="en">Output</span></h4><p><span class="fr">Écran, vidéoprojecteur, imprimante (jet, laser, 3D), traceur, haut-parleurs, casque.</span><span class="en">Screen, projector, printer (inkjet, laser, 3D), plotter, speakers, headset.</span></p></div>
+      <div class="feat"><h4>💽 <span class="fr">Stockage</span><span class="en">Storage</span></h4><p><span class="fr">Disque/SSD externe, clé USB, carte SD, graveur, NAS, bandothèque LTO.</span><span class="en">External disk/SSD, USB stick, SD card, burner, NAS, LTO library.</span></p></div>
+      <div class="feat"><h4>📡 <span class="fr">Communication</span><span class="en">Communication</span></h4><p><span class="fr">Modem (ADSL, fibre, 4G/5G), routeur, switch, carte réseau, antenne.</span><span class="en">Modem (ADSL, fibre, 4G/5G), router, switch, network card, antenna.</span></p></div>
+    </div>
+
+    <h2 id="pilote"><span class="fr">2 · Le pilote (driver)</span><span class="en">2 · The driver</span></h2>
+    <p><span class="fr">Un <strong>pilote</strong> est un petit programme qui sait « parler » à un matériel précis. Il fait le pont entre le SE générique (« j'ai un fichier à imprimer ») et le matériel précis (qui attend un format de commande spécifique). Sans le bon pilote, le SE ne peut pas utiliser le périphérique.</span><span class="en">A <strong>driver</strong> is a small program that knows how to "speak" to a specific piece of hardware. It bridges the generic OS ("I have a file to print") and the precise device (which expects a specific command format). Without the right driver, the OS cannot use the peripheral.</span></p>
+    <div class="callout callout-note"><span class="fr"><b>Chaîne :</b> Application → API du SE → <b>Pilote</b> → Périphérique physique. <b>Origines :</b> intégré au SE (~80 %), site du constructeur, CD/clé, Windows Update, modules kernel (Linux).</span><span class="en"><b>Chain:</b> Application → OS API → <b>Driver</b> → Physical device. <b>Sources:</b> built into the OS (~80%), maker's website, CD/USB, Windows Update, kernel modules (Linux).</span></div>
+
+    <h2 id="doc"><span class="fr">3 · Structure d'une documentation</span><span class="en">3 · Structure of a manual</span></h2>
+    <p><span class="fr">Un manuel professionnel suit toujours une structure standard. Savoir la scanner = gain de temps énorme.</span><span class="en">A professional manual always follows a standard structure. Knowing how to scan it saves a great deal of time.</span></p>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th>#</th><th>Section</th><th><span class="fr">À retenir</span><span class="en">Key point</span></th></tr></thead>
+      <tbody>
+        <tr><td>1–2</td><td><span class="fr">Couverture &amp; table des matières</span><span class="en">Cover &amp; table of contents</span></td><td><span class="fr">Vérifier le bon manuel ; sauter aux sections utiles.</span><span class="en">Confirm the right manual; jump to useful sections.</span></td></tr>
+        <tr><td>3</td><td><span class="fr">Sécurité &amp; précautions</span><span class="en">Safety &amp; precautions</span></td><td><span class="fr">À lire obligatoirement.</span><span class="en">Must be read.</span></td></tr>
+        <tr><td>4–5</td><td><span class="fr">Contenu de la boîte &amp; spécifications</span><span class="en">Box contents &amp; specs</span></td><td><span class="fr">Vérifier que rien ne manque ; lire les débits/formats.</span><span class="en">Check nothing is missing; read rates/formats.</span></td></tr>
+        <tr><td>6</td><td><span class="fr">Configuration minimale requise</span><span class="en">Minimum requirements</span></td><td><span class="fr">Crucial avant achat.</span><span class="en">Crucial before buying.</span></td></tr>
+        <tr><td>7–9</td><td><span class="fr">Schéma, installation, paramétrage</span><span class="en">Diagram, install, setup</span></td><td><span class="fr">Suivre l'ordre des étapes.</span><span class="en">Follow the step order.</span></td></tr>
+        <tr><td>10</td><td><span class="fr">Dépannage</span><span class="en">Troubleshooting</span></td><td><span class="fr">Tableau symptôme → cause → solution.</span><span class="en">Symptom → cause → fix table.</span></td></tr>
+        <tr><td>11–12</td><td><span class="fr">Environnement &amp; garantie</span><span class="en">Environment &amp; warranty</span></td><td><span class="fr">Certifications, SAV, contacts.</span><span class="en">Certifications, support, contacts.</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="specs"><span class="fr">4 · Lire les spécifications</span><span class="en">4 · Reading specifications</span></h2>
+    <p><span class="fr">Exemple — imprimante HP LaserJet Pro M404dn :</span><span class="en">Example — HP LaserJet Pro M404dn printer:</span></p>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th><span class="fr">Critère</span><span class="en">Criterion</span></th><th><span class="fr">Valeur</span><span class="en">Value</span></th><th><span class="fr">Interprétation</span><span class="en">Interpretation</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="fr">Technologie</span><span class="en">Technology</span></td><td><span class="fr">Laser monochrome</span><span class="en">Monochrome laser</span></td><td><span class="fr">Toner — rapide et économique en gros volume.</span><span class="en">Toner — fast and economical at high volume.</span></td></tr>
+        <tr><td><span class="fr">Vitesse</span><span class="en">Speed</span></td><td>40 ppm A4</td><td><span class="fr">Élevée, adaptée au bureau.</span><span class="en">High, suited to an office.</span></td></tr>
+        <tr><td><span class="fr">Résolution</span><span class="en">Resolution</span></td><td>1200 × 1200 dpi</td><td><span class="fr">Très bonne qualité texte.</span><span class="en">Very good text quality.</span></td></tr>
+        <tr><td><span class="fr">Connectivité</span><span class="en">Connectivity</span></td><td>USB 2.0, Ethernet</td><td><span class="fr">Réseau partagé ; pas de Wi-Fi natif.</span><span class="en">Shared network; no native Wi-Fi.</span></td></tr>
+        <tr><td><span class="fr">Systèmes</span><span class="en">Systems</span></td><td>Win 10/11, macOS, Linux</td><td><span class="fr">Vérifier le pilote Linux.</span><span class="en">Check the Linux driver.</span></td></tr>
+        <tr><td><span class="fr">Alimentation</span><span class="en">Power</span></td><td>220–240 V, max 950 W</td><td><span class="fr">Prise standard ; pic à l'allumage.</span><span class="en">Standard outlet; spike at power-on.</span></td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="compat"><span class="fr">5 · Check-list de compatibilité</span><span class="en">5 · Compatibility checklist</span></h2>
+    <p><span class="fr">Avant d'investir, vérifier ces 8 points :</span><span class="en">Before investing, check these 8 points:</span></p>
+    <ol>
+      <li><span class="fr"><strong>Système</strong> — le pilote existe-t-il pour votre OS ?</span><span class="en"><strong>OS</strong> — does the driver exist for your OS?</span></li>
+      <li><span class="fr"><strong>Architecture CPU</strong> — x86_64 ou ARM ?</span><span class="en"><strong>CPU architecture</strong> — x86_64 or ARM?</span></li>
+      <li><span class="fr"><strong>Version du SE</strong> — Windows 10 22H2 ? Ubuntu 22.04 LTS ?</span><span class="en"><strong>OS version</strong> — Windows 10 22H2? Ubuntu 22.04 LTS?</span></li>
+      <li><span class="fr"><strong>Port disponible</strong> — USB-A/C, RJ45, Bluetooth, HDMI ?</span><span class="en"><strong>Available port</strong> — USB-A/C, RJ45, Bluetooth, HDMI?</span></li>
+      <li><span class="fr"><strong>Espace disque</strong> — souvent 500 Mo à 2 Go.</span><span class="en"><strong>Disk space</strong> — often 500 MB to 2 GB.</span></li>
+      <li><span class="fr"><strong>RAM</strong> — 8–16 Go pour certains logiciels pro.</span><span class="en"><strong>RAM</strong> — 8–16 GB for some pro software.</span></li>
+      <li><span class="fr"><strong>Alimentation</strong> — externe requise ? tension ?</span><span class="en"><strong>Power</strong> — external supply needed? voltage?</span></li>
+      <li><span class="fr"><strong>Réseau</strong> — Wi-Fi 2.4/5 GHz, IPv4/IPv6, Internet requis ?</span><span class="en"><strong>Network</strong> — Wi-Fi 2.4/5 GHz, IPv4/IPv6, Internet needed?</span></li>
+    </ol>
+
+    <h2 id="methode"><span class="fr">6 · La méthode en 7 étapes</span><span class="en">6 · The 7-step method</span></h2>
+    <div class="timeline">
+      <div class="tl-item"><span class="yr">1</span><h4><span class="fr">Préparation</span><span class="en">Preparation</span></h4><p><span class="fr">Lire la doc, vérifier la compatibilité, télécharger le pilote officiel.</span><span class="en">Read the docs, check compatibility, download the official driver.</span></p></div>
+      <div class="tl-item"><span class="yr">2</span><h4><span class="fr">Sauvegarde</span><span class="en">Backup</span></h4><p><span class="fr">Point de restauration (Windows) ou snapshot (VM).</span><span class="en">Restore point (Windows) or snapshot (VM).</span></p></div>
+      <div class="tl-item"><span class="yr">3</span><h4><span class="fr">Connexion physique</span><span class="en">Physical connection</span></h4><p><span class="fr">Brancher USB/réseau ou appairer Bluetooth.</span><span class="en">Plug in USB/network or pair Bluetooth.</span></p></div>
+      <div class="tl-item"><span class="yr">4</span><h4><span class="fr">Détection</span><span class="en">Detection</span></h4><p><span class="fr">Le SE détecte et tente un pilote générique.</span><span class="en">The OS detects and tries a generic driver.</span></p></div>
+      <div class="tl-item"><span class="yr">5</span><h4><span class="fr">Pilote spécifique</span><span class="en">Specific driver</span></h4><p><span class="fr">Exécuter l'installeur officiel (.exe / .deb / .rpm).</span><span class="en">Run the official installer (.exe / .deb / .rpm).</span></p></div>
+      <div class="tl-item"><span class="yr">6</span><h4><span class="fr">Configuration</span><span class="en">Configuration</span></h4><p><span class="fr">Régler résolution, format papier, port ; page test.</span><span class="en">Set resolution, paper size, port; test page.</span></p></div>
+      <div class="tl-item"><span class="yr">7</span><h4><span class="fr">Test &amp; documentation</span><span class="en">Test &amp; documentation</span></h4><p><span class="fr">Cas réel ; noter date, version pilote, options.</span><span class="en">Real-world use; record date, driver version, options.</span></p></div>
+    </div>
+
+    <h2 id="installer"><span class="fr">7 · Installer un pilote</span><span class="en">7 · Installing a driver</span></h2>
+    <div class="feat-grid grid-2" style="grid-template-columns:1fr 1fr">
+      <div class="feat"><h4>Windows</h4><p><span class="fr"><b>1.</b> Plug-and-Play automatique. <b>2.</b> Pilote officiel <code>.exe</code> en admin. <b>3.</b> Manuel : Gestionnaire de périphériques → Mettre à jour → choisir le <code>.inf</code>. Vérifier : pas de point d'exclamation jaune.</span><span class="en"><b>1.</b> Automatic Plug-and-Play. <b>2.</b> Official <code>.exe</code> as admin. <b>3.</b> Manual: Device Manager → Update → pick the <code>.inf</code>. Check: no yellow warning mark.</span></p></div>
+      <div class="feat"><h4>Linux (Ubuntu)</h4><p><span class="fr">90 % fonctionnent à la connexion. Propriétaire : <code>sudo apt install nvidia-driver-535</code>. Imprimantes : <code>sudo apt install cups</code> puis <code>localhost:631</code>. Vérifier : <code>dmesg | tail</code>, <code>lsmod</code>.</span><span class="en">90% work on connection. Proprietary: <code>sudo apt install nvidia-driver-535</code>. Printers: <code>sudo apt install cups</code> then <code>localhost:631</code>. Check: <code>dmesg | tail</code>, <code>lsmod</code>.</span></p></div>
+    </div>
+
+    <h2 id="diagnostic"><span class="fr">8 · Diagnostic &amp; dépannage</span><span class="en">8 · Diagnosis &amp; troubleshooting</span></h2>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th><span class="fr">Symptôme</span><span class="en">Symptom</span></th><th><span class="fr">Solution à essayer</span><span class="en">Fix to try</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="fr">Non détecté</span><span class="en">Not detected</span></td><td><span class="fr">Autre câble/port, tester sur autre PC, vérifier l'alim.</span><span class="en">Another cable/port, test on another PC, check power.</span></td></tr>
+        <tr><td><span class="fr">Point d'exclamation jaune</span><span class="en">Yellow warning mark</span></td><td><span class="fr">Désinstaller + redémarrer + réinstaller le dernier pilote.</span><span class="en">Uninstall + reboot + reinstall the latest driver.</span></td></tr>
+        <tr><td><span class="fr">Imprimante « hors ligne »</span><span class="en">Printer "offline"</span></td><td><span class="fr">Redémarrer, vérifier l'IP statique, vider la file.</span><span class="en">Reboot, check static IP, clear the queue.</span></td></tr>
+        <tr><td><span class="fr">Audio absent après MAJ</span><span class="en">No audio after update</span></td><td><span class="fr">Réinstaller le pilote Realtek/Intel.</span><span class="en">Reinstall the Realtek/Intel driver.</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout-key"><span class="fr"><b>Méthode en 5 temps :</b> 1) reproduire, 2) isoler (autre PC/port/câble), 3) consulter les logs (Observateur ou <code>dmesg</code>), 4) chercher l'erreur exacte, 5) tester <b>une</b> solution à la fois.</span><span class="en"><b>5-step method:</b> 1) reproduce, 2) isolate (other PC/port/cable), 3) check logs (Event Viewer or <code>dmesg</code>), 4) search the exact error, 5) test <b>one</b> fix at a time.</span></div>
+    <p><span class="fr"><strong>Outils :</strong> Windows — <code>devmgmt.msc</code>, <code>eventvwr</code>, <code>msinfo32</code>, <code>Get-PnpDevice</code>. Linux — <code>lsusb</code>, <code>lspci</code>, <code>lsblk</code>, <code>dmesg</code>, <code>lshw</code>, <code>journalctl</code>.</span><span class="en"><strong>Tools:</strong> Windows — <code>devmgmt.msc</code>, <code>eventvwr</code>, <code>msinfo32</code>, <code>Get-PnpDevice</code>. Linux — <code>lsusb</code>, <code>lspci</code>, <code>lsblk</code>, <code>dmesg</code>, <code>lshw</code>, <code>journalctl</code>.</span></p>
+
+    <h2 id="atelier"><span class="fr">Atelier — imprimante HP réseau</span><span class="en">Lab — HP network printer</span></h2>
+    <p><span class="fr"><strong>Durée :</strong> 1 h 30 · <strong>Mode :</strong> binôme. Installation pas-à-pas selon la méthode 7 étapes.</span><span class="en"><strong>Duration:</strong> 1 h 30 · <strong>Mode:</strong> pairs. Step-by-step installation using the 7-step method.</span></p>
+    <pre><code><span class="cmt"># <span class="fr">Détection &amp; pilote</span><span class="en">Detection &amp; driver</span></span>
+<span class="cmt"># Windows : <span class="fr">Paramètres → Imprimantes → Ajouter → adresse IP</span><span class="en">Settings → Printers → Add → IP address</span></span>
+<span class="cmt"># Linux :</span> http://localhost:631  → Add Printer → IPP
+sudo apt install hplip hplip-gui
+hp-setup -i
+<span class="cmt"># Config : A4, <span class="fr">recto-verso auto, mode économie</span><span class="en">auto duplex, eco mode</span></span>
+<span class="cmt"># <span class="fr">Test : imprimer la page de test, documenter (IP, version pilote)</span><span class="en">Test: print test page, document (IP, driver version)</span></span></code></pre>
+
+    <h2 id="quiz">Quiz</h2>
+    <details class="quiz"><summary><span class="fr">Un pilote (driver) sert à :</span><span class="en">A driver is used to:</span></summary><div class="ans"><p class="opts">a) <span class="fr">Compiler</span><span class="en">Compile</span> &nbsp; b) <span class="fr">Faire dialoguer SE et matériel</span><span class="en">Let the OS and hardware talk</span> &nbsp; c) <span class="fr">Compresser</span><span class="en">Compress</span></p><p class="correct">✓ b — <span class="fr">pont SE ↔ matériel.</span><span class="en">OS ↔ hardware bridge.</span></p></div></details>
+    <details class="quiz"><summary><span class="fr">Combien d'étapes a la méthodologie d'installation ?</span><span class="en">How many steps does the install method have?</span></summary><div class="ans"><p class="opts">a) 3 &nbsp; b) 5 &nbsp; c) 7</p><p class="correct">✓ c — <span class="fr">préparation, sauvegarde, connexion, détection, pilote, config, test.</span><span class="en">prep, backup, connect, detect, driver, config, test.</span></p></div></details>
+    <details class="quiz"><summary><span class="fr">Sous Linux, lister les périphériques USB :</span><span class="en">On Linux, list USB devices:</span></summary><div class="ans"><p class="opts">a) <code>lsblk</code> &nbsp; b) <code>lsusb</code> &nbsp; c) <code>lspci</code></p><p class="correct">✓ b — <code>lsusb</code>.</p></div></details>
+    <details class="quiz"><summary><span class="fr">La meilleure source pour un pilote est :</span><span class="en">The best source for a driver is:</span></summary><div class="ans"><p class="opts">a) <span class="fr">Un forum aléatoire</span><span class="en">A random forum</span> &nbsp; b) <span class="fr">Le site officiel du constructeur</span><span class="en">The maker's official site</span> &nbsp; c) <span class="fr">La clé d'un ami</span><span class="en">A friend's USB</span></p><p class="correct">✓ b — <span class="fr">sécurité et version exacte.</span><span class="en">safety and the exact version.</span></p></div></details>
+
+    <div class="pager">
+      <a href="chapitre-2.html"><span><span class="fr">Chapitre précédent</span><span class="en">Previous</span></span><b><span class="fr">II · Configuration du SE</span><span class="en">II · OS configuration</span></b></a>
+      <a class="next" href="chapitre-4.html"><span><span class="fr">Chapitre suivant</span><span class="en">Next chapter</span></span><b><span class="fr">IV · Logiciels</span><span class="en">IV · Software</span></b></a>
+    </div>
+  </article>
+</div></div>
+
+<footer><div class="wrap"><div class="foot-bottom" style="border:0">
+  <span>© 2025–2026 Ghouili Walid · IMSET</span>
+  <span><a href="ressources.html"><span class="fr">Références du chapitre</span><span class="en">Chapter references</span></a></span>
+</div></div></footer>
+<script src="assets/script.js"></script>
+</body>
+</html>

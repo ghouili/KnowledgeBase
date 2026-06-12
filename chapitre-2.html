@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapitre II — Mise en marche &amp; configuration du SE | Systèmes d'exploitation</title>
+<meta name="description" content="Démarrage (POST, BIOS/UEFI, bootloader), commandes DOS/UNIX, supports de stockage, CLI vs GUI, Explorateur Windows et configuration du SE.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232d4a8a'/><text x='50' y='68' font-size='52' font-family='Georgia' fill='white' text-anchor='middle' font-weight='600'>SE</text></svg>">
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner">
+  <a href="index.html" class="brand-logo"><span class="brand-mark">SE</span><span>Systèmes d'exploitation<span class="brand-sub">Ghouili Walid · IMSET</span></span></a>
+  <nav class="nav">
+    <a href="index.html"><span class="fr">Accueil</span><span class="en">Home</span></a>
+    <a href="chapitre-1.html">Chap. I</a><a href="chapitre-2.html" class="active">Chap. II</a><a href="chapitre-3.html">Chap. III</a><a href="chapitre-4.html">Chap. IV</a>
+    <a href="glossaire.html"><span class="fr">Glossaire</span><span class="en">Glossary</span></a><a href="ressources.html"><span class="fr">Ressources</span><span class="en">Resources</span></a>
+  </nav>
+  <div class="lang-toggle"><button data-lang-btn="fr">FR</button><button data-lang-btn="en">EN</button></div>
+  <button class="toolbtn" data-theme-toggle>☾</button><button class="toolbtn menu-btn" data-menu>☰</button>
+</div></header>
+
+<div class="lesson-head"><div class="wrap">
+  <span class="eyebrow"><span class="fr">Chapitre II</span><span class="en">Chapter II</span></span>
+  <h1><span class="fr">Mise en marche &amp; configuration du SE</span><span class="en">Boot-up &amp; OS configuration</span></h1>
+  <p class="lead" style="max-width:60ch"><span class="fr">Du bouton power à un environnement de travail sur-mesure : démarrage, commandes, stockage, CLI/GUI et personnalisation.</span><span class="en">From the power button to a tailored workspace: boot, commands, storage, CLI/GUI and customisation.</span></p>
+  <div class="hero-meta"><span class="chip">⏱ 3–4 h</span><span class="chip">📊 36 <span class="fr">diapos</span><span class="en">slides</span></span><span class="chip">🧪 <span class="fr">Atelier Ubuntu</span><span class="en">Ubuntu lab</span></span></div>
+</div></div>
+
+<div class="wrap"><div class="lesson-layout">
+  <aside class="toc">
+    <h4><span class="fr">Sur cette page</span><span class="en">On this page</span></h4>
+    <a href="#intro">Introduction</a>
+    <a href="#objectifs"><span class="fr">Objectifs</span><span class="en">Objectives</span></a>
+    <a href="#demarrage"><span class="fr">1 · Démarrage</span><span class="en">1 · Boot</span></a>
+    <a href="#bios"><span class="fr">2 · BIOS / UEFI</span><span class="en">2 · BIOS / UEFI</span></a>
+    <a href="#commandes"><span class="fr">3 · Commandes</span><span class="en">3 · Commands</span></a>
+    <a href="#stockage"><span class="fr">4 · Stockage</span><span class="en">4 · Storage</span></a>
+    <a href="#cligui"><span class="fr">5 · CLI vs GUI</span><span class="en">5 · CLI vs GUI</span></a>
+    <a href="#explorateur"><span class="fr">6 · Explorateur</span><span class="en">6 · Explorer</span></a>
+    <a href="#config"><span class="fr">7 · Configuration</span><span class="en">7 · Configuration</span></a>
+    <a href="#atelier"><span class="fr">Atelier</span><span class="en">Lab</span></a>
+    <a href="#quiz">Quiz</a>
+  </aside>
+
+  <article class="lesson-body">
+    <div class="dl-card"><div class="dl-ic">📥</div><div class="grow"><h4><span class="fr">Diaporama du chapitre II</span><span class="en">Chapter II slide deck</span></h4><p><span class="fr">Présentation complète (.pptx) — 36 diapositives.</span><span class="en">Full presentation (.pptx) — 36 slides.</span></p></div><a class="btn btn-primary" href="slides/ICML_Chapitre_2_Mise_en_Marche_Configuration_SE.pptx" download><span class="fr">Télécharger</span><span class="en">Download</span></a></div>
+
+    <h2 id="intro"><span class="fr">Introduction</span><span class="en">Introduction</span></h2>
+    <p><span class="fr">Une fois le matériel installé, il faut <strong>savoir l'utiliser</strong>. Ce chapitre couvre tout le cycle d'utilisation : comprendre le démarrage, manipuler le système via ses deux interfaces (ligne de commande et graphique), gérer fichiers et dossiers, configurer les paramètres fondamentaux et personnaliser l'environnement.</span><span class="en">Once the hardware is installed, you must <strong>know how to use it</strong>. This chapter covers the full usage cycle: understanding boot-up, operating the system through its two interfaces (command line and graphical), managing files and folders, configuring fundamental settings and customising the environment.</span></p>
+
+    <h2 id="objectifs"><span class="fr">Objectifs pédagogiques</span><span class="en">Learning objectives</span></h2>
+    <div class="feat-grid grid-2" style="grid-template-columns:1fr 1fr">
+      <div class="feat"><h4><span class="fr">Décrire le démarrage</span><span class="en">Describe boot</span></h4><p><span class="fr">les 7 étapes du démarrage d'un PC.</span><span class="en">the 7 steps of a PC's boot.</span></p></div>
+      <div class="feat"><h4><span class="fr">Utiliser cmd / bash</span><span class="en">Use cmd / bash</span></h4><p><span class="fr">les commandes essentielles DOS et UNIX.</span><span class="en">essential DOS and UNIX commands.</span></p></div>
+      <div class="feat"><h4><span class="fr">Comparer le stockage</span><span class="en">Compare storage</span></h4><p><span class="fr">HDD, SSD, USB, optique, cloud.</span><span class="en">HDD, SSD, USB, optical, cloud.</span></p></div>
+      <div class="feat"><h4><span class="fr">Distinguer CLI / GUI</span><span class="en">Tell CLI / GUI apart</span></h4><p><span class="fr">et savoir quand utiliser chacun.</span><span class="en">and know when to use each.</span></p></div>
+      <div class="feat"><h4><span class="fr">Configurer Windows</span><span class="en">Configure Windows</span></h4><p><span class="fr">compte, réseau, fuseau, langue.</span><span class="en">account, network, time zone, language.</span></p></div>
+      <div class="feat"><h4><span class="fr">Installer un SE</span><span class="en">Install an OS</span></h4><p><span class="fr">Windows ou Ubuntu dans une VM.</span><span class="en">Windows or Ubuntu in a VM.</span></p></div>
+    </div>
+
+    <h2 id="demarrage"><span class="fr">1 · Que se passe-t-il à l'appui sur Power ?</span><span class="en">1 · What happens when you press Power?</span></h2>
+    <div class="timeline">
+      <div class="tl-item"><span class="yr">1</span><h4><span class="fr">Alimentation</span><span class="en">Power supply</span></h4><p><span class="fr">La PSU fournit 3,3 V, 5 V, 12 V à la carte mère.</span><span class="en">The PSU delivers 3.3 V, 5 V, 12 V to the motherboard.</span></p></div>
+      <div class="tl-item"><span class="yr">2</span><h4><span class="fr">Le CPU démarre</span><span class="en">CPU starts</span></h4><p><span class="fr">Sa première instruction pointe vers le BIOS/UEFI en ROM.</span><span class="en">Its first instruction points to the BIOS/UEFI in ROM.</span></p></div>
+      <div class="tl-item"><span class="yr">3</span><h4>POST</h4><p><span class="fr">Power-On Self-Test : test rapide RAM, CPU, GPU, clavier, disques.</span><span class="en">Power-On Self-Test: a quick check of RAM, CPU, GPU, keyboard, disks.</span></p></div>
+      <div class="tl-item"><span class="yr">4</span><h4><span class="fr">Détection matériel</span><span class="en">Hardware detection</span></h4><p><span class="fr">Le BIOS énumère disques, ports et périphériques.</span><span class="en">The BIOS enumerates disks, ports and peripherals.</span></p></div>
+      <div class="tl-item"><span class="yr">5</span><h4><span class="fr">Choix du boot</span><span class="en">Boot device</span></h4><p><span class="fr">Selon le Boot Order, charge le bootloader.</span><span class="en">Following the Boot Order, it loads the bootloader.</span></p></div>
+      <div class="tl-item"><span class="yr">6</span><h4>Bootloader</h4><p><span class="fr">GRUB (Linux) ou Windows Boot Manager charge le noyau en RAM.</span><span class="en">GRUB (Linux) or Windows Boot Manager loads the kernel into RAM.</span></p></div>
+      <div class="tl-item"><span class="yr">7</span><h4><span class="fr">Noyau &amp; login</span><span class="en">Kernel &amp; login</span></h4><p><span class="fr">Le noyau charge les pilotes, monte le système de fichiers, puis l'écran de connexion s'affiche.</span><span class="en">The kernel loads drivers, mounts the file system, then the login screen appears.</span></p></div>
+    </div>
+
+    <h2 id="bios"><span class="fr">2 · BIOS vs UEFI</span><span class="en">2 · BIOS vs UEFI</span></h2>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th></th><th>BIOS</th><th>UEFI</th></tr></thead>
+      <tbody>
+        <tr><td><span class="fr">Époque</span><span class="en">Era</span></td><td>IBM, 1981 — 16 bits</td><td>~2008+ — 32/64 bits</td></tr>
+        <tr><td>Interface</td><td><span class="fr">Texte, clavier seul</span><span class="en">Text, keyboard only</span></td><td><span class="fr">Graphique + souris</span><span class="en">Graphical + mouse</span></td></tr>
+        <tr><td><span class="fr">Disques</span><span class="en">Disks</span></td><td>≤ 2,2 To (MBR)</td><td>&gt; 2 To (GPT)</td></tr>
+        <tr><td>Boot</td><td><span class="fr">Lent</span><span class="en">Slow</span></td><td>Fast Boot</td></tr>
+        <tr><td><span class="fr">Sécurité</span><span class="en">Security</span></td><td>—</td><td>Secure Boot</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout-note"><span class="fr"><b>Accès au firmware :</b> F2, F10, F12 ou Suppr selon le constructeur. La <b>pile CMOS (CR2032)</b> + l'horloge RTC conservent l'heure et les réglages, même PC éteint.</span><span class="en"><b>Firmware access:</b> F2, F10, F12 or Del depending on the maker. The <b>CMOS battery (CR2032)</b> + RTC clock keep the time and settings even when the PC is off.</span></div>
+
+    <h2 id="commandes"><span class="fr">3 · Commandes DOS &amp; UNIX</span><span class="en">3 · DOS &amp; UNIX commands</span></h2>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th>Action</th><th>DOS / Windows</th><th>UNIX / Linux</th></tr></thead>
+      <tbody>
+        <tr><td><span class="fr">Lister fichiers</span><span class="en">List files</span></td><td><code>dir</code></td><td><code>ls</code></td></tr>
+        <tr><td><span class="fr">Changer de dossier</span><span class="en">Change directory</span></td><td><code>cd</code></td><td><code>cd</code></td></tr>
+        <tr><td><span class="fr">Créer un dossier</span><span class="en">Make directory</span></td><td><code>mkdir / md</code></td><td><code>mkdir</code></td></tr>
+        <tr><td><span class="fr">Copier</span><span class="en">Copy</span></td><td><code>copy / xcopy</code></td><td><code>cp</code></td></tr>
+        <tr><td><span class="fr">Déplacer / renommer</span><span class="en">Move / rename</span></td><td><code>move / ren</code></td><td><code>mv</code></td></tr>
+        <tr><td><span class="fr">Supprimer fichier</span><span class="en">Delete file</span></td><td><code>del / erase</code></td><td><code>rm</code></td></tr>
+        <tr><td><span class="fr">Afficher contenu</span><span class="en">Show content</span></td><td><code>type</code></td><td><code>cat</code></td></tr>
+        <tr><td><span class="fr">Nettoyer l'écran</span><span class="en">Clear screen</span></td><td><code>cls</code></td><td><code>clear</code></td></tr>
+        <tr><td><span class="fr">Chercher dans fichier</span><span class="en">Search in file</span></td><td><code>find / findstr</code></td><td><code>grep</code></td></tr>
+        <tr><td><span class="fr">Afficher le chemin</span><span class="en">Print path</span></td><td><code>cd</code></td><td><code>pwd</code></td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="fr"><strong>Quelques commandes cmd utiles :</strong></span><span class="en"><strong>A few useful cmd commands:</strong></span></p>
+    <pre><code>dir /A            <span class="cmt"># <span class="fr">fichiers cachés inclus</span><span class="en">include hidden files</span></span>
+tree /F           <span class="cmt"># <span class="fr">arborescence avec fichiers</span><span class="en">tree with files</span></span>
+xcopy C:\src D:\dst /E /H   <span class="cmt"># <span class="fr">copie étendue</span><span class="en">extended copy</span></span>
+ipconfig /all     <span class="cmt"># <span class="fr">configuration réseau</span><span class="en">network configuration</span></span>
+ping google.com   <span class="cmt"># <span class="fr">tester un hôte</span><span class="en">test a host</span></span>
+shutdown /s /t 0  <span class="cmt"># <span class="fr">arrêt immédiat</span><span class="en">immediate shutdown</span></span></code></pre>
+
+    <h2 id="stockage"><span class="fr">4 · Les supports de stockage</span><span class="en">4 · Storage media</span></h2>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th>Support</th><th><span class="fr">Capacité</span><span class="en">Capacity</span></th><th><span class="fr">Vitesse</span><span class="en">Speed</span></th><th><span class="fr">Usage actuel</span><span class="en">Current use</span></th></tr></thead>
+      <tbody>
+        <tr><td><span class="fr">Bande magnétique</span><span class="en">Magnetic tape</span></td><td>≤ 30 To</td><td>30–400 <span class="fr">Mo/s</span><span class="en">MB/s</span></td><td><span class="fr">Archivage longue durée</span><span class="en">Long-term archival</span></td></tr>
+        <tr><td>CD / DVD / Blu-ray</td><td>0,7–100 Go</td><td>1–36 <span class="fr">Mo/s</span><span class="en">MB/s</span></td><td><span class="fr">En recul / niche</span><span class="en">Declining / niche</span></td></tr>
+        <tr><td>HDD <span class="fr">(mécanique)</span><span class="en">(mechanical)</span></td><td>1–20 To</td><td>100–200 <span class="fr">Mo/s</span><span class="en">MB/s</span></td><td><span class="fr">Stockage de masse</span><span class="en">Mass storage</span></td></tr>
+        <tr><td>SSD SATA</td><td>250 Go–8 To</td><td>550 <span class="fr">Mo/s</span><span class="en">MB/s</span></td><td><span class="fr">OS et applications</span><span class="en">OS and apps</span></td></tr>
+        <tr><td>SSD NVMe (M.2)</td><td>250 Go–8 To</td><td>3–14 <span class="fr">Go/s</span><span class="en">GB/s</span></td><td><span class="fr">Performances maximales</span><span class="en">Maximum performance</span></td></tr>
+        <tr><td><span class="fr">Clé USB / SD</span><span class="en">USB / SD</span></td><td>8 Go–2 To</td><td>30–400 <span class="fr">Mo/s</span><span class="en">MB/s</span></td><td><span class="fr">Transport, backups</span><span class="en">Transport, backups</span></td></tr>
+        <tr><td>Cloud</td><td><span class="fr">Illimitée</span><span class="en">Unlimited</span></td><td><span class="fr">Variable</span><span class="en">Variable</span></td><td><span class="fr">Sauvegarde &amp; partage</span><span class="en">Backup &amp; sharing</span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout callout-note"><span class="fr">En 50 ans, la capacité a été multipliée par plus d'un million : de l'IBM RAMAC (1956, 5 Mo, 1 tonne) au SSD NVMe grand public (2024, 4–8 To, 14 Go/s).</span><span class="en">In 50 years, capacity has grown more than a million-fold: from the IBM RAMAC (1956, 5 MB, 1 ton) to the consumer NVMe SSD (2024, 4–8 TB, 14 GB/s).</span></div>
+
+    <h2 id="cligui"><span class="fr">5 · CLI vs GUI</span><span class="en">5 · CLI vs GUI</span></h2>
+    <div class="feat-grid grid-2" style="grid-template-columns:1fr 1fr">
+      <div class="feat"><h4>CLI — <span class="fr">ligne de commande</span><span class="en">command line</span></h4><p><span class="fr"><b>+</b> rapide, scriptable, léger, accès à distance (SSH), toutes les options. <b>−</b> courbe d'apprentissage, erreurs destructrices, pas de visualisation. Ex. : cmd, bash, PowerShell.</span><span class="en"><b>+</b> fast, scriptable, lightweight, remote (SSH), every option. <b>−</b> learning curve, destructive typos, no visualisation. e.g. cmd, bash, PowerShell.</span></p></div>
+      <div class="feat"><h4>GUI — <span class="fr">interface graphique</span><span class="en">graphical interface</span></h4><p><span class="fr"><b>+</b> intuitif, visualisation directe, drag &amp; drop, multi-fenêtres. <b>−</b> plus lent pour répéter, consomme RAM/CPU, pas toujours scriptable. Ex. : Explorateur, GNOME, Finder.</span><span class="en"><b>+</b> intuitive, direct visualisation, drag &amp; drop, multi-window. <b>−</b> slower to repeat, uses RAM/CPU, not always scriptable. e.g. Explorer, GNOME, Finder.</span></p></div>
+    </div>
+    <div class="callout callout-key"><span class="fr"><b>Le mieux : maîtriser les deux.</b> GUI pour le quotidien, CLI pour l'efficacité et les serveurs.</span><span class="en"><b>Best of all: master both.</b> GUI for everyday work, CLI for efficiency and servers.</span></div>
+
+    <h2 id="explorateur"><span class="fr">6 · Explorateur Windows — raccourcis</span><span class="en">6 · Windows Explorer — shortcuts</span></h2>
+    <div class="tbl-wrap"><table class="data">
+      <thead><tr><th><span class="fr">Raccourci</span><span class="en">Shortcut</span></th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><code>Win + E</code></td><td><span class="fr">Ouvrir l'Explorateur</span><span class="en">Open Explorer</span></td></tr>
+        <tr><td><code>F2</code></td><td><span class="fr">Renommer</span><span class="en">Rename</span></td></tr>
+        <tr><td><code>Ctrl + Shift + N</code></td><td><span class="fr">Nouveau dossier</span><span class="en">New folder</span></td></tr>
+        <tr><td><code>Alt + ↑</code></td><td><span class="fr">Remonter d'un dossier</span><span class="en">Up one folder</span></td></tr>
+        <tr><td><code>Shift + Suppr</code></td><td><span class="fr">Supprimer définitivement</span><span class="en">Permanently delete</span></td></tr>
+        <tr><td><code>Alt + Entrée</code></td><td><span class="fr">Propriétés</span><span class="en">Properties</span></td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="fr"><strong>Recherche avancée :</strong> <code>*.pdf</code>, <code>size:&gt;100MB</code>, <code>datemodified:&gt;=01/01/2024</code>, <code>kind:image</code>, <code>name:cours AND ext:.docx</code>.</span><span class="en"><strong>Advanced search:</strong> <code>*.pdf</code>, <code>size:&gt;100MB</code>, <code>datemodified:&gt;=01/01/2024</code>, <code>kind:image</code>, <code>name:cours AND ext:.docx</code>.</span></p>
+
+    <h2 id="config"><span class="fr">7 · Configurer &amp; personnaliser un SE</span><span class="en">7 · Configure &amp; customise an OS</span></h2>
+    <p><span class="fr">Après installation, sept réglages prioritaires :</span><span class="en">After installation, seven priority settings:</span></p>
+    <ol>
+      <li><span class="fr"><strong>Région &amp; langue</strong> — langue, format date/heure, clavier.</span><span class="en"><strong>Region &amp; language</strong> — language, date/time format, keyboard.</span></li>
+      <li><span class="fr"><strong>Fuseau &amp; heure</strong> — synchroniser via NTP (logs, SSL, certificats).</span><span class="en"><strong>Time zone &amp; clock</strong> — sync via NTP (logs, SSL, certificates).</span></li>
+      <li><span class="fr"><strong>Réseau</strong> — Wi-Fi/Ethernet, IP statique ou DHCP, DNS (8.8.8.8, 1.1.1.1).</span><span class="en"><strong>Network</strong> — Wi-Fi/Ethernet, static IP or DHCP, DNS (8.8.8.8, 1.1.1.1).</span></li>
+      <li><span class="fr"><strong>Compte</strong> — mot de passe fort, 2FA ; éviter l'usage quotidien du compte admin.</span><span class="en"><strong>Account</strong> — strong password, 2FA; avoid daily use of the admin account.</span></li>
+      <li><span class="fr"><strong>Mises à jour</strong> — Windows Update ou <code>apt update &amp;&amp; apt upgrade</code>.</span><span class="en"><strong>Updates</strong> — Windows Update or <code>apt update &amp;&amp; apt upgrade</code>.</span></li>
+      <li><span class="fr"><strong>Antivirus / pare-feu</strong> — Defender (Windows), <code>ufw</code> (Linux).</span><span class="en"><strong>Antivirus / firewall</strong> — Defender (Windows), <code>ufw</code> (Linux).</span></li>
+      <li><span class="fr"><strong>Sauvegardes</strong> — automatiques ; tester la restauration avant d'en avoir besoin.</span><span class="en"><strong>Backups</strong> — automatic; test restoration before you ever need it.</span></li>
+    </ol>
+    <div class="callout callout-note"><span class="fr"><b>Personnalisation Windows :</b> thème clair/sombre, fond d'écran, applis au démarrage (<code>shell:startup</code>), programmes par défaut, accessibilité, options d'alimentation, variables d'environnement, <code>regedit</code> (⚠ exporter avant de modifier).</span><span class="en"><b>Windows customisation:</b> light/dark theme, wallpaper, startup apps (<code>shell:startup</code>), default programs, accessibility, power options, environment variables, <code>regedit</code> (⚠ export before editing).</span></div>
+
+    <h2 id="atelier"><span class="fr">Atelier — installer Ubuntu 24.04 en VM</span><span class="en">Lab — installing Ubuntu 24.04 in a VM</span></h2>
+    <p><span class="fr"><strong>Durée :</strong> 2 h · <strong>Mode :</strong> individuel ou binôme. Créer la VM dans VirtualBox (4096 Mo RAM, 2 CPU, 25 Go), suivre l'installeur, puis configurer.</span><span class="en"><strong>Duration:</strong> 2 h · <strong>Mode:</strong> solo or pairs. Create the VM in VirtualBox (4096 MB RAM, 2 CPU, 25 GB), follow the installer, then configure.</span></p>
+    <pre><code><span class="cmt"># <span class="fr">Configuration post-installation</span><span class="en">Post-install configuration</span></span>
+sudo apt update &amp;&amp; sudo apt upgrade -y
+sudo apt install -y git curl vim htop tree
+timedatectl set-timezone Africa/Tunis
+<span class="cmt"># <span class="fr">Apparence : mode sombre, fond d'écran, raccourcis</span><span class="en">Appearance: dark mode, wallpaper, shortcuts</span></span></code></pre>
+
+    <h2 id="quiz">Quiz</h2>
+    <details class="quiz"><summary><span class="fr">Le POST se déroule :</span><span class="en">POST runs:</span></summary><div class="ans"><p class="opts">a) <span class="fr">après le SE</span><span class="en">after the OS</span> &nbsp; b) <span class="fr">avant le noyau</span><span class="en">before the kernel</span> &nbsp; c) <span class="fr">à l'arrêt</span><span class="en">at shutdown</span></p><p class="correct">✓ b — Power-On Self-Test.</p></div></details>
+    <details class="quiz"><summary><span class="fr">L'UEFI remplace progressivement :</span><span class="en">UEFI gradually replaces:</span></summary><div class="ans"><p class="opts">a) <span class="fr">le CPU</span><span class="en">the CPU</span> &nbsp; b) <span class="fr">le BIOS</span><span class="en">the BIOS</span> &nbsp; c) <span class="fr">le SE</span><span class="en">the OS</span></p><p class="correct">✓ b — <span class="fr">firmware moderne.</span><span class="en">modern firmware.</span></p></div></details>
+    <details class="quiz"><summary><span class="fr">Sous Linux, pour copier un fichier :</span><span class="en">On Linux, to copy a file:</span></summary><div class="ans"><p class="opts">a) <code>copy</code> &nbsp; b) <code>cp</code> &nbsp; c) <code>move</code></p><p class="correct">✓ b — <code>cp</code>.</p></div></details>
+    <details class="quiz"><summary><span class="fr">Un SSD NVMe atteint typiquement :</span><span class="en">An NVMe SSD typically reaches:</span></summary><div class="ans"><p class="opts">a) 100 <span class="fr">Mo/s</span><span class="en">MB/s</span> &nbsp; b) 550 <span class="fr">Mo/s</span><span class="en">MB/s</span> &nbsp; c) 3–14 <span class="fr">Go/s</span><span class="en">GB/s</span></p><p class="correct">✓ c — <span class="fr">bus PCIe direct.</span><span class="en">direct PCIe bus.</span></p></div></details>
+    <details class="quiz"><summary><span class="fr">Le raccourci Win + E ouvre :</span><span class="en">Win + E opens:</span></summary><div class="ans"><p class="opts">a) cmd.exe &nbsp; b) <span class="fr">l'Explorateur</span><span class="en">Explorer</span> &nbsp; c) <span class="fr">le Bloc-notes</span><span class="en">Notepad</span></p><p class="correct">✓ b — Explorer.</p></div></details>
+
+    <div class="pager">
+      <a href="chapitre-1.html"><span><span class="fr">Chapitre précédent</span><span class="en">Previous</span></span><b><span class="fr">I · Composantes</span><span class="en">I · Components</span></b></a>
+      <a class="next" href="chapitre-3.html"><span><span class="fr">Chapitre suivant</span><span class="en">Next chapter</span></span><b><span class="fr">III · Périphériques</span><span class="en">III · Peripherals</span></b></a>
+    </div>
+  </article>
+</div></div>
+
+<footer><div class="wrap"><div class="foot-bottom" style="border:0">
+  <span>© 2025–2026 Ghouili Walid · IMSET</span>
+  <span><a href="ressources.html"><span class="fr">Références du chapitre</span><span class="en">Chapter references</span></a></span>
+</div></div></footer>
+<script src="assets/script.js"></script>
+</body>
+</html>
