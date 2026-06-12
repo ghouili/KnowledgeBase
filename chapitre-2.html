@@ -43,6 +43,7 @@
     <a href="#config"><span class="fr">7 · Configuration</span><span class="en">7 · Configuration</span></a>
     <a href="#atelier"><span class="fr">Atelier</span><span class="en">Lab</span></a>
     <a href="#quiz">Quiz</a>
+    <a href="#qcm">QCM /60</a>
   </aside>
 
   <article class="lesson-body">
@@ -172,6 +173,26 @@ timedatectl set-timezone Africa/Tunis
     <details class="quiz"><summary><span class="fr">Sous Linux, pour copier un fichier :</span><span class="en">On Linux, to copy a file:</span></summary><div class="ans"><p class="opts">a) <code>copy</code> &nbsp; b) <code>cp</code> &nbsp; c) <code>move</code></p><p class="correct">✓ b — <code>cp</code>.</p></div></details>
     <details class="quiz"><summary><span class="fr">Un SSD NVMe atteint typiquement :</span><span class="en">An NVMe SSD typically reaches:</span></summary><div class="ans"><p class="opts">a) 100 <span class="fr">Mo/s</span><span class="en">MB/s</span> &nbsp; b) 550 <span class="fr">Mo/s</span><span class="en">MB/s</span> &nbsp; c) 3–14 <span class="fr">Go/s</span><span class="en">GB/s</span></p><p class="correct">✓ c — <span class="fr">bus PCIe direct.</span><span class="en">direct PCIe bus.</span></p></div></details>
     <details class="quiz"><summary><span class="fr">Le raccourci Win + E ouvre :</span><span class="en">Win + E opens:</span></summary><div class="ans"><p class="opts">a) cmd.exe &nbsp; b) <span class="fr">l'Explorateur</span><span class="en">Explorer</span> &nbsp; c) <span class="fr">le Bloc-notes</span><span class="en">Notepad</span></p><p class="correct">✓ b — Explorer.</p></div></details>
+
+    <h2 id="qcm"><span class="fr">QCM noté — score sur 60</span><span class="en">Graded QCM — score out of 60</span></h2>
+    <div class="qcm-intro"><span class="fr">12 questions · 5 points chacune · <b>total /60</b>. Choisissez une réponse par question, puis cliquez sur <b>Valider</b> pour obtenir votre score et la correction détaillée.</span><span class="en">12 questions · 5 points each · <b>total /60</b>. Pick one answer per question, then click <b>Check</b> for your score and the full correction.</span></div>
+    <div id="qcm-app"></div>
+    <script>
+    window.QCM = [
+    {a:1, fr:{q:"À quel moment se déroule le POST ?", o:["Après le chargement du SE","Avant le chargement du noyau","À l'arrêt du PC"], x:"Le POST (Power-On Self-Test) teste le matériel avant de charger le bootloader et le noyau."}, en:{q:"When does the POST run?", o:["After the OS loads","Before the kernel loads","At shutdown"], x:"The POST (Power-On Self-Test) checks hardware before the bootloader and kernel load."}},
+    {a:1, fr:{q:"L'UEFI remplace progressivement :", o:["Le CPU","Le BIOS","Le système d'exploitation"], x:"L'UEFI est le firmware d'amorçage moderne qui succède au BIOS."}, en:{q:"UEFI is gradually replacing:", o:["The CPU","The BIOS","The operating system"], x:"UEFI is the modern boot firmware that succeeds the BIOS."}},
+    {a:1, fr:{q:"Quelle table de partition l'UEFI utilise-t-il pour les disques > 2 To ?", o:["MBR","GPT","FAT16"], x:"GPT permet de dépasser la limite de 2,2 To imposée par le MBR."}, en:{q:"Which partition table does UEFI use for disks > 2 TB?", o:["MBR","GPT","FAT16"], x:"GPT goes beyond the 2.2 TB limit imposed by MBR."}},
+    {a:1, fr:{q:"Sous DOS, quelle commande liste les fichiers ?", o:["ls","dir","list"], x:"Sous DOS/Windows cmd, c'est dir (équivalent de ls sous UNIX)."}, en:{q:"On DOS, which command lists files?", o:["ls","dir","list"], x:"On DOS/Windows cmd it is dir (the equivalent of ls on UNIX)."}},
+    {a:1, fr:{q:"Sous Linux, quelle commande copie un fichier ?", o:["copy","cp","move"], x:"cp copie un fichier ; copy est la commande DOS."}, en:{q:"On Linux, which command copies a file?", o:["copy","cp","move"], x:"cp copies a file; copy is the DOS command."}},
+    {a:2, fr:{q:"Quel débit atteint typiquement un SSD NVMe (M.2) ?", o:["100 Mo/s","550 Mo/s","3 à 14 Go/s"], x:"Le NVMe utilise le bus PCIe et dépasse largement le SATA (550 Mo/s)."}, en:{q:"What throughput does an NVMe (M.2) SSD typically reach?", o:["100 MB/s","550 MB/s","3 to 14 GB/s"], x:"NVMe uses the PCIe bus and far exceeds SATA (550 MB/s)."}},
+    {a:1, fr:{q:"Quel est un bootloader courant sous Linux ?", o:["NTLDR","GRUB","Explorer"], x:"GRUB charge le noyau Linux ; Windows utilise le Windows Boot Manager."}, en:{q:"What is a common bootloader on Linux?", o:["NTLDR","GRUB","Explorer"], x:"GRUB loads the Linux kernel; Windows uses the Windows Boot Manager."}},
+    {a:1, fr:{q:"Le raccourci Win + E ouvre :", o:["L'invite cmd","L'Explorateur de fichiers","Le Bloc-notes"], x:"Win + E ouvre l'Explorateur Windows."}, en:{q:"The Win + E shortcut opens:", o:["The cmd prompt","File Explorer","Notepad"], x:"Win + E opens Windows File Explorer."}},
+    {a:1, fr:{q:"Que signifie GUI ?", o:["General User Interface","Graphical User Interface","Group User Internet"], x:"GUI = Graphical User Interface (interface graphique)."}, en:{q:"What does GUI mean?", o:["General User Interface","Graphical User Interface","Group User Internet"], x:"GUI = Graphical User Interface."}},
+    {a:1, fr:{q:"Pour renommer un fichier sélectionné dans Windows :", o:["F1","F2","F5"], x:"F2 renomme l'élément sélectionné ; F5 rafraîchit."}, en:{q:"To rename a selected file in Windows:", o:["F1","F2","F5"], x:"F2 renames the selected item; F5 refreshes."}},
+    {a:1, fr:{q:"Quel est le premier paramètre à régler après installation d'un SE ?", o:["Le fond d'écran","La région, la langue et l'heure","Le navigateur par défaut"], x:"Région, langue, fuseau et heure conditionnent logs, certificats et clavier."}, en:{q:"What is the first setting to configure after installing an OS?", o:["The wallpaper","Region, language and time","The default browser"], x:"Region, language, time zone and clock affect logs, certificates and keyboard."}},
+    {a:0, fr:{q:"Quelle commande UNIX équivaut à cls (DOS) ?", o:["clear","wipe","reset"], x:"clear nettoie l'écran du terminal sous UNIX/Linux."}, en:{q:"Which UNIX command is the equivalent of cls (DOS)?", o:["clear","wipe","reset"], x:"clear wipes the terminal screen on UNIX/Linux."}}
+    ];
+    </script>
 
     <div class="pager">
       <a href="chapitre-1.html"><span><span class="fr">Chapitre précédent</span><span class="en">Previous</span></span><b><span class="fr">I · Composantes</span><span class="en">I · Components</span></b></a>
