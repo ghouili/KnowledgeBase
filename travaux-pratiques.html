@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travaux Pratiques (TP) | Systèmes d'exploitation — Ghouili Walid</title>
+<meta name="description" content="Travaux pratiques guidés du module : inventaire matériel, installation d'un SE, périphériques, logiciels. Objectifs, étapes, astuces, livrables et barème.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232d4a8a'/><text x='50' y='68' font-size='52' font-family='Georgia' fill='white' text-anchor='middle' font-weight='600'>SE</text></svg>">
+<style>
+  .tp-card { background: var(--bg-elev); border: 1px solid var(--line); border-left: 4px solid var(--brand); border-radius: var(--radius); padding: 24px 26px; margin: 0 0 24px; }
+  .tp-card > .tp-tag { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); }
+  .tp-card h3 { margin: 4px 0 0; font-size: 1.25rem; }
+  .tp-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 4px; }
+  .tp-block { margin: 18px 0 0; }
+  .tp-block > h4 { font-family: var(--sans); font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-faint); margin: 0 0 8px; }
+  .tp-block ol, .tp-block ul { margin: 0; padding-left: 22px; }
+  .tp-block li { margin-bottom: 8px; color: var(--ink-soft); }
+  .tip { background: color-mix(in srgb, var(--info) 10%, transparent); border-left: 3px solid var(--info); border-radius: 8px; padding: 10px 14px; margin: 10px 0; font-size: .9rem; color: var(--ink-soft); }
+  .tip b { color: var(--ink); }
+  .bareme { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top: 6px; }
+  .bareme td { padding: 7px 12px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+  .bareme tr:last-child td { border-bottom: 0; }
+  .bareme td:last-child { text-align: right; font-weight: 700; color: var(--brand-2); white-space: nowrap; }
+  .bareme tr.total td { border-top: 2px solid var(--line-strong); color: var(--ink); font-weight: 700; }
+  .ch-head { display: flex; align-items: center; gap: 14px; margin: 8px 0 22px; padding-top: 8px; }
+  .ch-head .rom { font-family: var(--serif); font-size: 2rem; font-weight: 600; color: color-mix(in srgb, var(--brand) 32%, transparent); line-height: 1; }
+  .ch-head h2 { margin: 0; border: 0; padding: 0; }
+  @media (max-width: 480px){ .tp-card { padding: 18px; } }
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner">
+  <a href="index.html" class="brand-logo"><span class="brand-mark">SE</span><span>Systèmes d'exploitation<span class="brand-sub">Ghouili Walid · IMSET</span></span></a>
+  <nav class="nav">
+    <a href="index.html"><span class="fr">Accueil</span><span class="en">Home</span></a>
+    <a href="chapitre-1.html">Chap. I</a><a href="chapitre-2.html">Chap. II</a><a href="chapitre-3.html">Chap. III</a><a href="chapitre-4.html">Chap. IV</a>
+    <a href="travaux-pratiques.html" class="active">TP</a>
+    <a href="glossaire.html"><span class="fr">Glossaire</span><span class="en">Glossary</span></a><a href="ressources.html"><span class="fr">Ressources</span><span class="en">Resources</span></a>
+  </nav>
+  <div class="lang-toggle"><button data-lang-btn="fr">FR</button><button data-lang-btn="en">EN</button></div>
+  <button class="toolbtn" data-theme-toggle>☾</button><button class="toolbtn menu-btn" data-menu>☰</button>
+</div></header>
+
+<div class="lesson-head"><div class="wrap">
+  <span class="eyebrow"><span class="fr">Travaux Pratiques</span><span class="en">Hands-on Labs</span></span>
+  <h1><span class="fr">Travaux Pratiques (TP) du module</span><span class="en">Module practical labs</span></h1>
+  <p class="lead" style="max-width:62ch"><span class="fr">Douze TP guidés, alignés sur les quatre chapitres : chaque TP fournit un objectif, le matériel requis, des étapes pas à pas avec astuces, un livrable et un barème.</span><span class="en">Twelve guided labs aligned with the four chapters: each lab gives an objective, the required materials, step-by-step instructions with tips, a deliverable and a grading scale.</span></p>
+  <div class="hero-meta">
+    <span class="chip">12 TP</span>
+    <span class="chip"><span class="fr">Livrable + barème</span><span class="en">Deliverable + rubric</span></span>
+    <span class="chip"><span class="fr">FR / EN</span><span class="en">FR / EN</span></span>
+  </div>
+</div></div>
+
+<div class="wrap"><div class="lesson-layout">
+  <aside class="toc">
+    <h4><span class="fr">Sur cette page</span><span class="en">On this page</span></h4>
+    <a href="#guide"><span class="fr">Méthode générale</span><span class="en">General method</span></a>
+    <a href="#tp-ch1"><span class="fr">Chap. I · Composantes</span><span class="en">Ch. I · Components</span></a>
+    <a href="#tp-ch2"><span class="fr">Chap. II · SE</span><span class="en">Ch. II · OS</span></a>
+    <a href="#tp-ch3"><span class="fr">Chap. III · Périphériques</span><span class="en">Ch. III · Peripherals</span></a>
+    <a href="#tp-ch4"><span class="fr">Chap. IV · Logiciels</span><span class="en">Ch. IV · Software</span></a>
+  </aside>
+
+  <article class="lesson-body">
+
+    <h2 id="guide"><span class="fr">Comment aborder un TP</span><span class="en">How to approach a lab</span></h2>
+    <p><span class="fr">Chaque TP suit la même logique professionnelle : on prépare, on agit avec méthode, on teste, puis on documente. Lisez l'objectif et le barème <strong>avant</strong> de commencer.</span><span class="en">Every lab follows the same professional logic: prepare, act methodically, test, then document. Read the objective and rubric <strong>before</strong> starting.</span></p>
+    <div class="callout callout-key"><span class="fr"><b>Règles d'or :</b> ① Sécurité d'abord (alimentation débranchée, bracelet antistatique pour le matériel ; instantané/point de restauration pour le logiciel). ② Une action à la fois. ③ Notez tout (commande, version, capture). ④ Le <b>livrable</b> est obligatoire pour la notation.</span><span class="en"><b>Golden rules:</b> ① Safety first (power unplugged, anti-static strap for hardware; snapshot/restore point for software). ② One change at a time. ③ Record everything (command, version, screenshot). ④ The <b>deliverable</b> is required for grading.</span></div>
+    <div class="tip"><span class="fr"><b>Astuce de rendu :</b> nommez votre livrable <code>TP&lt;n&gt;_Nom_Prenom.pdf</code> et datez chaque capture d'écran. Un travail tracé est un travail crédible.</span><span class="en"><b>Submission tip:</b> name your deliverable <code>Lab&lt;n&gt;_Last_First.pdf</code> and date every screenshot. Traceable work is credible work.</span></div>
+
+    <div class="ch-head" id="tp-ch1"><span class="rom">I</span><h2><span class="fr">Chapitre I — Caractéristiques des composantes</span><span class="en">Chapter I — Characteristics of components</span></h2></div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 1.1</span>
+      <h3><span class="fr">Inventaire matériel sans démontage</span><span class="en">Hardware inventory without disassembly</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 1 h</span><span class="chip"><span class="fr">Individuel</span><span class="en">Solo</span></span><span class="chip"><span class="fr">Débutant</span><span class="en">Beginner</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Identifier les caractéristiques réelles de votre PC (CPU, RAM, disque, GPU) à l'aide des outils du système.</span><span class="en">Identify your PC's real specs (CPU, RAM, disk, GPU) using built-in tools.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Matériel / prérequis</span><span class="en">Materials / prerequisites</span></h4><p><span class="fr">Un PC sous Windows ou Linux. Aucun démontage.</span><span class="en">A Windows or Linux PC. No disassembly.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr">Ouvrez les infos système : <b>Windows</b> → <code>Paramètres → Système → À propos</code>, ou <code>Win + R</code> puis <code>msinfo32</code>.</span><span class="en">Open system info: <b>Windows</b> → <code>Settings → System → About</code>, or <code>Win + R</code> then <code>msinfo32</code>.</span></li>
+          <li><span class="fr">Relevez le <b>CPU</b> (modèle, fréquence, nombre de cœurs) et la <b>RAM</b> (quantité et type DDR).</span><span class="en">Note the <b>CPU</b> (model, clock, cores) and <b>RAM</b> (amount and DDR type).</span></li>
+          <li><span class="fr">Identifiez le <b>disque</b> (HDD/SSD, capacité) et le <b>GPU</b>.</span><span class="en">Identify the <b>disk</b> (HDD/SSD, capacity) and the <b>GPU</b>.</span></li>
+          <li><span class="fr">Vérifiez en ligne de commande puis comparez.</span><span class="en">Verify on the command line, then compare.</span></li>
+        </ol>
+        <pre><code><span class="cmt"># Windows (cmd / PowerShell)</span>
+wmic cpu get name,NumberOfCores,MaxClockSpeed
+wmic memorychip get Capacity,Speed,MemoryType
+wmic diskdrive get Model,Size
+
+<span class="cmt"># Linux</span>
+lscpu | grep -E "Model name|CPU\(s\)"
+free -h
+lsblk -d -o NAME,SIZE,ROTA   <span class="cmt"># ROTA=1 HDD, 0 SSD</span></code></pre>
+        <div class="tip"><span class="fr"><b>Astuce :</b> sous Windows, des outils gratuits comme <b>CPU-Z</b> ou <b>Speccy</b> donnent le type exact de RAM (DDR3/4/5) et la fréquence réelle.</span><span class="en"><b>Tip:</b> on Windows, free tools like <b>CPU-Z</b> or <b>Speccy</b> reveal the exact RAM type (DDR3/4/5) and real frequency.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">Une fiche d'inventaire (tableau) avec captures à l'appui.</span><span class="en">An inventory sheet (table) backed by screenshots.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">CPU correctement relevé</span><span class="en">CPU correctly reported</span></td><td>5</td></tr>
+          <tr><td><span class="fr">RAM (quantité + type)</span><span class="en">RAM (amount + type)</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Disque + GPU</span><span class="en">Disk + GPU</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Captures / présentation</span><span class="en">Screenshots / presentation</span></td><td>5</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 1.2</span>
+      <h3><span class="fr">Démontage / remontage en sécurité</span><span class="en">Safe disassembly / reassembly</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 2 h</span><span class="chip"><span class="fr">Binôme</span><span class="en">Pairs</span></span><span class="chip"><span class="fr">Pratique</span><span class="en">Hands-on</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Démonter puis remonter une unité centrale en respectant les règles de sécurité, et identifier visuellement les composants.</span><span class="en">Disassemble then reassemble a desktop unit following safety rules, and visually identify the components.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Matériel / prérequis</span><span class="en">Materials / prerequisites</span></h4><p><span class="fr">Unité centrale d'atelier, tournevis cruciforme, bracelet antistatique, plan de travail dégagé.</span><span class="en">A lab desktop unit, Phillips screwdriver, anti-static wrist strap, clear workspace.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr"><b>Sécurité :</b> éteindre, débrancher l'alimentation, attendre 30 s, mettre le bracelet antistatique relié au châssis.</span><span class="en"><b>Safety:</b> power off, unplug, wait 30 s, put on the anti-static strap clipped to the chassis.</span></li>
+          <li><span class="fr">Ouvrir le panneau latéral. Photographier l'intérieur <b>avant</b> toute manipulation (référence pour le remontage).</span><span class="en">Open the side panel. Photograph the inside <b>before</b> touching anything (reference for reassembly).</span></li>
+          <li><span class="fr">Repérer et déposer : barrette(s) de RAM (clips), disque (SSD/HDD), une carte d'extension (PCIe).</span><span class="en">Locate and remove: RAM stick(s) (clips), drive (SSD/HDD), one expansion card (PCIe).</span></li>
+          <li><span class="fr">Identifier sans les déposer : socket CPU, chipset, ports SATA, slot M.2, connecteurs d'alimentation.</span><span class="en">Identify without removing: CPU socket, chipset, SATA ports, M.2 slot, power connectors.</span></li>
+          <li><span class="fr">Remonter dans l'ordre inverse, refermer, rebrancher, démarrer et vérifier le POST.</span><span class="en">Reassemble in reverse order, close, reconnect, boot and check the POST.</span></li>
+        </ol>
+        <div class="tip"><span class="fr"><b>⚠ Sécurité :</b> ne jamais forcer une barrette ou une carte ; manipuler la RAM par les bords ; ne pas toucher les contacts dorés.</span><span class="en"><b>⚠ Safety:</b> never force a stick or card; hold RAM by the edges; don't touch the gold contacts.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">Photos annotées des composants + checklist de sécurité cochée + confirmation que le PC redémarre.</span><span class="en">Annotated component photos + a ticked safety checklist + confirmation the PC reboots.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">Respect des règles de sécurité</span><span class="en">Safety rules followed</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Identification des composants</span><span class="en">Component identification</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Remontage fonctionnel (POST OK)</span><span class="en">Working reassembly (POST OK)</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Qualité des photos annotées</span><span class="en">Quality of annotated photos</span></td><td>3</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 1.3</span>
+      <h3><span class="fr">Choix d'achat &amp; comparatif</span><span class="en">Purchase decision &amp; comparison</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 1 h</span><span class="chip"><span class="fr">Binôme</span><span class="en">Pairs</span></span><span class="chip"><span class="fr">Recherche</span><span class="en">Research</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Configurer un PC bureautique à 600 € en justifiant chaque choix et la compatibilité socket / génération DDR.</span><span class="en">Spec a €600 office PC, justifying each choice and the socket / DDR-generation compatibility.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr">Choisir CPU + carte mère <b>compatibles</b> (même socket : LGA 1700, AM5…).</span><span class="en">Pick a <b>compatible</b> CPU + motherboard (same socket: LGA 1700, AM5…).</span></li>
+          <li><span class="fr">Choisir la RAM selon la génération supportée (DDR4 ou DDR5) par la carte ET le CPU.</span><span class="en">Choose RAM matching the generation (DDR4 or DDR5) supported by both board and CPU.</span></li>
+          <li><span class="fr">Ajouter SSD, écran, clavier-souris en respectant le budget.</span><span class="en">Add SSD, screen, keyboard-mouse within budget.</span></li>
+          <li><span class="fr">Justifier le rapport qualité/prix de chaque poste.</span><span class="en">Justify the value-for-money of each item.</span></li>
+        </ol>
+        <div class="tip"><span class="fr"><b>Astuce :</b> vérifiez la liste de compatibilité (QVL) de la carte mère et le « supported CPU list » du fabricant avant de valider.</span><span class="en"><b>Tip:</b> check the motherboard's compatibility list (QVL) and the maker's "supported CPU list" before finalising.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">Tableau comparatif (composant · modèle · prix · justification), total ≤ 600 €.</span><span class="en">Comparison table (component · model · price · rationale), total ≤ €600.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">Compatibilité socket + DDR</span><span class="en">Socket + DDR compatibility</span></td><td>7</td></tr>
+          <tr><td><span class="fr">Respect du budget</span><span class="en">Budget respected</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Justifications des choix</span><span class="en">Rationale for choices</span></td><td>8</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="ch-head" id="tp-ch2"><span class="rom">II</span><h2><span class="fr">Chapitre II — Mise en marche &amp; configuration du SE</span><span class="en">Chapter II — Boot-up &amp; OS configuration</span></h2></div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 2.1</span>
+      <h3><span class="fr">Exploration du BIOS / UEFI</span><span class="en">Exploring the BIOS / UEFI</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 1 h</span><span class="chip"><span class="fr">Individuel</span><span class="en">Solo</span></span><span class="chip"><span class="fr">Débutant</span><span class="en">Beginner</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Accéder au firmware d'amorçage et repérer les réglages clés (ordre de boot, virtualisation, Secure Boot, heure).</span><span class="en">Access the boot firmware and locate the key settings (boot order, virtualisation, Secure Boot, time).</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr">Redémarrer et appuyer sur la touche du firmware : <code>F2</code>, <code>F10</code>, <code>F12</code> ou <code>Suppr</code> selon le constructeur.</span><span class="en">Reboot and press the firmware key: <code>F2</code>, <code>F10</code>, <code>F12</code> or <code>Del</code> depending on the maker.</span></li>
+          <li><span class="fr">Localiser l'<b>ordre de démarrage</b> (Boot Order) et noter le 1er périphérique amorçable.</span><span class="en">Find the <b>Boot Order</b> and note the first bootable device.</span></li>
+          <li><span class="fr">Repérer la <b>virtualisation</b> (Intel VT-x / AMD-V) — utile pour le TP 2.2.</span><span class="en">Locate <b>virtualisation</b> (Intel VT-x / AMD-V) — needed for Lab 2.2.</span></li>
+          <li><span class="fr">Observer <b>Secure Boot</b>, le mode <b>UEFI vs Legacy</b>, et l'<b>heure</b> (pile CMOS).</span><span class="en">Observe <b>Secure Boot</b>, <b>UEFI vs Legacy</b> mode, and the <b>time</b> (CMOS battery).</span></li>
+          <li><span class="fr">Quitter <b>sans enregistrer</b> (Exit without saving) si vous n'aviez rien à changer.</span><span class="en">Exit <b>without saving</b> if you had nothing to change.</span></li>
+        </ol>
+        <div class="tip"><span class="fr"><b>⚠ Prudence :</b> ne modifiez pas l'ordre de boot ou Secure Boot sur un poste de production sans consigne. En cas de doute, quittez sans enregistrer.</span><span class="en"><b>⚠ Caution:</b> don't change boot order or Secure Boot on a production machine without instruction. When in doubt, exit without saving.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">Relevé des réglages (photo de l'écran autorisée) : ordre de boot, état VT-x/Secure Boot, heure.</span><span class="en">A record of the settings (screen photo allowed): boot order, VT-x/Secure Boot status, time.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">Accès au firmware réussi</span><span class="en">Firmware access achieved</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Boot order + 1er périphérique</span><span class="en">Boot order + first device</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Virtualisation + Secure Boot relevés</span><span class="en">Virtualisation + Secure Boot reported</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Sortie propre (sans casse)</span><span class="en">Clean exit (no damage)</span></td><td>4</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 2.2</span>
+      <h3><span class="fr">Installation d'un SE en machine virtuelle</span><span class="en">Installing an OS in a virtual machine</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 2 h</span><span class="chip"><span class="fr">Binôme</span><span class="en">Pairs</span></span><span class="chip"><span class="fr">Pratique</span><span class="en">Hands-on</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Installer Ubuntu 24.04 (ou Windows) dans VirtualBox et le configurer pour un usage spécifique.</span><span class="en">Install Ubuntu 24.04 (or Windows) in VirtualBox and configure it for a specific use.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Matériel / prérequis</span><span class="en">Materials / prerequisites</span></h4><p><span class="fr">VirtualBox installé, fichier ISO, virtualisation activée dans le BIOS (TP 2.1).</span><span class="en">VirtualBox installed, an ISO file, virtualisation enabled in the BIOS (Lab 2.1).</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr">Créer la VM : Linux / Ubuntu 64-bit, <b>4096 Mo</b> RAM, <b>2 CPU</b>, disque <b>25 Go</b> ; décocher l'installation « unattended ».</span><span class="en">Create the VM: Linux / Ubuntu 64-bit, <b>4096 MB</b> RAM, <b>2 CPU</b>, <b>25 GB</b> disk; uncheck "unattended" install.</span></li>
+          <li><span class="fr">Démarrer sur l'ISO, suivre l'installeur : langue, clavier AZERTY, fuseau Africa/Tunis, compte + mot de passe fort.</span><span class="en">Boot from the ISO, follow the installer: language, AZERTY keyboard, Africa/Tunis time zone, account + strong password.</span></li>
+          <li><span class="fr">Première connexion puis configuration post-installation.</span><span class="en">First login then post-install configuration.</span></li>
+        </ol>
+        <pre><code><span class="cmt"># Post-installation Ubuntu</span>
+sudo apt update &amp;&amp; sudo apt upgrade -y
+sudo apt install -y git curl vim htop tree
+timedatectl set-timezone Africa/Tunis
+<span class="cmt"># Apparence : mode sombre, fond d'écran, raccourcis</span></code></pre>
+        <div class="tip"><span class="fr"><b>Astuce :</b> prenez un <b>instantané (snapshot)</b> de la VM juste après l'installation. Vous pourrez revenir en arrière en un clic si un TP suivant casse quelque chose.</span><span class="en"><b>Tip:</b> take a VM <b>snapshot</b> right after install. You can roll back in one click if a later lab breaks something.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">VM démarrant sur le bureau + rapport court (étapes, choix de config, capture du <code>uname -a</code> ou « À propos »).</span><span class="en">A VM booting to the desktop + a short report (steps, config choices, screenshot of <code>uname -a</code> or "About").</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">VM créée correctement</span><span class="en">VM created correctly</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Installation aboutie</span><span class="en">Installation completed</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Post-config (MAJ, fuseau, outils)</span><span class="en">Post-config (updates, time zone, tools)</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Rapport</span><span class="en">Report</span></td><td>4</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 2.3</span>
+      <h3><span class="fr">Gestion de fichiers en ligne de commande (DOS &amp; Bash)</span><span class="en">File management on the command line (DOS &amp; Bash)</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 1 h 30</span><span class="chip"><span class="fr">Individuel</span><span class="en">Solo</span></span><span class="chip"><span class="fr">Pratique</span><span class="en">Hands-on</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Reproduire et manipuler une arborescence de fichiers en DOS puis en Bash, et établir l'équivalence des commandes.</span><span class="en">Reproduce and manipulate a file tree in DOS then Bash, and map the command equivalences.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr">Créer l'arborescence <code>Cours/TP/Notes</code>, y créer des fichiers, en copier, déplacer, renommer puis supprimer.</span><span class="en">Create the tree <code>Cours/TP/Notes</code>, create files in it, copy, move, rename then delete them.</span></li>
+          <li><span class="fr">Réaliser les mêmes opérations dans les deux environnements et noter chaque commande.</span><span class="en">Perform the same operations in both environments and record each command.</span></li>
+          <li><span class="fr">Afficher l'arborescence finale (<code>tree</code> / <code>ls -R</code>).</span><span class="en">Show the final tree (<code>tree</code> / <code>ls -R</code>).</span></li>
+        </ol>
+        <pre><code><span class="cmt"># DOS (cmd)</span>
+md Cours\TP\Notes
+echo cours &gt; Cours\TP\notes.txt
+copy Cours\TP\notes.txt Cours\TP\Notes\copie.txt
+move Cours\TP\Notes\copie.txt Cours\
+ren Cours\copie.txt final.txt
+tree /F
+
+<span class="cmt"># Bash (Linux)</span>
+mkdir -p Cours/TP/Notes
+echo cours &gt; Cours/TP/notes.txt
+cp Cours/TP/notes.txt Cours/TP/Notes/copie.txt
+mv Cours/TP/Notes/copie.txt Cours/
+mv Cours/copie.txt Cours/final.txt
+ls -R Cours</code></pre>
+        <div class="tip"><span class="fr"><b>Astuce :</b> dressez un tableau d'équivalence DOS ↔ UNIX (<code>dir/ls</code>, <code>copy/cp</code>, <code>move/mv</code>, <code>del/rm</code>, <code>type/cat</code>, <code>cls/clear</code>). Il vous resservira toute votre carrière.</span><span class="en"><b>Tip:</b> build a DOS ↔ UNIX equivalence table (<code>dir/ls</code>, <code>copy/cp</code>, <code>move/mv</code>, <code>del/rm</code>, <code>type/cat</code>, <code>cls/clear</code>). It will serve you your whole career.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">Journal des commandes (DOS + Bash) + tableau d'équivalence + capture de l'arborescence finale.</span><span class="en">A command log (DOS + Bash) + equivalence table + screenshot of the final tree.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">Opérations DOS correctes</span><span class="en">Correct DOS operations</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Opérations Bash correctes</span><span class="en">Correct Bash operations</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Tableau d'équivalence</span><span class="en">Equivalence table</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Présentation du journal</span><span class="en">Log presentation</span></td><td>3</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="ch-head" id="tp-ch3"><span class="rom">III</span><h2><span class="fr">Chapitre III — Configuration d'un périphérique</span><span class="en">Chapter III — Configuring a peripheral</span></h2></div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 3.1</span>
+      <h3><span class="fr">Installation d'une imprimante réseau (méthode 7 étapes)</span><span class="en">Installing a network printer (7-step method)</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 1 h 30</span><span class="chip"><span class="fr">Binôme</span><span class="en">Pairs</span></span><span class="chip"><span class="fr">Pratique</span><span class="en">Hands-on</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Installer et configurer une imprimante réseau de A à Z en appliquant la méthode en 7 étapes.</span><span class="en">Install and configure a network printer end-to-end using the 7-step method.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Matériel / prérequis</span><span class="en">Materials / prerequisites</span></h4><p><span class="fr">Imprimante réseau (ou simulée), accès au réseau, droits administrateur.</span><span class="en">A network printer (or simulated), network access, administrator rights.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr"><b>Préparation :</b> récupérer le manuel + le pilote officiel sur le site du constructeur.</span><span class="en"><b>Preparation:</b> get the manual + official driver from the maker's site.</span></li>
+          <li><span class="fr"><b>Sauvegarde :</b> créer un point de restauration.</span><span class="en"><b>Backup:</b> create a restore point.</span></li>
+          <li><span class="fr"><b>Connexion :</b> brancher l'imprimante au réseau, l'allumer, imprimer la page de config pour relever l'<b>adresse IP</b>.</span><span class="en"><b>Connection:</b> connect the printer to the network, power it on, print the config page to read the <b>IP address</b>.</span></li>
+          <li><span class="fr"><b>Détection / pilote :</b> ajouter l'imprimante par son IP, puis installer le pilote.</span><span class="en"><b>Detection / driver:</b> add the printer by its IP, then install the driver.</span></li>
+          <li><span class="fr"><b>Configuration :</b> A4, recto-verso, mode économie ; <b>test :</b> imprimer une page de test.</span><span class="en"><b>Configuration:</b> A4, duplex, eco mode; <b>test:</b> print a test page.</span></li>
+        </ol>
+        <pre><code><span class="cmt"># Windows : Paramètres → Imprimantes → Ajouter → adresse IP</span>
+<span class="cmt"># Linux :</span> http://localhost:631  → Add Printer → IPP
+sudo apt install hplip hplip-gui
+hp-setup -i</code></pre>
+        <div class="tip"><span class="fr"><b>Astuce :</b> notez l'IP en <b>statique</b> (ou réservez-la sur le routeur). Une IP qui change est la cause n°1 du message « imprimante hors ligne ».</span><span class="en"><b>Tip:</b> set the IP as <b>static</b> (or reserve it on the router). A changing IP is the #1 cause of the "printer offline" message.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">Page de test imprimée + fiche procédure (modèle, IP, version pilote, options retenues).</span><span class="en">A printed test page + a procedure sheet (model, IP, driver version, chosen options).</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">Méthode 7 étapes suivie</span><span class="en">7-step method followed</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Pilote installé + IP correcte</span><span class="en">Driver installed + correct IP</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Page de test réussie</span><span class="en">Successful test page</span></td><td>4</td></tr>
+          <tr><td><span class="fr">Fiche procédure documentée</span><span class="en">Documented procedure sheet</span></td><td>4</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 3.2</span>
+      <h3><span class="fr">Lecture &amp; décodage d'une documentation technique</span><span class="en">Reading &amp; decoding a technical datasheet</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 1 h</span><span class="chip"><span class="fr">Individuel</span><span class="en">Solo</span></span><span class="chip"><span class="fr">Analyse</span><span class="en">Analysis</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Extraire les informations clés d'une fiche technique réelle et vérifier la compatibilité avec un poste donné.</span><span class="en">Extract the key information from a real datasheet and verify compatibility with a given workstation.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr">Télécharger la fiche d'un périphérique (ex. imprimante HP LaserJet) sur le site officiel.</span><span class="en">Download a device datasheet (e.g. HP LaserJet) from the official site.</span></li>
+          <li><span class="fr">Relever : technologie, vitesse (ppm), résolution (dpi), connectique, mémoire, alimentation, <b>config minimale requise</b>.</span><span class="en">Note: technology, speed (ppm), resolution (dpi), connectivity, memory, power, <b>minimum requirements</b>.</span></li>
+          <li><span class="fr">Comparer la config minimale au poste cible (SE, port, RAM) et conclure : compatible ou non.</span><span class="en">Compare the minimum requirements to the target machine (OS, port, RAM) and conclude: compatible or not.</span></li>
+        </ol>
+        <div class="tip"><span class="fr"><b>Astuce :</b> commencez toujours par la <b>table des matières</b> et la section « system requirements ». Inutile de lire tout le manuel pour décider.</span><span class="en"><b>Tip:</b> always start with the <b>table of contents</b> and the "system requirements" section. No need to read the whole manual to decide.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">Grille de décodage remplie + verdict de compatibilité argumenté.</span><span class="en">A completed decoding grid + an argued compatibility verdict.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">Spécifications correctement extraites</span><span class="en">Specs correctly extracted</span></td><td>8</td></tr>
+          <tr><td><span class="fr">Vérification config minimale</span><span class="en">Minimum-requirements check</span></td><td>7</td></tr>
+          <tr><td><span class="fr">Conclusion argumentée</span><span class="en">Argued conclusion</span></td><td>5</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 3.3</span>
+      <h3><span class="fr">Diagnostic d'une panne de périphérique</span><span class="en">Diagnosing a peripheral fault</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 1 h 30</span><span class="chip"><span class="fr">Binôme</span><span class="en">Pairs</span></span><span class="chip"><span class="fr">Pratique</span><span class="en">Hands-on</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Appliquer la démarche de diagnostic en 5 temps pour identifier et résoudre un problème de périphérique.</span><span class="en">Apply the 5-step diagnostic process to identify and fix a peripheral problem.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr">Provoquer/observer un cas : pilote désinstallé, câble débranché, ou périphérique non détecté.</span><span class="en">Create/observe a case: uninstalled driver, unplugged cable, or undetected device.</span></li>
+          <li><span class="fr"><b>Reproduire</b> le problème de façon fiable, puis <b>isoler</b> (autre port, autre câble, autre PC).</span><span class="en"><b>Reproduce</b> the issue reliably, then <b>isolate</b> (another port, cable, PC).</span></li>
+          <li><span class="fr"><b>Consulter les logs</b>, identifier l'erreur, tester <b>une seule</b> solution à la fois.</span><span class="en"><b>Check the logs</b>, identify the error, test <b>one</b> fix at a time.</span></li>
+        </ol>
+        <pre><code><span class="cmt"># Windows</span>
+devmgmt.msc        <span class="cmt"># Gestionnaire de périphériques (triangle jaune ?)</span>
+eventvwr           <span class="cmt"># Observateur d'événements</span>
+
+<span class="cmt"># Linux</span>
+lsusb ; lspci      <span class="cmt"># périphériques détectés ?</span>
+dmesg | tail -20   <span class="cmt"># derniers messages du noyau</span></code></pre>
+        <div class="tip"><span class="fr"><b>Astuce :</b> ne testez jamais plusieurs solutions en même temps — sinon vous ne saurez pas laquelle a réellement réglé le problème.</span><span class="en"><b>Tip:</b> never test several fixes at once — otherwise you won't know which one actually solved it.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">Compte-rendu : symptôme → cause identifiée → solution appliquée → vérification.</span><span class="en">A report: symptom → identified cause → applied fix → verification.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">Reproduction + isolation</span><span class="en">Reproduction + isolation</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Lecture des logs / outils</span><span class="en">Log reading / tools</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Résolution effective</span><span class="en">Effective resolution</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Compte-rendu</span><span class="en">Report</span></td><td>3</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="ch-head" id="tp-ch4"><span class="rom">IV</span><h2><span class="fr">Chapitre IV — Interprétation &amp; installation des logiciels</span><span class="en">Chapter IV — Interpreting &amp; installing software</span></h2></div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 4.1</span>
+      <h3><span class="fr">Installation sécurisée (méthode 8 étapes)</span><span class="en">Secure installation (8-step method)</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 1 h 30</span><span class="chip"><span class="fr">Binôme</span><span class="en">Pairs</span></span><span class="chip"><span class="fr">Pratique</span><span class="en">Hands-on</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Installer Visual Studio Code en respectant la méthode 8 étapes, dont la vérification d'intégrité par hash.</span><span class="en">Install Visual Studio Code following the 8-step method, including integrity verification via hash.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr">Lire les prérequis sur <code>code.visualstudio.com</code> puis vérifier sa config (<code>msinfo32</code> / <code>lscpu</code>).</span><span class="en">Read the requirements on <code>code.visualstudio.com</code> then check your specs (<code>msinfo32</code> / <code>lscpu</code>).</span></li>
+          <li><span class="fr">Télécharger depuis la <b>source officielle</b> uniquement.</span><span class="en">Download from the <b>official source</b> only.</span></li>
+          <li><span class="fr">Vérifier le <b>hash SHA-256</b> et le comparer à la valeur publiée.</span><span class="en">Verify the <b>SHA-256 hash</b> and compare it to the published value.</span></li>
+          <li><span class="fr">Créer un point de restauration, installer (en admin), puis configurer (extensions, thème).</span><span class="en">Create a restore point, install (as admin), then configure (extensions, theme).</span></li>
+          <li><span class="fr">Tester avec un fichier <code>test.py</code> et documenter version + date.</span><span class="en">Test with a <code>test.py</code> file and document version + date.</span></li>
+        </ol>
+        <pre><code><span class="cmt"># Vérifier l'intégrité</span>
+certutil -hashfile VSCodeSetup.exe SHA256   <span class="cmt"># Windows</span>
+sha256sum code_amd64.deb                      <span class="cmt"># Linux</span>
+<span class="cmt"># Installer (Linux)</span>
+sudo dpkg -i code_amd64.deb   <span class="cmt"># ou : sudo snap install code --classic</span></code></pre>
+        <div class="tip"><span class="fr"><b>Astuce :</b> si le hash ne correspond pas, <b>n'installez pas</b> — le fichier est corrompu ou altéré. Re-téléchargez depuis la source officielle.</span><span class="en"><b>Tip:</b> if the hash doesn't match, <b>do not install</b> — the file is corrupt or tampered with. Re-download from the official source.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">Capture du hash vérifié + application installée et configurée + fiche (version, date, options).</span><span class="en">Screenshot of the verified hash + installed &amp; configured app + a sheet (version, date, options).</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">Source officielle + prérequis</span><span class="en">Official source + requirements</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Vérification du hash</span><span class="en">Hash verification</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Installation + configuration</span><span class="en">Installation + configuration</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Documentation</span><span class="en">Documentation</span></td><td>3</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 4.2</span>
+      <h3><span class="fr">Gestionnaires de paquets (winget &amp; apt/snap/flatpak)</span><span class="en">Package managers (winget &amp; apt/snap/flatpak)</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 1 h 30</span><span class="chip"><span class="fr">Individuel</span><span class="en">Solo</span></span><span class="chip"><span class="fr">Pratique</span><span class="en">Hands-on</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Installer, mettre à jour et désinstaller un logiciel via les gestionnaires de paquets, et comparer les méthodes.</span><span class="en">Install, update and uninstall software via package managers, and compare the methods.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr">Sous Windows : rechercher, installer, mettre à jour puis désinstaller avec <code>winget</code>.</span><span class="en">On Windows: search, install, update then uninstall with <code>winget</code>.</span></li>
+          <li><span class="fr">Sous Linux : faire de même avec <code>apt</code>, puis tester <code>snap</code> ou <code>flatpak</code>.</span><span class="en">On Linux: do the same with <code>apt</code>, then try <code>snap</code> or <code>flatpak</code>.</span></li>
+          <li><span class="fr">Comparer rapidité, simplicité et mises à jour.</span><span class="en">Compare speed, simplicity and updates.</span></li>
+        </ol>
+        <pre><code><span class="cmt"># Windows</span>
+winget search firefox
+winget install --id Mozilla.Firefox
+winget upgrade --all
+winget uninstall Firefox
+
+<span class="cmt"># Linux</span>
+sudo apt install vlc &amp;&amp; sudo apt remove vlc
+sudo snap install code --classic
+flatpak install flathub org.gimp.GIMP</code></pre>
+        <div class="tip"><span class="fr"><b>Astuce :</b> un gestionnaire de paquets gère aussi les <b>dépendances</b> et les <b>mises à jour</b> — bien plus sûr que les installeurs téléchargés au hasard.</span><span class="en"><b>Tip:</b> a package manager also handles <b>dependencies</b> and <b>updates</b> — far safer than randomly downloaded installers.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">Tableau comparatif des commandes (installer / MAJ / supprimer) pour chaque gestionnaire.</span><span class="en">A comparison table of commands (install / update / remove) for each manager.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">Cycle complet winget</span><span class="en">Full winget cycle</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Cycle complet apt/snap/flatpak</span><span class="en">Full apt/snap/flatpak cycle</span></td><td>6</td></tr>
+          <tr><td><span class="fr">Tableau comparatif</span><span class="en">Comparison table</span></td><td>5</td></tr>
+          <tr><td><span class="fr">Présentation</span><span class="en">Presentation</span></td><td>3</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="tp-card">
+      <span class="tp-tag">TP 4.3</span>
+      <h3><span class="fr">Licences &amp; versionnage (SemVer)</span><span class="en">Licences &amp; versioning (SemVer)</span></h3>
+      <div class="tp-meta"><span class="chip">⏱ 1 h</span><span class="chip"><span class="fr">Individuel</span><span class="en">Solo</span></span><span class="chip"><span class="fr">Analyse</span><span class="en">Analysis</span></span></div>
+      <div class="tp-block"><h4><span class="fr">Objectif</span><span class="en">Objective</span></h4><p><span class="fr">Classer des logiciels par licence, décoder des numéros de version SemVer et lire un README / CHANGELOG.</span><span class="en">Classify software by licence, decode SemVer version numbers and read a README / CHANGELOG.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Étapes guidées</span><span class="en">Guided steps</span></h4>
+        <ol>
+          <li><span class="fr">Classer 6 logiciels (ex. Linux, Firefox, MS Office, WinRAR, Acrobat Reader, Microsoft 365) par type de licence.</span><span class="en">Classify 6 programs (e.g. Linux, Firefox, MS Office, WinRAR, Acrobat Reader, Microsoft 365) by licence type.</span></li>
+          <li><span class="fr">Décoder 3 versions au format <code>MAJOR.MINOR.PATCH</code> (ex. <code>3.11.4-beta.2</code>).</span><span class="en">Decode 3 versions in <code>MAJOR.MINOR.PATCH</code> format (e.g. <code>3.11.4-beta.2</code>).</span></li>
+          <li><span class="fr">Ouvrir un projet open source (GitHub) et résumer son <code>README</code> et son <code>CHANGELOG</code>.</span><span class="en">Open an open-source project (GitHub) and summarise its <code>README</code> and <code>CHANGELOG</code>.</span></li>
+        </ol>
+        <div class="tip"><span class="fr"><b>Astuce :</b> un changement de <b>MAJOR</b> (2.x → 3.x) annonce des ruptures de compatibilité : lisez toujours le CHANGELOG avant de mettre à jour en production.</span><span class="en"><b>Tip:</b> a <b>MAJOR</b> bump (2.x → 3.x) signals breaking changes: always read the CHANGELOG before upgrading in production.</span></div>
+      </div>
+      <div class="tp-block"><h4><span class="fr">Livrable</span><span class="en">Deliverable</span></h4><p><span class="fr">Tableau de classification des licences + décodage des versions + résumé du README/CHANGELOG.</span><span class="en">A licence classification table + version decoding + README/CHANGELOG summary.</span></p></div>
+      <div class="tp-block"><h4><span class="fr">Barème (/20)</span><span class="en">Rubric (/20)</span></h4>
+        <table class="bareme">
+          <tr><td><span class="fr">Classification des licences</span><span class="en">Licence classification</span></td><td>8</td></tr>
+          <tr><td><span class="fr">Décodage SemVer</span><span class="en">SemVer decoding</span></td><td>7</td></tr>
+          <tr><td><span class="fr">Lecture README/CHANGELOG</span><span class="en">README/CHANGELOG reading</span></td><td>5</td></tr>
+          <tr class="total"><td>Total</td><td>20</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="callout callout-note" style="margin-top:8px"><span class="fr"><b>Pour aller plus loin :</b> chaque TP peut être rendu sous forme d'un mini-rapport unique par chapitre, ou regroupé en un dossier de TP de fin de module. Le total des barèmes par TP est ramené sur 20.</span><span class="en"><b>Going further:</b> each lab can be submitted as a single mini-report per chapter, or bundled into an end-of-module lab portfolio. Each lab's rubric totals to 20.</span></div>
+
+    <div class="pager">
+      <a href="chapitre-4.html"><span><span class="fr">Revoir</span><span class="en">Review</span></span><b><span class="fr">Chapitre IV</span><span class="en">Chapter IV</span></b></a>
+      <a class="next" href="ressources.html"><span><span class="fr">Voir aussi</span><span class="en">See also</span></span><b><span class="fr">Ressources</span><span class="en">Resources</span></b></a>
+    </div>
+
+  </article>
+</div></div>
+
+<footer><div class="wrap"><div class="foot-bottom" style="border:0">
+  <span>© 2025–2026 Ghouili Walid · IMSET</span>
+  <span><a href="index.html"><span class="fr">Retour à l'accueil</span><span class="en">Back to home</span></a></span>
+</div></div></footer>
+<script src="assets/script.js"></script>
+</body>
+</html>
