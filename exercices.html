@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercices d'entraînement | Systèmes d'exploitation — Ghouili Walid</title>
+<meta name="description" content="Banque d'exercices d'entraînement (QCM et questions ouvertes) sur le matériel, le système d'exploitation, les périphériques et les logiciels, avec corrigés à révéler.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232d4a8a'/><text x='50' y='68' font-size='52' font-family='Georgia' fill='white' text-anchor='middle' font-weight='600'>SE</text></svg>">
+<style>
+  .exo { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; margin: 0 0 16px; }
+  .qx-q { font-weight: 600; color: var(--ink); margin: 0 0 10px; }
+  .exo-n { color: var(--brand-2); font-family: var(--serif); font-weight: 600; margin-right: 6px; }
+  .qx-opts { list-style: none; padding: 0; margin: 0 0 4px; display: grid; gap: 6px; }
+  .qx-opts li { padding: 8px 13px; border: 1px solid var(--line); border-radius: 9px; font-size: .92rem; color: var(--ink-soft); background: var(--bg); }
+  .qx-opts li .L { font-weight: 700; color: var(--ink-faint); margin-right: 8px; }
+  details.corrige { border: 1px solid color-mix(in srgb, var(--success) 30%, var(--line)); border-left: 3px solid var(--success); border-radius: 9px; background: color-mix(in srgb, var(--success) 7%, transparent); margin-top: 10px; }
+  details.corrige > summary { cursor: pointer; padding: 9px 14px; font-weight: 600; font-size: .86rem; color: var(--success); list-style: none; display: flex; align-items: center; gap: 8px; }
+  details.corrige > summary::-webkit-details-marker { display: none; }
+  details.corrige > summary::before { content: "✓"; width: 20px; height: 20px; border-radius: 6px; background: var(--success); color: #fff; display: grid; place-items: center; font-size: .72rem; flex: none; }
+  details.corrige[open] > summary { border-bottom: 1px solid color-mix(in srgb, var(--success) 22%, transparent); }
+  .corrige .body { padding: 10px 16px 13px; font-size: .92rem; color: var(--ink-soft); }
+  .corrige .ans { color: var(--ink); font-weight: 700; }
+  .corrige .why { display: block; margin-top: 4px; color: var(--ink-soft); }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 24px; position: sticky; top: 74px; z-index: 5; }
+  .controls .btn { font-size: .86rem; padding: 9px 16px; box-shadow: var(--shadow-sm); }
+  @media (max-width: 480px){ .exo { padding: 16px; } .controls { position: static; } }
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner">
+  <a href="index.html" class="brand-logo"><span class="brand-mark">SE</span><span>Systèmes d'exploitation<span class="brand-sub">Ghouili Walid · IMSET</span></span></a>
+  <nav class="nav">
+    <a href="index.html"><span class="fr">Accueil</span><span class="en">Home</span></a>
+    <a href="chapitre-1.html">Chap. I</a><a href="chapitre-2.html">Chap. II</a><a href="chapitre-3.html">Chap. III</a><a href="chapitre-4.html">Chap. IV</a>
+    <a href="travaux-pratiques.html">TP</a>
+    <a href="exercices.html" class="active"><span class="fr">Exercices</span><span class="en">Exercises</span></a>
+    <a href="glossaire.html"><span class="fr">Glossaire</span><span class="en">Glossary</span></a><a href="ressources.html"><span class="fr">Ressources</span><span class="en">Resources</span></a>
+  </nav>
+  <div class="lang-toggle"><button data-lang-btn="fr">FR</button><button data-lang-btn="en">EN</button></div>
+  <button class="toolbtn" data-theme-toggle>☾</button><button class="toolbtn menu-btn" data-menu>☰</button>
+</div></header>
+
+<div class="lesson-head"><div class="wrap">
+  <span class="eyebrow"><span class="fr">Entraînement</span><span class="en">Practice</span></span>
+  <h1><span class="fr">Exercices d'entraînement</span><span class="en">Practice exercises</span></h1>
+  <p class="lead" style="max-width:62ch"><span class="fr">Une banque d'exercices variés — QCM et questions ouvertes — présentés dans un ordre aléatoire. Cherchez d'abord, puis révélez le corrigé pour vérifier et comprendre.</span><span class="en">A bank of mixed exercises — multiple-choice and open questions — shown in random order. Try first, then reveal the answer to check and understand.</span></p>
+  <div class="hero-meta">
+    <span class="chip" id="exoCount">—</span>
+    <span class="chip"><span class="fr">Ordre aléatoire</span><span class="en">Random order</span></span>
+    <span class="chip"><span class="fr">Corrigés détaillés</span><span class="en">Detailed answers</span></span>
+  </div>
+</div></div>
+
+<div class="wrap narrow" style="padding-bottom:80px">
+  <div class="controls">
+    <button type="button" class="btn btn-primary" id="shuffleBtn">🔀 <span class="fr">Mélanger les exercices</span><span class="en">Shuffle exercises</span></button>
+    <button type="button" class="btn btn-ghost" id="revealAll"><span class="fr">Tout afficher / masquer</span><span class="en">Reveal / hide all</span></button>
+  </div>
+  <div id="exos">
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Que signifie l'acronyme CPU ?</span><span class="en">What does the acronym CPU mean?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Computer Personal Unit</li><li><span class="L">B</span>Central Processing Unit</li><li><span class="L">C</span>Central Program Unit</li><li><span class="L">D</span>Computer Process Unit</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — Central Processing Unit</span><span class="why"><span class="fr">Le CPU est le « cerveau » de l'ordinateur : il exécute toutes les instructions.</span><span class="en">The CPU is the computer's "brain": it executes every instruction.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">La RAM est une mémoire :</span><span class="en">RAM is a memory that is:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">Volatile (s'efface à l'extinction)</span><span class="en">Volatile (lost at power-off)</span></li><li><span class="L">B</span><span class="fr">Permanente</span><span class="en">Permanent</span></li><li><span class="L">C</span><span class="fr">À lecture seule uniquement</span><span class="en">Read-only</span></li><li><span class="L">D</span><span class="fr">Optique</span><span class="en">Optical</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">A — <span class="fr">Volatile</span><span class="en">Volatile</span></span><span class="why"><span class="fr">RAM = Random Access Memory : tout s'efface quand on éteint le PC.</span><span class="en">RAM = Random Access Memory: everything is lost when the PC is switched off.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Que signifie ROM ?</span><span class="en">What does ROM mean?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Random Open Memory</li><li><span class="L">B</span>Read Only Memory</li><li><span class="L">C</span>Read Open Memory</li><li><span class="L">D</span>Run Once Memory</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — Read Only Memory</span><span class="why"><span class="fr">Mémoire morte, en lecture seule. Contient le BIOS, non volatile.</span><span class="en">Read-only memory. Holds the BIOS, non-volatile.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Le BIOS est stocké dans :</span><span class="en">The BIOS is stored in:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">La RAM</span><span class="en">RAM</span></li><li><span class="L">B</span><span class="fr">Le disque dur</span><span class="en">The hard disk</span></li><li><span class="L">C</span><span class="fr">Une mémoire ROM (flash)</span><span class="en">A ROM (flash) chip</span></li><li><span class="L">D</span>CPU</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — <span class="fr">Mémoire ROM (flash)</span><span class="en">ROM (flash)</span></span><span class="why"><span class="fr">Le BIOS est stocké sur une puce ROM/Flash de la carte mère.</span><span class="en">The BIOS lives on a ROM/Flash chip on the motherboard.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quel composant est appelé « le cerveau » de l'ordinateur ?</span><span class="en">Which component is called the computer's "brain"?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">Le disque dur</span><span class="en">The hard disk</span></li><li><span class="L">B</span>RAM</li><li><span class="L">C</span><span class="fr">Le processeur (CPU)</span><span class="en">The processor (CPU)</span></li><li><span class="L">D</span><span class="fr">La carte graphique</span><span class="en">The graphics card</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — CPU</span><span class="why"><span class="fr">Le CPU exécute toutes les instructions, d'où l'analogie avec le cerveau.</span><span class="en">The CPU runs all instructions — hence the brain analogy.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Que signifie SSD ?</span><span class="en">What does SSD mean?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Super Speed Drive</li><li><span class="L">B</span>Solid State Drive</li><li><span class="L">C</span>System Storage Disk</li><li><span class="L">D</span>Standard Serial Disk</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — Solid State Drive</span><span class="why"><span class="fr">Disque à mémoire flash sans pièce mobile, ultra-rapide vs HDD.</span><span class="en">Flash-memory drive with no moving parts, far faster than an HDD.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Lequel est un périphérique d'ENTRÉE ?</span><span class="en">Which is an INPUT device?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">Imprimante</span><span class="en">Printer</span></li><li><span class="L">B</span><span class="fr">Écran</span><span class="en">Screen</span></li><li><span class="L">C</span><span class="fr">Clavier</span><span class="en">Keyboard</span></li><li><span class="L">D</span><span class="fr">Haut-parleur</span><span class="en">Speaker</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — <span class="fr">Clavier</span><span class="en">Keyboard</span></span><span class="why"><span class="fr">Le clavier envoie des données VERS le PC. Imprimante/écran/HP = sortie.</span><span class="en">The keyboard sends data TO the PC. Printer/screen/speaker = output.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quelle commande DOS liste les fichiers d'un dossier ?</span><span class="en">Which DOS command lists a folder's files?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>LS</li><li><span class="L">B</span>DIR</li><li><span class="L">C</span>LIST</li><li><span class="L">D</span>SHOW</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — DIR</span><span class="why"><span class="fr">DIR (Directory) sous DOS. Équivalent UNIX : ls.</span><span class="en">DIR (Directory) on DOS. UNIX equivalent: ls.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Le raccourci pour ouvrir l'Explorateur de fichiers est :</span><span class="en">The shortcut to open File Explorer is:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Win + R</li><li><span class="L">B</span>Win + E</li><li><span class="L">C</span>Win + D</li><li><span class="L">D</span>Win + L</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — Win + E</span><span class="why"><span class="fr">E = Explorer. Mémo : Win+R=Run, Win+D=Bureau, Win+L=Verrouiller.</span><span class="en">E = Explorer. Memo: Win+R=Run, Win+D=Desktop, Win+L=Lock.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Un pilote (driver) est :</span><span class="en">A driver is:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">Un câble électrique</span><span class="en">An electrical cable</span></li><li><span class="L">B</span><span class="fr">Un programme qui permet au SE de communiquer avec un périphérique</span><span class="en">A program letting the OS talk to a device</span></li><li><span class="L">C</span><span class="fr">Une carte mémoire</span><span class="en">A memory card</span></li><li><span class="L">D</span><span class="fr">Une connexion réseau</span><span class="en">A network connection</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B</span><span class="why"><span class="fr">Sans pilote, le SE ne peut pas utiliser le périphérique branché.</span><span class="en">Without a driver, the OS cannot use the connected device.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quel type de licence est GRATUIT avec accès au code source ?</span><span class="en">Which licence type is FREE with source-code access?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">Propriétaire</span><span class="en">Proprietary</span></li><li><span class="L">B</span>Shareware</li><li><span class="L">C</span>Open Source</li><li><span class="L">D</span>Trial</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — Open Source</span><span class="why"><span class="fr">Code source ouvert. Ex : VS Code, Blender, Linux.</span><span class="en">Open source code. e.g. VS Code, Blender, Linux.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">La règle de sauvegarde 3-2-1 signifie :</span><span class="en">The 3-2-1 backup rule means:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">3 jours, 2 mois, 1 an</span><span class="en">3 days, 2 months, 1 year</span></li><li><span class="L">B</span><span class="fr">3 copies, 2 supports différents, 1 copie hors-site</span><span class="en">3 copies, 2 different media, 1 off-site</span></li><li><span class="L">C</span><span class="fr">3 disques durs</span><span class="en">3 hard drives</span></li><li><span class="L">D</span><span class="fr">3 sauvegardes par jour</span><span class="en">3 backups a day</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B</span><span class="why"><span class="fr">Règle d'or contre la perte de données : panne, vol, virus, dégâts.</span><span class="en">Golden rule against data loss: failure, theft, virus, damage.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Définir HARDWARE et SOFTWARE. Donner 2 exemples de chacun. (2 pts)</span><span class="en">Define HARDWARE and SOFTWARE. Give 2 examples of each. (2 pts)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="fr"><b>HARDWARE</b> = matériel physique (ce qui se touche) : CPU, RAM, écran, disque dur. <b>SOFTWARE</b> = logiciel (ce qui s'exécute) : Windows, Word, Chrome, antivirus.</span><span class="en"><b>HARDWARE</b> = physical parts (what you can touch): CPU, RAM, screen, hard disk. <b>SOFTWARE</b> = programs (what runs): Windows, Word, Chrome, antivirus.</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Qu'est-ce que la séquence POST au démarrage d'un PC ? À quoi sert-elle ? (2 pts)</span><span class="en">What is the POST sequence at PC startup? What is it for? (2 pts)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="fr">POST = Power-On Self-Test, réalisé par le BIOS/UEFI au démarrage. Il vérifie que les composants vitaux fonctionnent (CPU, RAM, carte graphique). Un seul bip = tout OK ; plusieurs bips = panne détectée.</span><span class="en">POST = Power-On Self-Test, run by the BIOS/UEFI at startup. It checks that vital components work (CPU, RAM, GPU). One beep = all OK; several beeps = a fault was detected.</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Classer en ENTRÉE (E), SORTIE (S) ou E/S : clavier, imprimante, disque dur externe, scanner. (1 pt)</span><span class="en">Classify as INPUT, OUTPUT or I/O: keyboard, printer, external hard drive, scanner. (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans"><span class="fr">Clavier = E · Imprimante = S · Disque dur externe = E/S · Scanner = E.</span><span class="en">Keyboard = In · Printer = Out · External HDD = I/O · Scanner = In.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Commande DOS qui : (a) liste les fichiers, (b) change de dossier, (c) crée un dossier. (1 pt)</span><span class="en">DOS command that: (a) lists files, (b) changes folder, (c) creates a folder. (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">(a) DIR · (b) CD · (c) MKDIR (MD)</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Conversion : 4 Go = ……… Mo (1 Go = 1 024 Mo). (1 pt)</span><span class="en">Conversion: 4 GB = ……… MB (1 GB = 1,024 MB). (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">4 × 1 024 = 4 096 Mo</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Citer 3 étapes pour installer un logiciel téléchargé. (1 pt)</span><span class="en">List 3 steps to install a downloaded program. (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="fr">1) Télécharger depuis le site officiel. 2) Lancer le setup.exe en administrateur. 3) Accepter l'EULA et choisir les options. (Optionnel : tester après installation.)</span><span class="en">1) Download from the official site. 2) Run setup.exe as administrator. 3) Accept the EULA and choose the options. (Optional: test after install.)</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Les générations d'ordinateurs sont au nombre de :</span><span class="en">The number of computer generations is:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>3</li><li><span class="L">B</span>4</li><li><span class="L">C</span>5</li><li><span class="L">D</span>6</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — 5</span><span class="why"><span class="fr">1G tubes, 2G transistors, 3G circuits intégrés, 4G microprocesseurs, 5G IA/quantique.</span><span class="en">1G tubes, 2G transistors, 3G ICs, 4G microprocessors, 5G AI/quantum.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quelle technologie caractérise la 1ère génération ?</span><span class="en">Which technology defines the 1st generation?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">Transistors</span><span class="en">Transistors</span></li><li><span class="L">B</span><span class="fr">Tubes à vide</span><span class="en">Vacuum tubes</span></li><li><span class="L">C</span><span class="fr">Circuits intégrés</span><span class="en">Integrated circuits</span></li><li><span class="L">D</span><span class="fr">Microprocesseurs</span><span class="en">Microprocessors</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — <span class="fr">Tubes à vide</span><span class="en">Vacuum tubes</span></span><span class="why"><span class="fr">ENIAC (1946) : 30 tonnes, 17 000 tubes à vide.</span><span class="en">ENIAC (1946): 30 tons, 17,000 vacuum tubes.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">DDR4 est un type de :</span><span class="en">DDR4 is a type of:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">Disque dur</span><span class="en">Hard disk</span></li><li><span class="L">B</span><span class="fr">Processeur</span><span class="en">Processor</span></li><li><span class="L">C</span><span class="fr">Mémoire vive (RAM)</span><span class="en">RAM</span></li><li><span class="L">D</span><span class="fr">Carte graphique</span><span class="en">Graphics card</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — RAM</span><span class="why"><span class="fr">DDR (Double Data Rate) est une famille de RAM ; DDR4 = 4ᵉ génération.</span><span class="en">DDR (Double Data Rate) is a RAM family; DDR4 = 4th generation.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Lequel n'est PAS un système d'exploitation ?</span><span class="en">Which is NOT an operating system?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Windows</li><li><span class="L">B</span>Linux</li><li><span class="L">C</span>Microsoft Word</li><li><span class="L">D</span>macOS</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — Microsoft Word</span><span class="why"><span class="fr">Word est une application bureautique, pas un SE.</span><span class="en">Word is an office application, not an OS.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Le format de carte mère le plus courant pour un PC bureau est :</span><span class="en">The most common desktop motherboard form factor is:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Mini-ITX</li><li><span class="L">B</span>ATX</li><li><span class="L">C</span>Pico-ITX</li><li><span class="L">D</span>E-ATX</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — ATX</span><span class="why"><span class="fr">ATX (30,5 × 24,4 cm) est le standard des PC de bureau.</span><span class="en">ATX (30.5 × 24.4 cm) is the desktop standard.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quelle commande Linux change de dossier ?</span><span class="en">Which Linux command changes folder?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>dir</li><li><span class="L">B</span>mv</li><li><span class="L">C</span>cd</li><li><span class="L">D</span>cp</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — cd</span><span class="why"><span class="fr">cd = change directory.</span><span class="en">cd = change directory.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quel port connecte un écran moderne en haute résolution ?</span><span class="en">Which port connects a modern high-res display?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>VGA</li><li><span class="L">B</span>PS/2</li><li><span class="L">C</span>HDMI</li><li><span class="L">D</span>Jack 3,5 mm</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — HDMI</span><span class="why"><span class="fr">HDMI = High-Definition Multimedia Interface (vidéo + son numérique).</span><span class="en">HDMI = High-Definition Multimedia Interface (digital video + audio).</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">La capacité standard d'un DVD-R simple couche est :</span><span class="en">A single-layer DVD-R standard capacity is:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>700 Mo</li><li><span class="L">B</span>4,7 Go</li><li><span class="L">C</span>25 Go</li><li><span class="L">D</span>100 Go</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — 4,7 Go</span><span class="why"><span class="fr">DVD-R : 4,7 Go simple couche, 8,5 Go double couche.</span><span class="en">DVD-R: 4.7 GB single layer, 8.5 GB dual layer.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quel logiciel crée une clé USB bootable Windows ?</span><span class="en">Which tool makes a bootable Windows USB?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Rufus</li><li><span class="L">B</span>WinRAR</li><li><span class="L">C</span>VLC</li><li><span class="L">D</span>7-Zip</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">A — Rufus</span><span class="why"><span class="fr">Rufus (rufus.ie) : ISO + clé + schéma GPT pour UEFI.</span><span class="en">Rufus (rufus.ie): ISO + USB + GPT scheme for UEFI.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">L'UEFI est :</span><span class="en">UEFI is:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">Un système d'exploitation</span><span class="en">An operating system</span></li><li><span class="L">B</span><span class="fr">Le successeur moderne du BIOS</span><span class="en">The modern successor to the BIOS</span></li><li><span class="L">C</span><span class="fr">Un disque dur</span><span class="en">A hard disk</span></li><li><span class="L">D</span><span class="fr">Une marque de processeur</span><span class="en">A CPU brand</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B</span><span class="why"><span class="fr">UEFI = Unified Extensible Firmware Interface. Remplace le BIOS legacy.</span><span class="en">UEFI = Unified Extensible Firmware Interface. Replaces the legacy BIOS.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Que signifie EULA ?</span><span class="en">What does EULA mean?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Electronic User Licence Authorization</li><li><span class="L">B</span>End User License Agreement</li><li><span class="L">C</span>European Universal Licence Act</li><li><span class="L">D</span>Easy User Login Access</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — End User License Agreement</span><span class="why"><span class="fr">Contrat de licence d'utilisateur final, accepté à l'installation.</span><span class="en">End-user licence agreement, accepted during installation.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Pour désinstaller PROPREMENT un logiciel sous Windows :</span><span class="en">To CLEANLY uninstall a program on Windows:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">La corbeille</span><span class="en">The recycle bin</span></li><li><span class="L">B</span><span class="fr">Paramètres → Applications → Désinstaller</span><span class="en">Settings → Apps → Uninstall</span></li><li><span class="L">C</span><span class="fr">Supprimer le dossier à la main</span><span class="en">Delete the folder manually</span></li><li><span class="L">D</span><span class="fr">L'antivirus</span><span class="en">The antivirus</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B</span><span class="why"><span class="fr">Ne jamais supprimer le dossier à la main : laisse des fichiers + entrées de registre.</span><span class="en">Never delete the folder by hand: it leaves files + registry entries.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Citez 3 types de licences logicielles. Donner un exemple pour chacun. (2 pts)</span><span class="en">List 3 software licence types. Give an example of each. (2 pts)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="fr">1) Logiciel libre : LibreOffice, Firefox, Linux. 2) Propriétaire : Windows, Photoshop, AutoCAD. 3) Freemium : Spotify, Dropbox, Zoom. (Autres acceptés : Open Source / Shareware / Trial.)</span><span class="en">1) Free/libre: LibreOffice, Firefox, Linux. 2) Proprietary: Windows, Photoshop, AutoCAD. 3) Freemium: Spotify, Dropbox, Zoom. (Also accepted: Open Source / Shareware / Trial.)</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Qu'est-ce qu'un PILOTE (driver) ? Pourquoi est-il indispensable ? (2 pts)</span><span class="en">What is a driver? Why is it essential? (2 pts)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="fr">Un pilote est un programme qui sert d'interprète entre le système d'exploitation et un périphérique. Sans pilote, le SE ne peut pas communiquer avec le périphérique : il est branché mais inactif.</span><span class="en">A driver is a program acting as an interpreter between the OS and a device. Without it, the OS cannot communicate with the device: it's plugged in but inactive.</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Compléter : la RAM est ……… ; la ROM est ……… (volatile / non-volatile). (1 pt)</span><span class="en">Fill in: RAM is ……… ; ROM is ……… (volatile / non-volatile). (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans"><span class="fr">RAM = volatile · ROM = non-volatile.</span><span class="en">RAM = volatile · ROM = non-volatile.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Équivalent UNIX/Linux : (a) DIR → … (b) CD → … (c) COPY → … (1 pt)</span><span class="en">UNIX/Linux equivalent: (a) DIR → … (b) CD → … (c) COPY → … (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">(a) ls · (b) cd · (c) cp</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Conversion : 2 048 Mo = ……… Go (1 Go = 1 024 Mo). (1 pt)</span><span class="en">Conversion: 2,048 MB = ……… GB (1 GB = 1,024 MB). (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">2 048 ÷ 1 024 = 2 Go</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Citer 3 étapes pour installer un périphérique (ex : imprimante USB). (1 pt)</span><span class="en">List 3 steps to install a peripheral (e.g. USB printer). (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="fr">1) Télécharger le driver sur le site officiel. 2) Brancher le périphérique. 3) Lancer le setup en administrateur. (Optionnel : imprimer une page test.)</span><span class="en">1) Download the driver from the official site. 2) Connect the device. 3) Run the setup as administrator. (Optional: print a test page.)</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Pour mesurer la fréquence d'un processeur, on utilise :</span><span class="en">A processor's frequency is measured in:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Volts (V)</li><li><span class="L">B</span>Hertz (GHz)</li><li><span class="L">C</span>Octets (Go)</li><li><span class="L">D</span>Watts (W)</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — Hertz (GHz)</span><span class="why"><span class="fr">1 GHz = 1 milliard d'opérations/s. Volts = tension, Watts = puissance.</span><span class="en">1 GHz = 1 billion ops/s. Volts = voltage, Watts = power.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Combien de cœurs a un Intel Core i5 typique ?</span><span class="en">How many cores does a typical Intel Core i5 have?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>1</li><li><span class="L">B</span>2</li><li><span class="L">C</span><span class="fr">4 ou plus</span><span class="en">4 or more</span></li><li><span class="L">D</span><span class="fr">Minimum 16</span><span class="en">At least 16</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — <span class="fr">4 ou plus</span><span class="en">4 or more</span></span><span class="why"><span class="fr">i3 = 4 cœurs, i5 = 4-6, i7 = 8-12, i9 = 14+.</span><span class="en">i3 = 4 cores, i5 = 4-6, i7 = 8-12, i9 = 14+.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quel composant gère l'affichage graphique ?</span><span class="en">Which component handles graphics?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>CPU</li><li><span class="L">B</span>GPU</li><li><span class="L">C</span>RAM</li><li><span class="L">D</span>SSD</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — GPU</span><span class="why"><span class="fr">GPU = Graphics Processing Unit (carte vidéo dédiée ou intégrée).</span><span class="en">GPU = Graphics Processing Unit (dedicated or integrated).</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quel système de fichiers est NATIF à Windows moderne ?</span><span class="en">Which file system is NATIVE to modern Windows?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>ext4</li><li><span class="L">B</span>FAT12</li><li><span class="L">C</span>NTFS</li><li><span class="L">D</span>HFS+</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — NTFS</span><span class="why"><span class="fr">NTFS = New Technology File System. ext4 = Linux, HFS+ = macOS ancien.</span><span class="en">NTFS = New Technology File System. ext4 = Linux, HFS+ = old macOS.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Le démarrage d'un PC commence par :</span><span class="en">A PC boot begins with:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">Le chargement de Windows</span><span class="en">Loading Windows</span></li><li><span class="L">B</span><span class="fr">Le POST (test matériel)</span><span class="en">The POST (hardware test)</span></li><li><span class="L">C</span><span class="fr">L'antivirus</span><span class="en">The antivirus</span></li><li><span class="L">D</span><span class="fr">La connexion utilisateur</span><span class="en">User login</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — POST</span><span class="why"><span class="fr">Power-On Self-Test : test des composants avant le chargement du SE.</span><span class="en">Power-On Self-Test: components are checked before the OS loads.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">La mémoire DDR5 est :</span><span class="en">DDR5 memory is:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">Plus lente que DDR4</span><span class="en">Slower than DDR4</span></li><li><span class="L">B</span><span class="fr">Plus rapide que DDR4</span><span class="en">Faster than DDR4</span></li><li><span class="L">C</span><span class="fr">Identique à DDR4</span><span class="en">Identical to DDR4</span></li><li><span class="L">D</span><span class="fr">Réservée aux mobiles</span><span class="en">Mobile-only</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — <span class="fr">Plus rapide</span><span class="en">Faster</span></span><span class="why"><span class="fr">DDR5 (2020) : jusqu'à 6 400 MHz, ~51 Go/s. DDR4 plafonnait à 3 200 MHz.</span><span class="en">DDR5 (2020): up to 6,400 MHz, ~51 GB/s. DDR4 capped at 3,200 MHz.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Selon la règle 3-2-1, combien de copies MINIMUM ?</span><span class="en">Under the 3-2-1 rule, the MINIMUM number of copies is:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>1</li><li><span class="L">B</span>2</li><li><span class="L">C</span>3</li><li><span class="L">D</span>4</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — 3</span><span class="why"><span class="fr">3 copies, 2 supports différents, 1 hors-site.</span><span class="en">3 copies, 2 different media, 1 off-site.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quel raccourci copie un fichier sélectionné dans Windows ?</span><span class="en">Which shortcut copies a selected file in Windows?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Ctrl + X</li><li><span class="L">B</span>Ctrl + C</li><li><span class="L">C</span>Ctrl + V</li><li><span class="L">D</span>Ctrl + Z</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — Ctrl + C</span><span class="why"><span class="fr">Ctrl+C = copier · X = couper · V = coller · Z = annuler.</span><span class="en">Ctrl+C = copy · X = cut · V = paste · Z = undo.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Le noyau Linux a été créé en 1991 par :</span><span class="en">The Linux kernel was created in 1991 by:</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Bill Gates</li><li><span class="L">B</span>Steve Jobs</li><li><span class="L">C</span>Linus Torvalds</li><li><span class="L">D</span>Mark Zuckerberg</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">C — Linus Torvalds</span><span class="why"><span class="fr">Étudiant finlandais ; a donné son prénom au noyau Linux.</span><span class="en">A Finnish student; the kernel is named after him.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quel logiciel LIBRE remplace Microsoft Office ?</span><span class="en">Which FREE software replaces Microsoft Office?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>Photoshop</li><li><span class="L">B</span>LibreOffice</li><li><span class="L">C</span>AutoCAD</li><li><span class="L">D</span>Spotify</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — LibreOffice</span><span class="why"><span class="fr">Suite libre : Writer, Calc, Impress, Draw. 100 % gratuit.</span><span class="en">Free suite: Writer, Calc, Impress, Draw. 100% free.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Quelle interface pour les SSD ULTRA-RAPIDES ?</span><span class="en">Which interface for ULTRA-FAST SSDs?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span>IDE</li><li><span class="L">B</span>NVMe</li><li><span class="L">C</span>PS/2</li><li><span class="L">D</span>VGA</li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B — NVMe</span><span class="why"><span class="fr">NVMe (sur PCIe) : 3 500 à 14 000 Mo/s. SATA SSD plafonne à 550 Mo/s.</span><span class="en">NVMe (on PCIe): 3,500–14,000 MB/s. SATA SSD caps at 550 MB/s.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Que faut-il VÉRIFIER avant de télécharger un logiciel ?</span><span class="en">What must you CHECK before downloading software?</span></p>
+        <ul class="qx-opts"><li><span class="L">A</span><span class="fr">Désactiver l'antivirus</span><span class="en">Disable the antivirus</span></li><li><span class="L">B</span><span class="fr">La configuration minimale requise</span><span class="en">The minimum requirements</span></li><li><span class="L">C</span><span class="fr">Formater le disque</span><span class="en">Format the disk</span></li><li><span class="L">D</span><span class="fr">Acheter une licence</span><span class="en">Buy a licence</span></li></ul>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">B</span><span class="why"><span class="fr">Vérifier : SE supporté, version, CPU min, RAM min, espace disque.</span><span class="en">Check: supported OS, version, min CPU, min RAM, disk space.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Citez les 5 GÉNÉRATIONS d'ordinateurs avec la technologie dominante de chacune. (2 pts)</span><span class="en">List the 5 computer GENERATIONS with each one's dominant technology. (2 pts)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="fr">1G (1940-1955) : Tubes à vide · 2G (1955-1965) : Transistors · 3G (1965-1971) : Circuits intégrés · 4G (1971→) : Microprocesseurs · 5G (aujourd'hui→) : IA, parallélisme massif, quantique.</span><span class="en">1G (1940-1955): Vacuum tubes · 2G (1955-1965): Transistors · 3G (1965-1971): Integrated circuits · 4G (1971→): Microprocessors · 5G (today→): AI, massive parallelism, quantum.</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Différence entre HDD et SSD ? Donner 2 AVANTAGES du SSD. (2 pts)</span><span class="en">Difference between HDD and SSD? Give 2 ADVANTAGES of the SSD. (2 pts)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="fr">HDD = disque magnétique avec plateaux tournants et tête mobile (mécanique). SSD = puces de mémoire flash, sans pièce mobile. Avantages SSD : vitesse 10–100× supérieure ; silencieux et résistant aux chocs ; faible consommation ; démarrage de l'OS en 5-10 s.</span><span class="en">HDD = magnetic disk with spinning platters and a moving head (mechanical). SSD = flash chips, no moving parts. SSD advantages: 10–100× faster; silent and shock-resistant; low power; OS boot in 5-10 s.</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Conversion : (a) 4 Go = ……… Mo et (b) 2 048 Mo = ……… Go. (1 pt)</span><span class="en">Conversion: (a) 4 GB = ……… MB and (b) 2,048 MB = ……… GB. (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">(a) 4 × 1 024 = 4 096 Mo · (b) 2 048 ÷ 1 024 = 2 Go</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Demande de 12 Go. Disques libres : 5, 10, 15, 50 Go. Quel disque choisit BEST-FIT ? (1 pt)</span><span class="en">Request of 12 GB. Free disks: 5, 10, 15, 50 GB. Which does BEST-FIT pick? (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="ans">15 Go</span><span class="why"><span class="fr">On élimine 5 et 10 (trop petits). Best-Fit = le plus petit qui convient = 15 Go.</span><span class="en">Discard 5 and 10 (too small). Best-Fit = the smallest that fits = 15 GB.</span></span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Citer 3 étapes pour installer une imprimante USB sous Windows. (1 pt)</span><span class="en">List 3 steps to install a USB printer on Windows. (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="fr">1) Télécharger le driver sur le site du constructeur. 2) Brancher l'imprimante + l'alimenter. 3) Lancer setup.exe en admin, suivre l'assistant, imprimer une page test.</span><span class="en">1) Download the driver from the maker's site. 2) Connect &amp; power the printer. 3) Run setup.exe as admin, follow the wizard, print a test page.</span></div></details>
+      </div></div>
+    <div class="exo"><div class="qx"><p class="qx-q"><span class="exo-n"></span> <span class="fr">Citer 2 supports de stockage pour une sauvegarde personnelle (taille typique). (1 pt)</span><span class="en">List 2 storage media for a personal backup (typical size). (1 pt)</span></p>
+        <details class="corrige"><summary><span class="fr">Voir le corrigé</span><span class="en">Show answer key</span></summary><div class="body"><span class="fr">1) Disque externe USB (1 à 4 To) pour une sauvegarde complète. 2) Cloud (Google Drive / OneDrive, 15 Go à 2 To) pour une copie hors-site. (Autres : clé USB 64-256 Go, NAS, DVD-R 4,7 Go.)</span><span class="en">1) External USB drive (1–4 TB) for a full backup. 2) Cloud (Google Drive / OneDrive, 15 GB–2 TB) for an off-site copy. (Others: USB stick 64-256 GB, NAS, DVD-R 4.7 GB.)</span></div></details>
+      </div></div>
+  </div>
+
+  <div class="pager">
+    <a href="travaux-pratiques.html"><span><span class="fr">Voir aussi</span><span class="en">See also</span></span><b><span class="fr">Travaux Pratiques</span><span class="en">Hands-on Labs</span></b></a>
+    <a class="next" href="glossaire.html"><span><span class="fr">Réviser</span><span class="en">Revise</span></span><b><span class="fr">Glossaire</span><span class="en">Glossary</span></b></a>
+  </div>
+</div>
+
+<footer><div class="wrap"><div class="foot-bottom" style="border:0">
+  <span>© 2025–2026 Ghouili Walid · IMSET</span>
+  <span><a href="index.html"><span class="fr">Retour à l'accueil</span><span class="en">Back to home</span></a></span>
+</div></div></footer>
+
+<script>
+  (function(){
+    var pool = document.getElementById("exos");
+    if(!pool) return;
+    var lang = function(){ return document.documentElement.getAttribute("data-lang") || "fr"; };
+    function number(){
+      [].forEach.call(pool.children, function(c, i){
+        var n = c.querySelector(".exo-n");
+        if(n){ n.setAttribute("data-i", i+1); n.textContent = (lang()==="en" ? "Exercise " : "Exercice ") + (i+1) + "."; }
+      });
+    }
+    function shuffle(){
+      var els = [].slice.call(pool.children);
+      for(var i=els.length-1;i>0;i--){ var j=Math.random()*(i+1)|0; var t=els[i]; els[i]=els[j]; els[j]=t; }
+      els.forEach(function(e){ pool.appendChild(e); });
+      number();
+    }
+    var cnt = document.getElementById("exoCount");
+    if(cnt){ cnt.textContent = pool.children.length + (lang()==="en" ? " exercises" : " exercices"); }
+    document.getElementById("shuffleBtn").addEventListener("click", shuffle);
+    document.getElementById("revealAll").addEventListener("click", function(){
+      var ds = pool.querySelectorAll("details.corrige");
+      var anyClosed = [].some.call(ds, function(d){ return !d.open; });
+      ds.forEach(function(d){ d.open = anyClosed; });
+    });
+    // relabel numbers + count when language toggles
+    document.addEventListener("click", function(e){
+      if(e.target.closest("[data-lang-btn]")){ setTimeout(function(){ number(); if(cnt){ cnt.textContent = pool.children.length + (lang()==="en" ? " exercises" : " exercices"); } }, 0); }
+    });
+    shuffle(); // random order on each visit
+  })();
+</script>
+<script src="assets/script.js"></script>
+</body>
+</html>
